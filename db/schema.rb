@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_25_124652) do
+ActiveRecord::Schema.define(version: 2021_03_30_113949) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,11 +22,26 @@ ActiveRecord::Schema.define(version: 2021_03_25_124652) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "open", default: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_food_carts_on_user_id"
   end
 
   create_table "menus", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "food_cart_id", null: false
+    t.index ["food_cart_id"], name: "index_menus_on_food_cart_id"
+  end
+
+  create_table "schedules", force: :cascade do |t|
+    t.string "location"
+    t.date "date"
+    t.time "start_time"
+    t.time "end_time"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "food_cart_id"
+    t.index ["food_cart_id"], name: "index_schedules_on_food_cart_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -41,4 +56,7 @@ ActiveRecord::Schema.define(version: 2021_03_25_124652) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "food_carts", "users"
+  add_foreign_key "menus", "food_carts"
+  add_foreign_key "schedules", "food_carts"
 end
