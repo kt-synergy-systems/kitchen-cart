@@ -58,7 +58,8 @@ puts "generating foodcarts"
                  open: true,
                  cart_description: Faker::Restaurant.description,
                  user: User.all.sample,
-                 menu: Menu.all.sample
+                 menu: Menu.all.sample,
+                 schedule: Schedule.all.sample
   })
 end
 
@@ -87,7 +88,7 @@ end
 
 20.times do
   Schedule.new({
-                 location: lat:f.rand lon:f.rand,
+                 location: lat:%w[%w[35.633983 139.71600] %w[35.6580339 139.7016358] %w[35.6641665 139.7815059] %w[35.646643 139.710045] %w[35.6659486 139.7418724]].sample
                  date: Faker::Date.between(from: '2020-09-23', to: '2020-09-25'),
                  start_time: w%[0..23],
                  end_time: w%[0..23],
