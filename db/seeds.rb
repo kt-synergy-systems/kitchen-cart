@@ -77,12 +77,13 @@ puts "generating foodcarts, menus and schedules"
                  food_cart: food_cart
 
   })
+  time = Time.now
   Schedule.create!(
     {
       location: [%w(35.633983 139.71600), %w(35.6580339 139.7016358), %w(35.6641665 139.7815059), %w(35.646643 139.710045), %w(35.6659486 139.7418724)].sample,
       date: Faker::Date.between(from: '2020-09-23', to: '2020-09-25'),
-      start_time: Time.now,
-      end_time: Time.now + 3*60*60,
+      start_time: Time.now.strftime("%k:%M %p"),
+      end_time: (Time.now + 3.hour).strftime("%k:%M %p"),
       food_cart: food_cart
   })
 end
