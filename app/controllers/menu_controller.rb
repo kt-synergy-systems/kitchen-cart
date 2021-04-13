@@ -43,12 +43,14 @@ class MenuController < ApplicationController
   end
 
   private
+
   def menu_params
     params.require(:menu).permit()
   end
 
-    def set_menu
-      @menu = Menu.find(params[:id])
+  #method for authorization in the before action
+  def set_menu
+    @menu = Menu.find(params[:id])
       authorize @menu
-    end
+  end
 end
