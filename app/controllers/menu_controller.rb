@@ -1,7 +1,8 @@
 class MenuController < ApplicationController
+  before_action :set_menu, only: [:show, :edit, :update, :destroy]
 
   def index
-    @menu = Menu.all
+    @menu = policy_scope(Menu)
   end
 
   def show
@@ -10,10 +11,13 @@ class MenuController < ApplicationController
 
   def new
     @menu = Menu.new
+    authorize @menu
   end
 
   def create
     @menu = Menu.new(menu_params)
+    @food_cart = FoodCart.find(params[:id])
+    @foodcart.user = current_user
 
     if @menu.save
       redirect_to menu_path(@menu)
@@ -43,4 +47,8 @@ class MenuController < ApplicationController
     params.require(:menu).permit()
   end
 
+    def set_menu
+      @menu = Menu.find(params[:id])
+      authorize @menu
+    end
 end
