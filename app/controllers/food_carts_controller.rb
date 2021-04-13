@@ -1,6 +1,7 @@
 class FoodCartsController < ApplicationController
+  before_action :set_menu, only: [:show, :edit, :update, :destroy]
   def index
-    @food_carts = FoodCart.all
+    @food_carts = policy_scope(FoodCart)
   end
 
   def show
@@ -9,6 +10,7 @@ class FoodCartsController < ApplicationController
 
   def new
     @food_cart = FoodCart.new
+    authorize @food_cart
   end
 
   def create
@@ -41,5 +43,10 @@ class FoodCartsController < ApplicationController
 
   def food_cart_params
     params.require(:food_cart).permit
+  end
+
+  def set_food_cart
+    @food_cart = FoodCart.find(params[:id])
+    authorize @food_cart
   end
 end
