@@ -1,0 +1,4 @@
+<script>
+  window.foodCart = <%= raw(@food_cart.to_json) %>
+</script>
+<%= javascript_pack_tag 'FoodCarts/show' %>
