@@ -1,1 +1,8 @@
 <%= @food_cart.name %>
+<%= @food_cart.schedule.date %>
+<p>Open: <%= @food_cart.schedule.start_time %></p>
+<p>Close: <%= @food_cart.schedule.end_time %></p>
+<ul><% @food_cart.menu.food_items.each do |item|%>
+    <li><%= item.food_name %> | JPY <%= item.food_price %>00</li>
+  <% end %>
+</ul>
