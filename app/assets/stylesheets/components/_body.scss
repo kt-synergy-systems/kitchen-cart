@@ -1,6 +1,9 @@
+/* Universal styles */
+
 h1 {
   font-family: 'Ubuntu', 'Helvetica', sans-serif;
   text-transform: uppercase;
+  justify-content: center;
 }
 
 h2,h3,h4,h5 {
@@ -9,4 +12,17 @@ h2,h3,h4,h5 {
 
 p {
   font-family: 'Open Sans', 'Helvetica', sans-serif;
+  font-size: 18px;
+}
+
+body {
+  background-color: $white;
+  word-wrap: break-word;
+  hyphens: auto;
+  justify-content: center;
+  margin: auto;
+}
+
+img {
+  max-width: 100%;
 }
