@@ -10,7 +10,7 @@ const FoodCart = () => {
   };
   return (
     <div className="FoodCart" onClick={handleClick}>
-      {textContext}
+      {textContent}
     </div>
   );
 };
