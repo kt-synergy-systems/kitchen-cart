@@ -1,5 +1,5 @@
 class FoodItemsController < ApplicationController
-  before_action :set_menu, only: [:show, :edit, :update, :destroy]
+  before_action :set_food_item, only: [:show, :edit, :update, :destroy]
   def index
     @food_items = policy_scope(FoodItem)
   end
