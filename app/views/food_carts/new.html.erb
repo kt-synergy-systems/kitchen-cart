@@ -1,0 +1,9 @@
+<%= simple_form_for [ @user, @food_cart ] do |f| %>
+  <%= f.input :first_name, label:"First Name" %>
+  <%= f.input :last_name, label:"Last Name" %>
+  <%= f.input :phone_number, label:"Phone Number" %>
+  <%= f.input :name, label:"Food Cart Name" %>
+  <%= f.input :category, label:"Food Category" %>
+  <%= f.text_field :cart_description, label:"Food Cart Description" %>
+  <%= f.button :submit, label:"Create Food Cart", class: "btn btn-primary" %>
+<% end %>

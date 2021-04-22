@@ -1,5 +1,5 @@
 <%= javascript_pack_tag 'FoodCarts/index' %>
-<%= @food_carts.each do |food_cart| %>
+<% @food_carts.each do |food_cart| %>
   <ul>
     <li><%= food_cart.id %></li>
     <li><%= food_cart.name %></li>
