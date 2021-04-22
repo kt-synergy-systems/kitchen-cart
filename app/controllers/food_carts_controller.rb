@@ -1,5 +1,5 @@
 class FoodCartsController < ApplicationController
-  before_action :set_menu, only: [:show, :edit, :update, :destroy]
+  before_action :set_food_cart, only: [:show, :edit, :update, :destroy]
   def index
     @food_carts = policy_scope(FoodCart)
   end
@@ -47,6 +47,7 @@ class FoodCartsController < ApplicationController
 
   def set_food_cart
     @food_cart = FoodCart.find(params[:id])
+    @schedule = @food_cart.schedule
     authorize @food_cart
   end
 end

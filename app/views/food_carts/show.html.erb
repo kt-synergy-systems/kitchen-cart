@@ -1,4 +1,17 @@
+
+<%= @food_cart.name %>
+<%= @food_cart.schedule.date %>
+<p>Open: <%= @food_cart.schedule.start_time %></p>
+<p>Close: <%= @food_cart.schedule.end_time %></p>
+<ul><% @food_cart.menu.food_items.each do |item|%>
+    <li><%= item.food_name %> | JPY <%= item.food_price %>00</li>
+  <% end %>
+</ul>
+<%= link_to 'Show Schedule', schedule_path(@schedule) %>
+
+# making @food_cart variable available to react
 <script>
   window.foodCart = <%= raw(@food_cart.to_json) %>
 </script>
 <%= javascript_pack_tag 'FoodCarts/show' %>
+

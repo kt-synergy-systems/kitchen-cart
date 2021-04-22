@@ -47,8 +47,8 @@ class SchedulesController < ApplicationController
     params.require(:schedule).permit()
   end
 
-  def set_sechedule
-    @menu = Schedule.find(params[:id])
+  def set_schedule
+    @schedule = Schedule.find(params[:id])
     authorize @schedule
   end
 end
