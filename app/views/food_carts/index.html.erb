@@ -1,7 +1,20 @@
+<<<<<<< HEAD
 <%= @food_carts.each do |food_cart| %>
+=======
+<script>
+  window.foodCarts = <%= raw(@food_carts.to_json) %>
+</script>
+<%= javascript_pack_tag 'FoodCarts/index' %>
+<% @food_carts.each do |food_cart| %>
+>>>>>>> dc203fbd59b6c45e3abe7e008849b08d084b044c
   <ul>
     <li><%= food_cart.id %></li>
     <li><%= food_cart.name %></li>
+    <%= link_to 'more info', food_cart_path(food_cart) %>
   </ul>
+<<<<<<< HEAD
 <%  end %>
 <%= javascript_pack_tag 'FoodCarts/index' %>
+=======
+<%  end %>
+>>>>>>> dc203fbd59b6c45e3abe7e008849b08d084b044c
