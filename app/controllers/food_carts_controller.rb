@@ -9,17 +9,18 @@ class FoodCartsController < ApplicationController
   end
 
   def new
-    @food_cart = FoodCart.new
+    @food_carts = FoodCart.new
     authorize @food_cart
   end
 
   def create
     @food_cart = FoodCart.new(food_cart_params)
-
+    authorize @food_cart
+    @food_cart.user = current_user
     if @food_cart.save
-      redirect_to food_carts_path
+      redirect_to @food_cart
     else
-      render 'food_cart/new'
+      render :new
     end
   end
 
