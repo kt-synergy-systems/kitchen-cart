@@ -1,14 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import FoodCart from './FoodCart';
+import { useState } from 'react';
 
 const FoodCarts = () => {
-  return (
-    <div className="FoodCarts">
-      <FoodCart />
-    </div>
-  );
+  const [foodCarts, setFoodCarts] = useState(window.foodCarts);
+  return <div className="FoodCarts">{foodCarts.map((cart) => JSON.stringify(cart))}</div>;
 };
 
 document.addEventListener('DOMContentLoaded', () => {
