@@ -1,5 +1,5 @@
 class FoodCartsController < ApplicationController
-  before_action :set_food_cart, only: [:show, :edit, :update, :destroy]
+  before_action :set_food_cart, only: [:show, :edit, :update, :destroy,]
   def index
     @food_carts = policy_scope(FoodCart)
   end
@@ -9,7 +9,7 @@ class FoodCartsController < ApplicationController
   end
 
   def new
-    @food_carts = FoodCart.new
+    @food_cart = FoodCart.new
     authorize @food_cart
   end
 
