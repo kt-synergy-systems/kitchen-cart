@@ -29,6 +29,9 @@ gem 'faker'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
+# added geocoder for the map
+gem 'geocoder'
+
 gem 'devise'
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
