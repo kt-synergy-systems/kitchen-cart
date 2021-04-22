@@ -1,13 +1,5 @@
-<%= @food_carts.each do |food_cart| %>
-  <%= javascript_pack_tag 'FoodCarts/index' %>
-  <% @food_carts.each do |food_cart| %>
-    <ul>
-      <li><%= food_cart.id %></li>
-      <li><%= food_cart.name %></li>
-      <%= link_to 'more info', food_cart_path(food_cart) %>
-    </ul>
-  <%  end %>
-  <script>
+<script>
+  // make @food_carts variable available to react through the browser's window variable.
     window.foodCarts = <%= raw(@food_carts.to_json) %>
-  </script>
-  <%= javascript_pack_tag 'FoodCarts/index' %>
+</script>
+<%= javascript_pack_tag 'FoodCarts/index' %>
