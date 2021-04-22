@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
+import FoodCartCard from './foodCartCard';
 
 const FoodCarts = () => {
   // foodCarts = @food_carts variable from rails controller
@@ -12,13 +13,8 @@ const FoodCarts = () => {
         {' '}
         {/* list all food carts */}
         {foodCarts.map((cart, index) => (
-          <div key={index}>
-            <p>id: {cart.id}</p>
-            <p>name: {cart.name}</p>
-            <p>
-              <a href={`/food_carts/${cart.id}`}>More info 🍙</a>
-            </p>
-          </div>
+          <FoodCartCard key={index} id={cart.id} name={cart.name} url={`/food_carts/${cart.id}`}/>
+
         ))}
       </div>
     </div>
@@ -28,3 +24,4 @@ const FoodCarts = () => {
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(<FoodCarts />, document.body.appendChild(document.createElement('div')));
 });
+
