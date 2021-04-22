@@ -1,7 +1,10 @@
 <%= javascript_pack_tag 'FoodCarts/index' %>
 <% @food_carts.each do |food_cart| %>
-  <ul>
-    <li><%= food_cart.id %></li>
-    <li><%= food_cart.name %></li>
-  </ul>
+  <div class="container m-3 p-3">
+    <%= link_to food_cart.name, food_cart_path(food_cart) %>
+    <p>ID:<%= food_cart.id %></p>
+    <% if current_user == food_cart.user %>
+      <%= link_to 'delete', food_cart_path(food_cart), method: :delete, data: {confirm: 'Are you sure?'} %>
+    <% end %>
+  </div>
 <%  end %>
