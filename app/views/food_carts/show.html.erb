@@ -1,4 +1,3 @@
-
 <%= @food_cart.name %>
 <%= @food_cart.schedule.date %>
 <p>Open: <%= @food_cart.schedule.start_time %></p>
@@ -8,10 +7,8 @@
   <% end %>
 </ul>
 <%= link_to 'Show Schedule', schedule_path(@schedule) %>
-
 # making @food_cart variable available to react
 <script>
   window.foodCart = <%= raw(@food_cart.to_json) %>
 </script>
 <%= javascript_pack_tag 'FoodCarts/show' %>
-
