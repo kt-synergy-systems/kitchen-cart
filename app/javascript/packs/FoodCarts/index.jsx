@@ -13,7 +13,7 @@ const FoodCarts = () => {
         {' '}
         {/* list all food carts */}
         {foodCarts.map((cart, index) => (
-          <FoodCartCard key={index} id={cart.id} name={cart.name} url={`/food_carts/${cart.id}`}/>
+          <FoodCartCard key={index} id={cart.id} category={cart.category} name={cart.name} description={cart.cart_description} url={`/food_carts/${cart.id}`}/>
 
         ))}
       </div>
@@ -24,4 +24,3 @@ const FoodCarts = () => {
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(<FoodCarts />, document.body.appendChild(document.createElement('div')));
 });
-
