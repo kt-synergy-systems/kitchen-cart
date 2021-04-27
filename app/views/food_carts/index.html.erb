@@ -8,12 +8,14 @@
   <div class="container m-3 p-3">
     <%= link_to food_cart.name, food_cart_path(food_cart) %>
     <p>ID:<%= food_cart.id %></p>
-    <% if current_user == food_cart.user %>
+    <% if policy(food_cart).destroy? %>
       <%= link_to 'delete', food_cart_path(food_cart), method: :delete, data: {confirm: 'Are you sure?'} %>
     <% end %>
+  </div>
+<% end %>
 
 <%# food cart information card %>
-<%= @food_carts.each do |food_cart| %>
+<% @food_carts.each do |food_cart| %>
   <div class="food_cart-card">
     <div>
       <div class="location-tag"><i class="fas fa-map-marker-alt"></i>&nbspTokyo Station</div>

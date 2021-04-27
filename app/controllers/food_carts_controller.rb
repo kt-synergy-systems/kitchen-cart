@@ -1,5 +1,5 @@
 class FoodCartsController < ApplicationController
-  before_action :set_food_cart, only: [:show, :edit, :update, :destroy,]
+  before_action :set_food_cart, only: [:show, :edit, :update, :destroy]
   def index
     @food_carts = policy_scope(FoodCart)
     @markers = @food_carts.map do |food_cart|
@@ -41,7 +41,13 @@ class FoodCartsController < ApplicationController
   end
 
   def destroy
-    @food_cart = Foodcart.find(params[:id])
+    @food_cart = FoodCart.find(params[:id])
+    @food_cart.schedule.destroy unless @food_cart.schedule == nil
+    @menu = @food_cart.menu
+    @food_items = @menu.food_items.each do |food_item|
+      food_item.destroy
+    end
+    @menu.destroy
     @food_cart.destroy
     redirect_to food_carts_path
   end
