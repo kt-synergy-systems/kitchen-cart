@@ -80,7 +80,7 @@ puts "generating foodcarts, menus and schedules"
   time = Time.now
   Schedule.create!(
     {
-      location: [%w(35.633983 139.71600), %w(35.6580339 139.7016358), %w(35.6641665 139.7815059), %w(35.646643 139.710045), %w(35.6659486 139.7418724)].sample,
+      location: ["2-chōme-16 Kamiōsaki, Shinagawa City, Tokyo 141-0021", "7 Chome Ueno, Taito City, Tokyo 110-0005", "2 Chome-24-2 Kitazawa, Setagaya City, Tokyo 155-0031", "1 Chome Higashigotanda, Shinagawa City, Tokyo 141-0022", "1 Chome-２１-4 Osaki, Shinagawa City, Tokyo 141-0032"].sample,
       date: Faker::Date.between(from: '2020-09-23', to: '2020-09-25'),
       start_time: Time.now.strftime("%k:%M %p"),
       end_time: (Time.now + 3.hour).strftime("%k:%M %p"),
