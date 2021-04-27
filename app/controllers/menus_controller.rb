@@ -1,4 +1,4 @@
-class MenuController < ApplicationController
+class MenusController < ApplicationController
   before_action :set_menu, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -51,6 +51,6 @@ class MenuController < ApplicationController
   #method for authorization in the before action
   def set_menu
     @menu = Menu.find(params[:id])
-      authorize @menu
+    authorize @menu
   end
 end
