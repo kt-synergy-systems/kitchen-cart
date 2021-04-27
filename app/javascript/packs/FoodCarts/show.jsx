@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
+import FoodItemCard from '../Menus/foodItemCard';
 
 const FoodCart = () => {
   const [foodCart, setFoodCart] = useState(window.foodCart);
@@ -14,13 +15,11 @@ const FoodCart = () => {
     <div className="FoodCart">
       <p>Open: {schedule.start_time}</p>
       <p>Close: {schedule.end_time}</p>
-      <ul>
+      <div>
         {foodItems.map((item, index) => (
-          <li key={index}>
-            {item.food_name} | JPY {item.food_price} 00
-          </li>
+          <FoodItemCard key={index} id={item.id} name={item.food_name} description={item.food_description} type={item.food_type} price={food_price} availability={food_availability} />
         ))}
-      </ul>
+      </div>
       <a href={`/schedules/${foodCart.id}`}>Show Schedule</a>
     </div>
   );
@@ -29,3 +28,4 @@ const FoodCart = () => {
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(<FoodCart />, document.body.appendChild(document.createElement('div')));
 });
+
