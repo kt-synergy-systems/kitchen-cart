@@ -1,0 +1,11 @@
+<h1>New Food Cart</h1>
+<div class="container m-5 p-4">
+  <%= simple_form_for [ @food_cart ] do |f| %>
+    <%= f.input :name, label:"Food Cart Name" %>
+    <%= f.input :category, label:"Food Category" %>
+    <%= f.input :cart_description, label:"Food Cart Description" %>
+    <br>
+    <br>
+    <%= f.button :submit, label:"Create Food Cart", class: "btn btn-primary" %>
+  <% end %>
+</div>
