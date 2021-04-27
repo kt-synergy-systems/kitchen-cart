@@ -7,7 +7,6 @@ import FoodCartCard from './foodCartCard';
 const FoodCarts = () => {
   // foodCarts = @food_carts variable from rails controller
   const [foodCarts, setFoodCarts] = useState(window.foodCarts);
-  console.log(window.foodCarts)
   return (
     <div className="FoodCarts">
       <div className="FoodCartCard">
@@ -25,4 +24,3 @@ const FoodCarts = () => {
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(<FoodCarts />, document.body.appendChild(document.createElement('div')));
 });
-

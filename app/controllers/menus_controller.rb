@@ -2,7 +2,7 @@ class MenusController < ApplicationController
   before_action :set_menu, only: [:show, :edit, :update, :destroy]
 
   def index
-    @menu = policy_scope(Menu)
+    @menus = policy_scope(Menu)
   end
 
   def show
