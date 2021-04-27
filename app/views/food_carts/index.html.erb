@@ -1,7 +1,5 @@
 
-<<<<<<< HEAD
-=======
-<%= javascript_pack_tag 'FoodCarts/index' %>
+<%# Map for the food carts %>
 <div id="map"
      style="width: 75%; height: 600px;"
      data-markers="<%= @markers.to_json %>"
@@ -14,7 +12,7 @@
       <%= link_to 'delete', food_cart_path(food_cart), method: :delete, data: {confirm: 'Are you sure?'} %>
     <% end %>
 
->>>>>>> 96edc92cb3fa5d35bca0a76d30b4833d2071987e
+<%# food cart information card %>
 <%= @food_carts.each do |food_cart| %>
   <div class="food_cart-card">
     <div>
@@ -34,12 +32,9 @@
     </div>
 
   </div>
-<<<<<<< HEAD
-
-=======
->>>>>>> 96edc92cb3fa5d35bca0a76d30b4833d2071987e
-<%  end %>
+<% end %>
 <script>
+
   // make @food_carts variable available to react through the browser's window variable.
     window.foodCarts = <%= raw(@food_carts.to_json) %>
 </script>
