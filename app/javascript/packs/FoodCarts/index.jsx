@@ -7,13 +7,14 @@ import FoodCartCard from './foodCartCard';
 const FoodCarts = () => {
   // foodCarts = @food_carts variable from rails controller
   const [foodCarts, setFoodCarts] = useState(window.foodCarts);
+  console.log(window.foodCarts)
   return (
     <div className="FoodCarts">
       <div className="FoodCartCard">
         {' '}
         {/* list all food carts */}
         {foodCarts.map((cart, index) => (
-          <FoodCartCard key={index} id={cart.id} name={cart.name} url={`/food_carts/${cart.id}`}/>
+          <FoodCartCard key={index} id={cart.id} category={cart.category} name={cart.name} description={cart.cart_description} url={`/food_carts/${cart.id}`}/>
 
         ))}
       </div>
