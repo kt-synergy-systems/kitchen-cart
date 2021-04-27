@@ -20,7 +20,7 @@ class SchedulesController < ApplicationController
     @foodcart.user = current_user
 
     if @schedule.save
-      redirect_to schedule_path(@schedule)
+      redirect_to food_cart_path(@food_cart)
     else
       render 'schedule/new'
     end
@@ -44,7 +44,7 @@ class SchedulesController < ApplicationController
 
   private
   def schedule_params
-    params.require(:schedule).permit()
+    params.require(:schedule).permit(:location, :date, :start_time, :end_time, :food_cart_id)
   end
 
   def set_schedule
