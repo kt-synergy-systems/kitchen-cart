@@ -1,38 +1,3 @@
-
-<%# Map for the food carts %>
-<div id="map"
-     style="width: 75%; height: 600px;"
-     data-markers="<%= @markers.to_json %>"
-     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
-<% @food_carts.each do |food_cart| %>
-  <div class="container m-3 p-3">
-    <%= link_to food_cart.name, food_cart_path(food_cart) %>
-    <p>ID:<%= food_cart.id %></p>
-    <% if current_user == food_cart.user %>
-      <%= link_to 'delete', food_cart_path(food_cart), method: :delete, data: {confirm: 'Are you sure?'} %>
-    <% end %>
-
-<%# food cart information card %>
-<%= @food_carts.each do |food_cart| %>
-  <div class="food_cart-card">
-    <div>
-      <div class="location-tag"><i class="fas fa-map-marker-alt"></i>&nbspTokyo Station</div>
-      <%= image_tag "https://images.unsplash.com/photo-1565123409695-7b5ef63a2efb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1651&q=80", alt: "alttext", class: "food_cart-image" %>
-    </div>
-    <div class="food_cart-content">
-      <div class="d-flex">
-        <div class="food-cart-name">
-          <p><%= food_cart.category.capitalize %></p>
-          <h6><%= food_cart.name %></h6>
-        </div>
-        <p class="icon"><i class="far fa-heart"></i></p>
-      </div>
-      <%= simple_format(food_cart[:cart_description][0..90] + "...", class: "card-description") %>
-      <p class="body-text-bold">Price</p>
-    </div>
-
-  </div>
-<% end %>
 <script>
 
   // make @food_carts variable available to react through the browser's window variable.
