@@ -6,7 +6,8 @@ class SchedulesController < ApplicationController
   end
 
   def show
-    @schedule = Schedule.find(params[:id])
+    @food_cart = FoodCart.find(params[:id])
+    @schedule = @food_cart.schedule
   end
 
   def new
@@ -48,7 +49,8 @@ class SchedulesController < ApplicationController
   end
 
   def set_schedule
-    @schedule = Schedule.find(params[:id])
+    @food_cart = FoodCart.find(params[:id])
+    @schedule = @food_cart.schedule
     authorize @schedule
   end
 end

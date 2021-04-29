@@ -5,6 +5,8 @@
      data-markers="<%= @markers.to_json %>"
      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
 </div>
+
+<%# testing purposes for backend %>
 <% @food_carts.each do |food_cart| %>
   <div class="container m-3 p-3">
     <%= link_to food_cart.name, food_cart_path(food_cart) %>
