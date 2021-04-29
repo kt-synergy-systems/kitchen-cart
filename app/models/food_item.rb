@@ -4,5 +4,5 @@ class FoodItem < ApplicationRecord
   validates :food_name, presence: true
   validates :food_price, presence: true
   validates :food_type, presence: true
-  validates :food_availability, presence: true
+  FOOD_TYPES = %w[food drink]
 end

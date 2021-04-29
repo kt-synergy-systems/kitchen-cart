@@ -99,7 +99,7 @@ Menu.all.each do |menu|
       food_price: rand(1..10),
       food_description: Faker::Food.description,
       food_type: %w[food drink].sample,
-      food_availability: true,
+      food_availability: [true, false].sample,
       menu: menu
     )
   end
