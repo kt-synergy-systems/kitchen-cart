@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
-import FoodItemCard from '../Menus/foodItemCard';
+import FoodItemCard from '../FoodItems/foodItemCard';
 
 const FoodCart = () => {
   const [foodCart, setFoodCart] = useState(window.foodCart);
@@ -17,7 +17,7 @@ const FoodCart = () => {
       <p>Close: {schedule.end_time}</p>
       <div>
         {foodItems.map((item, index) => (
-          <FoodItemCard key={index} id={item.id} name={item.food_name} description={item.food_description} type={item.food_type} price={food_price} availability={food_availability} />
+          <FoodItemCard key={index} id={item.id} name={item.food_name} description={item.food_description} type={item.food_type} price={item.food_price} availability={item.food_availability} />
         ))}
       </div>
       <a href={`/schedules/${foodCart.id}`}>Show Schedule</a>
