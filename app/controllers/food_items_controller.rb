@@ -48,7 +48,9 @@ class FoodItemsController < ApplicationController
   end
 
   def set_food_item
-    @food_item = FoodItem.find(params[:id])
+    @food_cart = FoodCart.find(params[:id])
+    @food_item = @food_cart.food_item
+    # @food_item = FoodItem.find(params[:id])
     authorize @food_item
   end
 end

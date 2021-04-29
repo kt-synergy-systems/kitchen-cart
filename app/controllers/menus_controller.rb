@@ -50,7 +50,9 @@ class MenusController < ApplicationController
 
   #method for authorization in the before action
   def set_menu
-    @menu = Menu.find(params[:id])
+    @food_cart = FoodCart.find(params[:id])
+    @menu = @food_cart.menu
+    # @menu = Menu.find(params[:id])
     authorize @menu
   end
 end

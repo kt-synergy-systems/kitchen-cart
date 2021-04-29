@@ -1,5 +1,5 @@
 class FoodCartsController < ApplicationController
-  before_action :set_food_cart, only: [:show, :edit, :update, :destroy,]
+  before_action :set_food_cart, only: [:show, :edit, :update, :destroy]
   def index
     @food_carts = policy_scope(FoodCart)
     @markers = @food_carts.map do |food_cart|
@@ -24,7 +24,7 @@ class FoodCartsController < ApplicationController
     @food_cart.user = current_user
     authorize @food_cart
     if @food_cart.save!
-      redirect_to food_carts_path, notice: "Food Cart Created"
+      redirect_to food_cart_path(@food_cart), notice: "Food Cart Created"
     else
       render :new
     end
@@ -41,15 +41,21 @@ class FoodCartsController < ApplicationController
   end
 
   def destroy
-    @food_cart = Foodcart.find(params[:id])
+    @food_cart = FoodCart.find(params[:id])
+    @food_cart.schedule.destroy unless @food_cart.schedule == nil
+    @menu = @food_cart.menu
+    @food_items = @menu.food_items.each do |food_item|
+      food_item.destroy
+    end
+    @menu.destroy
     @food_cart.destroy
     redirect_to food_carts_path
   end
 
   private
-
+  
   def food_cart_params
-    params.require(:food_cart).permit(:name, :category, :cart_description)
+    params.require(:food_cart).permit(:name, :category, :cart_description, :food_cart_id)
   end
 
   def set_food_cart
