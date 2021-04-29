@@ -1,7 +1,7 @@
 <h1>Food Cart</h1>
 
 
-<% if Menu.exists?(@food_cart.menu) %>
+
  <script>
     // makes @food_cart, @food_cart.schedule, @food_cart.menu, @food_cart.menu.food_items available to React
     window.foodCart = <%= raw(@food_cart.to_json) %>
@@ -9,5 +9,5 @@
     window.menu = <%= raw(@food_cart.menu.to_json)%>
     window.foodItems = <%= raw(@food_cart.menu.food_items.to_json)%>
   </script>
-<% end %>
+
 <%= javascript_pack_tag 'FoodCarts/show' %>
