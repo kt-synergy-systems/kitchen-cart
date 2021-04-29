@@ -92,15 +92,17 @@ puts "done"
 
 puts "generating food items"
 
-20.times do
-  FoodItem.create!(
-    food_name: Faker::Food.dish,
-    food_price: rand(1..10),
-    food_description: Faker::Food.description,
-    food_type: %w[food drink].sample,
-    food_availability: true,
-    menu: Menu.all.sample
-  )
+Menu.all.each do |menu|
+  20.times do
+    FoodItem.create!(
+      food_name: Faker::Food.dish,
+      food_price: rand(1..10),
+      food_description: Faker::Food.description,
+      food_type: %w[food drink].sample,
+      food_availability: true,
+      menu: menu
+    )
+  end
 end
 
 puts "done"
