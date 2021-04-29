@@ -32,6 +32,9 @@ gem 'bootsnap', '>= 1.4.2', require: false
 # added geocoder for the map
 gem 'geocoder'
 
+# So we don`t share secret keys with Github
+gem 'dotenv-rails', groups: [:development, :test]
+
 gem 'devise'
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
