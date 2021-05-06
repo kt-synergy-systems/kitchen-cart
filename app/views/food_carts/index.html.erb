@@ -1,11 +1,9 @@
-
 <%# Map for the food carts %>
 <div id="map"
      style="width: 75%; height: 600px;"
      data-markers="<%= @markers.to_json %>"
      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
 </div>
-
 <%# testing purposes for backend %>
 <% @food_carts.each do |food_cart| %>
   <div class="container m-3 p-3">
@@ -16,7 +14,6 @@
     <% end %>
   </div>
 <% end %>
-
 <%# food cart information card %>
 <% @food_carts.each do |food_cart| %>
   <div class="food_cart-card">
@@ -35,13 +32,7 @@
       <%= simple_format(food_cart[:cart_description][0..90] + "...", class: "card-description") %>
       <p class="body-text-bold">Price</p>
     </div>
-
   </div>
 <% end %>
-
-<script>
-
-  // make @food_carts variable available to react through the browser's window variable.
-    window.foodCarts = <%= raw(@food_carts.to_json) %>
-</script>
+<div id="root" data-food-carts="<%=@food_carts.to_json%>"></div>
 <%= javascript_pack_tag 'FoodCarts/index' %>

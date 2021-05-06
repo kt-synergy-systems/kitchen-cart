@@ -1,8 +1,2 @@
-<script>
-  // makes @food_cart, @food_cart.schedule, @food_cart.menu, @food_cart.menu.food_items available to React
-  window.foodCart = <%= raw(@food_cart.to_json) %>
-  window.schedule = <%= raw(@food_cart.schedule.to_json)%>
-  window.menu = <%= raw(@food_cart.menu.to_json)%>
-  window.foodItems = <%= raw(@food_cart.food_items.to_json)%>
-</script>
+<div id ="root" data-food-cart="<%=@food_cart.to_json(include: [:schedule, :menu, :food_items])%>"></div>
 <%= javascript_pack_tag 'FoodCarts/show' %>
