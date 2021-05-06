@@ -5,7 +5,11 @@ class SchedulePolicy < ApplicationPolicy
       # scope.where(user: user)
     end
   end
-  
+
+  def new?
+    create?
+  end
+
   def create?
     true
   end
