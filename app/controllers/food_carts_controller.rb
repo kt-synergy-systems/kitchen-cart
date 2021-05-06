@@ -26,7 +26,7 @@ class FoodCartsController < ApplicationController
     @food_cart.user = current_user
     authorize @food_cart
     if @food_cart.save!
-      redirect_to new_schedule_path(@food_cart), notice: "Food Cart Created"
+      redirect_to food_carts_path, notice: "Food Cart Created"
     else
       render :new
     end
@@ -48,7 +48,7 @@ class FoodCartsController < ApplicationController
     @menu = @food_cart.menu
     if @menu != nil
       @food_items = @menu.food_items.each do |food_item|
-      food_item.destroy
+        food_item.destroy
       end
       @menu.destroy
     end
@@ -57,9 +57,9 @@ class FoodCartsController < ApplicationController
   end
 
   private
-  
+
   def food_cart_params
-    params.require(:food_cart).permit(:name, :category, :cart_description, :food_cart_id)
+    params.require(:food_cart).permit(:name, :category, :cart_description, :schedule)
   end
 
   def set_food_cart
