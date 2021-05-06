@@ -3,10 +3,12 @@ class FoodCartsController < ApplicationController
   def index
     @food_carts = policy_scope(FoodCart)
     @markers = @food_carts.map do |food_cart|
-      {
-        lat: food_cart.schedule.latitude,
-        lng: food_cart.schedule.longitude
-      }
+      if food_cart.schedule != nil
+        {
+          lat: food_cart.schedule.latitude,
+          lng: food_cart.schedule.longitude
+        }
+      end
     end
   end
 
@@ -44,10 +46,12 @@ class FoodCartsController < ApplicationController
     @food_cart = FoodCart.find(params[:id])
     @food_cart.schedule.destroy unless @food_cart.schedule == nil
     @menu = @food_cart.menu
-    @food_items = @menu.food_items.each do |food_item|
+    if @menu != nil
+      @food_items = @menu.food_items.each do |food_item|
       food_item.destroy
+      end
+      @menu.destroy
     end
-    @menu.destroy
     @food_cart.destroy
     redirect_to food_carts_path
   end
