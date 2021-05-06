@@ -11,14 +11,19 @@ class SchedulesController < ApplicationController
   end
 
   def new
+    @food_cart = FoodCart.find(params[:id])
     @schedule = Schedule.new
     authorize @schedule
   end
 
   def create
-    @schedule = Schedule.new(schedule_params)
     @food_cart = FoodCart.find(params[:id])
+    @schedule = Schedule.new(schedule_params)
+    @schedule.food_cart = @food_cart
+    authorize @schedule
+
     @foodcart.user = current_user
+
 
     if @schedule.save
       redirect_to food_cart_path(@food_cart)
