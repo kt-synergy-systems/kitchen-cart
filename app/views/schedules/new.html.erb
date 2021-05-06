@@ -10,3 +10,6 @@
     <%= f.button :submit, label:"Create Schedule", class: "btn btn-primary" %>
   <% end %>
 </div>
+<script>
+  window.schedule = "<%= @schedule.to_json %>"
+</script>
