@@ -1,5 +1,5 @@
 class SchedulesController < ApplicationController
-  before_action :set_schedule
+  # before_action :set_schedule, only: [:new, :create, :show, :edit, :update, :destroy]
 
   def index
     @schedule = policy_scope(Schedule)
@@ -11,20 +11,19 @@ class SchedulesController < ApplicationController
   end
 
   def new
-    @food_cart = FoodCart.find(params[:id])
+    @food_cart = FoodCart.find(params[:food_cart_id])
     @schedule = Schedule.new
 
     authorize @schedule
   end
 
   def create
-    @food_cart = FoodCart.find(params[:id])
+    @food_cart = FoodCart.find(params[:food_cart_id])
     @schedule = Schedule.new(schedule_params)
     @schedule.food_cart = @food_cart
     authorize @schedule
 
-    @foodcart.user = current_user
-
+    # @foodcart.user = current_user
 
     if @schedule.save
       redirect_to food_cart_path(@food_cart)
