@@ -1,7 +1,7 @@
 class FoodCart < ApplicationRecord
   has_many :users
   belongs_to :user
-  has_one :schedule
+  has_many :schedules
   has_one :menu
   has_many :food_items, through: :menu
   validates :name, presence: true, length: { minimum: 2 }

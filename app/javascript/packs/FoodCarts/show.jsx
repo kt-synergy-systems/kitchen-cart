@@ -10,7 +10,7 @@ const root = document.getElementById('root');
 const FoodCart = ({ foodCart }) => {
   const [userSelection, setUserSelection] = useState(null);
   console.log(foodCart, 'YOOOO');
-  const schedule = foodCart.schedule;
+  const schedules = foodCart.schedules;
   const menu = foodCart.menu;
   const foodItems = foodCart.food_items;
   console.log(foodItems);
@@ -22,8 +22,14 @@ const FoodCart = ({ foodCart }) => {
 
   return (
     <div className="FoodCart">
-      <p>Open: {schedule.start_time}</p>
-      <p>Close: {schedule.end_time}</p>
+      {schedules.map((schedule) => 
+        <>
+        <p>Date: {schedule.date}</p>
+        <p>Open: {schedule.start_time}</p>
+        <p>Close: {schedule.end_time}</p>
+        </>
+      )}
+      
       <img src="" alt=""/>
       <div className="icons">
         
