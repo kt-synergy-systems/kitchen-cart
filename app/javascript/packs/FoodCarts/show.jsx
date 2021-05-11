@@ -8,7 +8,7 @@ import getFoodItemCard from '../Helper/getFoodItemCard';
 const root = document.getElementById('root');
 
 const FoodCart = ({ foodCart }) => {
-  const [ userSelection, setUserSelection ] = useState(null);
+  const [userSelection, setUserSelection] = useState(null);
   console.log(foodCart, 'YOOOO');
   const schedule = foodCart.schedule;
   const menu = foodCart.menu;
@@ -16,6 +16,7 @@ const FoodCart = ({ foodCart }) => {
   console.log(foodItems);
   useEffect(() => {
     console.log(userSelection);
+
   }, [ userSelection ]);
 
 
@@ -36,18 +37,18 @@ const FoodCart = ({ foodCart }) => {
         <button onClick={() => setUserSelection('drink')}>Drinks</button>
       </div>
 
+
       <div>
         {foodItems.map((item, index) => getFoodItemCard(item, index, userSelection)
         )}
       </div>
+
       <a href={`/schedules/${foodCart.id}`}>Show Schedule</a>
     </div>
   );
 };
 
-document.addEventListener('DOMContentLoaded', () => {
-  ReactDOM.render(
-    <FoodCart foodCart={JSON.parse(root.dataset.foodCart)} />,
-    root
-  );
-});
+ReactDOM.render(
+  <FoodCart foodCart={JSON.parse(root.dataset.foodCart)} />,
+  root
+);
