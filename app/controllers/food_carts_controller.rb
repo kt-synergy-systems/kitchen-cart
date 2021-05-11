@@ -27,6 +27,7 @@ class FoodCartsController < ApplicationController
 
   def create
     @food_cart = FoodCart.new(food_cart_params)
+    @food_cart.menu = Menu.new
     @food_cart.user = current_user
     authorize @food_cart
     if @food_cart.save!
