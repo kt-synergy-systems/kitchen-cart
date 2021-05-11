@@ -1,7 +1,7 @@
 <div id ="root" data-food-cart="<%=@food_cart.to_json(include: [:schedule, :menu, :food_items])%>"></div>
 <%= javascript_pack_tag 'FoodCarts/show' %>
 <div>
-  <%= link_to 'create schedule', new_food_cart_schedule_path(@food_cart) %>
+  <%= link_to 'create schedule', new_food_cart_schedule_path(@food_cart) %> <br>
 </div>
 <script>
   window.food_cart = "<%= @food_cart.to_json %>"

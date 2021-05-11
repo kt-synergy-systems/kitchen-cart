@@ -1,6 +1,6 @@
 <h1>Schedule</h1>
 <div class="container m-5 p-4">
-  <%= simple_form_for [ @schedule ] do |f| %>
+  <%= simple_form_for [ @food_cart, @schedule ] do |f| %>
     <%= f.input :location, label:"Location" %>
     <%= f.input :date, label:"Date" %>
     <%= f.input :start_time, label:"Open" %>
