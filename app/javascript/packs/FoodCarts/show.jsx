@@ -43,7 +43,6 @@ const FoodCart = ({ foodCart }) => {
         )}
       </div>
 
-      <a href={`/schedules/${foodCart.id}`}>Show Schedule</a>
     </div>
   );
 };
