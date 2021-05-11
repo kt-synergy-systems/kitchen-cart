@@ -2,16 +2,18 @@ class FoodCartsController < ApplicationController
   before_action :set_food_cart, only: [:show, :edit, :update, :destroy]
   def index
     @food_carts = policy_scope(FoodCart)
-    @markers = @food_carts.map do |food_cart|
-      if food_cart.schedules.each do |schedule|
-        schedule.date == Date.today && food_cart.schedules != nil
-          {
+    @markers = []
+    @food_carts.map do |food_cart|
+      food_cart.schedules.each do |schedule|
+        if schedule.date == Date.today
+          @markers << {
             lat: schedule.latitude,
             lng: schedule.longitude
           }
         end
       end
     end
+    @markers
   end
 
   def show
