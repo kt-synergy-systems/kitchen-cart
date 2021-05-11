@@ -55,7 +55,7 @@ class SchedulesController < ApplicationController
 
   def set_schedule
     @food_cart = FoodCart.find(params[:food_cart_id])
-    @schedule = @food_cart.schedule
+    @schedule = @food_cart.schedules
     authorize @schedule
   end
 end
