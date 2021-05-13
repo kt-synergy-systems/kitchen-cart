@@ -1,0 +1,7 @@
+<h1>Menu Show</h1>
+
+<div>
+  <% @food_cart.menu.food_items.each do |food_item| %>
+    <%= food_item.name %>
+  <% end %>
+</div>

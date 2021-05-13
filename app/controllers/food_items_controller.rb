@@ -9,7 +9,7 @@ class FoodItemsController < ApplicationController
   end
 
   def new
-    @food_cart = FoodCart.find(params[:menu_id])
+    @food_cart = FoodCart.find(params[:id])
     @menu = @food_cart.menu
     @food_item = FoodItem.new
 
@@ -17,16 +17,18 @@ class FoodItemsController < ApplicationController
   end
 
   def create
-    @food_cart = FoodCart.find(params[:menu_id])
+    @food_cart = FoodCart.find(params[:id])
     @menu = @food_cart.menu
     @food_item = FoodItem.new(food_item_params)
-    @menu.user = current_user
+    @user = current_user
+    @food_item.menu = @menu
 
     if @food_item.save
       redirect_to food_cart_path(@food_cart)
     else
-      render 'food_item/new'
+      render 'food_items/new'
     end
+    authorize @food_item
   end
 
   def edit
