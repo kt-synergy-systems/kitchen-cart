@@ -3,7 +3,6 @@ import FoodCartCard from './foodCartCard';
 
 const FoodCarts = ({ foodCarts }) => {
   // foodCarts = @food_carts variable from rails controller
-  console.log('HO', foodCarts);
   return (
     <div className='FoodCarts'>
       <div className='FoodCartCard'>
