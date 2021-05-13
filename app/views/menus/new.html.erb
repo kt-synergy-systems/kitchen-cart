@@ -1,0 +1,6 @@
+<h1>Menu</h1>
+
+<div class="container m-5 p-4">
+  <%= simple_form_for [ @food_cart, @menu ] do |f| %>
+    <%= f.button :submit, label:"Create Menu", class: "btn btn-primary" %>
+  <% end %>
