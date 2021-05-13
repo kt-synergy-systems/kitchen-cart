@@ -2,7 +2,5 @@
   <%= link_to 'create schedule', new_food_cart_schedule_path(@food_cart) %>
   <%= link_to 'Add Menu', new_food_cart_menu_path(@food_cart) %>
   <%= link_to 'Show Menu', food_cart_menu_path(@food_cart) %>
-
-  
 </div>
 <%= render partial: 'shared/react_entry', locals: {data: @food_cart.to_json(include: [:schedules, :menu, :food_items]), content_type: "FOOD_CART"} %>
