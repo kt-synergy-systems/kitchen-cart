@@ -34,5 +34,4 @@
     </div>
   </div>
 <% end %>
-<div id="root" data-food-carts="<%=@food_carts.to_json%>"></div>
-<%= javascript_pack_tag 'FoodCarts/index' %>
+<%= render partial: 'shared/react_entry', locals: {data: @food_carts.to_json, content_type: "FOOD_CARTS"} %>
