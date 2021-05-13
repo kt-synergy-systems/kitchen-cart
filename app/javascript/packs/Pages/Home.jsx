@@ -5,12 +5,10 @@ import Title from './Title';
 
 const Home = () => {
   return (
-    <div className="Home">
+    <div className='Home'>
       <Title />
     </div>
   );
 };
 
-document.addEventListener('DOMContentLoaded', () => {
-  ReactDOM.render(<Home />, document.body.appendChild(document.createElement('div')));
-});
+export default Home;

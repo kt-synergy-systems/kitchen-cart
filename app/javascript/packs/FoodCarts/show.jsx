@@ -1,10 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { useState, useEffect } from 'react';
-import FoodItemCard from '../FoodItems/foodItemCard';
 import getFoodItemCard from '../Helper/getFoodItemCard';
-
-const root = document.getElementById('root');
 
 const FoodCart = ({ foodCart }) => {
   const [userSelection, setUserSelection] = useState(null);
@@ -18,12 +14,12 @@ const FoodCart = ({ foodCart }) => {
 
   return (
     <div className='FoodCart'>
-      {schedules.map((schedule) => (
-        <>
+      {schedules.map((schedule, index) => (
+        <div key={index}>
           <p>Date: {schedule.date}</p>
           <p>Open: {schedule.start_time}</p>
           <p>Close: {schedule.end_time}</p>
-        </>
+        </div>
       ))}
 
       <img src='' alt='' />
@@ -40,4 +36,4 @@ const FoodCart = ({ foodCart }) => {
   );
 };
 
-ReactDOM.render(<FoodCart foodCart={JSON.parse(root.dataset.foodCart)} />, root);
+export default FoodCart;
