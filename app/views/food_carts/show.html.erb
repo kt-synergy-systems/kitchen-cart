@@ -2,6 +2,8 @@
 <%= javascript_pack_tag 'FoodCarts/show' %>
 <div>
   <%= link_to 'create schedule', new_food_cart_schedule_path(@food_cart) %>
+  <%= link_to 'Show food Items', new_menu_food_item_path(@food_cart) %>
+  
 </div>
 <script>
   window.food_cart = "<%= @food_cart.to_json %>"
