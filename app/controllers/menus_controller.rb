@@ -1,29 +1,33 @@
 class MenusController < ApplicationController
-  before_action :set_menu, only: [:show, :edit, :update, :destroy]
+  before_action :set_menu, only: [:new, :create, :show, :edit, :update, :destroy]
 
   def index
     @menus = policy_scope(Menu)
   end
 
   def show
-    @menu = Menu.find(params[:id])
+    @food_cart = FoodCart.find(params[:food_cart_id])
+    @menu = @food_cart.menu
   end
 
   def new
+    @food_cart = FoodCart.find(params[:food_cart_id])
     @menu = Menu.new
     authorize @menu
   end
 
   def create
-    @menu = Menu.new(menu_params)
-    @food_cart = FoodCart.find(params[:id])
-    @foodcart.user = current_user
+    @food_cart = FoodCart.find(params[:food_cart_id])
+    @menu = Menu.new
+    @menu.food_cart = @food_cart
+    @user = current_user
 
     if @menu.save
-      redirect_to menu_path(@menu)
+      redirect_to  food_cart_path(@food_cart)
     else
-      render 'menu/new'
+      render 'menus/new'
     end
+    authorize @menu
   end
 
   def edit
@@ -44,13 +48,13 @@ class MenusController < ApplicationController
 
   private
 
-  def menu_params
-    params.require(:menu).permit()
-  end
+  # def menu_params
+  #   params.require(:menu).permit(:food_cart_id)
+  # end
 
   #method for authorization in the before action
   def set_menu
-    @food_cart = FoodCart.find(params[:id])
+    @food_cart = FoodCart.find(params[:food_cart_id])
     @menu = @food_cart.menu
     # @menu = Menu.find(params[:id])
     authorize @menu

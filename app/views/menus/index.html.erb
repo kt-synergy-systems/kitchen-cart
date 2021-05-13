@@ -3,6 +3,8 @@
     window.menus = <%= raw(@menus.to_json) %>
 </script>
 <%= javascript_pack_tag 'Menus/index' %>
+
 <% @foodcart.menu.food_item.each do |food_item| %>
   <%= food_item.name %>
 <% end %>
+<%= render partial: 'shared/react_entry', locals: {data: @menus.to_json, content_type: "MENUS"} %>

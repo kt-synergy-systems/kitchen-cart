@@ -3,10 +3,9 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :food_carts do
-    resources :menus
+    resources :menus do
+      resources :food_items
+    end
     resources :schedules
-  end
-  resources :menus do
-    resources :food_items
   end
 end

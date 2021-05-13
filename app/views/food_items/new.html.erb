@@ -1,0 +1,13 @@
+<h1>FOOD ITEMS</h1>
+
+<div class="container m-5 p-4">
+  <%= simple_form_for [ @menu, @food_item ] do |f| %>
+    <%= f.input :food_name, label:"Food Name" %>
+    <%= f.input :food_description, label:"Description" %>
+    <%= f.input :food_type, label:"Food type" %>
+    <%= f.input :food_price, label:"Price" %>
+    <br>
+    <br>
+    <%= f.button :submit, label:"Create Food Item", class: "btn btn-primary" %>
+  <% end %>
+</div>

@@ -1,17 +1,11 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import PropTypes from 'prop-types';
-import { useState } from 'react';
 import FoodCartCard from './foodCartCard';
-
-const root = document.getElementById('root');
 
 const FoodCarts = ({ foodCarts }) => {
   // foodCarts = @food_carts variable from rails controller
-  console.log('HO', foodCarts);
   return (
-    <div className="FoodCarts">
-      <div className="FoodCartCard">
+    <div className='FoodCarts'>
+      <div className='FoodCartCard'>
         {' '}
         {/* list all food carts */}
         {foodCarts.map((cart, index) => (
@@ -29,9 +23,4 @@ const FoodCarts = ({ foodCarts }) => {
   );
 };
 
-document.addEventListener('DOMContentLoaded', () => {
-  ReactDOM.render(
-    <FoodCarts foodCarts={JSON.parse(root.dataset.foodCarts)} />,
-    root
-  );
-});
+export default FoodCarts;
