@@ -9,6 +9,7 @@ const root = document.getElementById('root');
 const FoodCarts = ({ foodCarts }) => {
   // foodCarts = @food_carts variable from rails controller
   console.log('HO', foodCarts);
+  console.log(foodCarts[0]);
   return (
     <div className="FoodCarts">
       <div className="FoodCartCard">

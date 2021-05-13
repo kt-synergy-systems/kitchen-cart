@@ -8,8 +8,12 @@
   padding: 30px;
 }
 
-//food_cart-card
+// block of food cart cards
+.FoodCartCard {
+  margin-bottom: 16px;
+}
 
+//food_cart individual card
 .food_cart-card {
   width: 343px;
   height: 160px;
@@ -31,11 +35,13 @@
   background-color: white;
   padding: 4px;
   border-radius: 4px;
-  top: 104px;
-  left: 38px;
+  top: 10px;
+  left: 8px;
+  z-index: 1;
 }
 
 .food_cart-image {
+  position: relative;
   width: 100%;
   height: 128px;
   object-fit: cover;
@@ -43,11 +49,10 @@
   border-radius: 8px;
 }
 
-.food_cart-content{
+.food_cart-content {
   position: relative;
-
 }
-.food-cart-name{
+.food-cart-name {
   p {
     font-size: 12px;
     letter-spacing: 2px;
@@ -73,11 +78,11 @@
   height: 3.7em;
 
   #text {
-  font-size: 10px;
+    font-size: 10px;
   }
 }
 
-.body-text-bold{
+.body-text-bold {
   font-size: 12px;
 }
 
@@ -92,8 +97,6 @@
 }
 
 .food-item-image {
-
 }
 .food-item-text {
-
 }
