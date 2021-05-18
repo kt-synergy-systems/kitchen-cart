@@ -2,7 +2,8 @@ class SchedulesController < ApplicationController
   before_action :set_schedule, only: [:new, :create, :show, :edit, :update, :destroy]
 
   def index
-    @schedule = policy_scope(Schedule)
+    @food_cart = FoodCart.find(params[:food_cart_id])
+    @schedules = policy_scope(@food_cart.schedules)
   end
 
   def show
