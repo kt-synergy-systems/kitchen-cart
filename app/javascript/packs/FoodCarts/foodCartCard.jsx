@@ -35,6 +35,7 @@ const FoodCartCard = ({ name, url, category, description }) => {
       <p className="card-description">{description}</p>
       <p className="body-text-bold">end_time</p>
     </div>
+  </div>
   );
 };
 
