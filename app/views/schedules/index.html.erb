@@ -3,3 +3,4 @@
     <li><%= schedule.location %> </li>
   <% end %>
 </ul>
+<%= render partial: 'shared/react_entry', locals: {data: @schedules.to_json, content_type: "SCHEDULES"} %>
