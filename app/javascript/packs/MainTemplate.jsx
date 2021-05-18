@@ -3,6 +3,7 @@ import Home from './Pages/Home';
 import FoodCarts from './FoodCarts/index';
 import FoodCart from './FoodCarts/show';
 import Menus from './Menus/index';
+import Schedules from './Schedules/index';
 
 const MainTemplate = ({ data, contentType }) => {
   console.log(data, contentType);
@@ -16,6 +17,8 @@ const MainTemplate = ({ data, contentType }) => {
         return <Menus menus={data} />;
       case 'FOOD_CART':
         return <FoodCart foodCart={data} />;
+      case 'SCHEDULES':
+        return <Schedules schedules={data} />;
       default:
         return '';
     }
