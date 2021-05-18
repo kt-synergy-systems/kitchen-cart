@@ -23,7 +23,7 @@ class MenusController < ApplicationController
     @user = current_user
 
     if @menu.save
-      redirect_to  food_cart_path(@food_cart)
+      redirect_to food_cart_path(@menu)
     else
       render 'menus/new'
     end
