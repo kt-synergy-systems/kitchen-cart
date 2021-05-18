@@ -2,6 +2,7 @@
   justify-content: space-between;
   background: $red;
   overflow: hidden;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -10,4 +11,11 @@
 
 .navbar-lewagon .navbar-brand img {
   width: 40px;
+}
+
+.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  width: 100%;
 }
