@@ -1,5 +1,6 @@
 <ul><% @schedules.each do |schedule|%>
     <li><%= schedule.date %> </li>
     <li><%= schedule.location %> </li>
+    <li><%= link_to 'Update Schedule', edit_food_cart_schedule_path(@food_cart, @food_cart.schedules) %></li>
   <% end %>
 </ul>

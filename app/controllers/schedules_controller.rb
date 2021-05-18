@@ -34,13 +34,17 @@ class SchedulesController < ApplicationController
   end
 
   def edit
-    @schedule = Schedule.find(params[:id])
+    @food_cart = FoodCart.find(params[:food_cart_id])
+    authorize @schedule
+    @user = current_user
   end
 
   def update
     @schedule = Schedule.find(params[:id])
     @schedule.update(schedule_params)
-    redirect_to schedule_path(@schedule)
+    authorize @schedule
+    @user = current_user
+    redirect_to food_cart_schedules(@schedule)
   end
 
   def destroy
