@@ -9,7 +9,7 @@ class FoodItemsController < ApplicationController
   end
 
   def new
-    @food_cart = FoodCart.find(params[:menu_id])
+    @food_cart = FoodCart.find(params[:food_cart_id])
     @menu = @food_cart.menu
     @food_item = FoodItem.new
 
@@ -17,16 +17,19 @@ class FoodItemsController < ApplicationController
   end
 
   def create
-    @food_cart = FoodCart.find(params[:menu_id])
-    @menu = @food_cart.menu
+    @food_cart = FoodCart.find(params[:food_cart_id])
     @food_item = FoodItem.new(food_item_params)
-    @menu.user = current_user
+    @menu = @food_cart.menu
+    @food_item.menu = @menu
+    @user = current_user
 
-    if @food_item.save
+    if @food_item.save!
       redirect_to food_cart_path(@food_cart)
     else
-      render 'food_item/new'
+      render 'food_items/new'
     end
+
+    authorize @food_item
   end
 
   def edit
@@ -35,8 +38,8 @@ class FoodItemsController < ApplicationController
 
   def update
     @food_item = FoodItem.find(params[:id])
-    @food_item.update(food_item_params)
-    redirect_to food_item_path(@food_item)
+    @food_item.update
+    redirect_to food_cart_path(@food_cart)
   end
 
   def destroy
@@ -48,14 +51,14 @@ class FoodItemsController < ApplicationController
   private
 
   def food_item_params
-    params.require(:food_item).permit
+    params.require(:food_item).permit(:food_name, :food_description, :food_price, :food_type)
   end
 
   def set_food_item
     @food_cart = FoodCart.find(params[:menu_id])
     @menu = @food_cart.menu
     @food_item = @food_cart.food_item
-    
+
     authorize @food_item
   end
 end

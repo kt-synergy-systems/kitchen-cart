@@ -1,0 +1,7 @@
+<h1>Menu Show</h1>
+<div>
+  <% @food_cart.menu.food_items.each do |food_item| %>
+    <%= food_item.food_name %>
+  <% end %>
+  <%= link_to 'Add Food Item', new_food_cart_menu_food_item_path(@food_cart, @food_cart.menu) %>
+</div>

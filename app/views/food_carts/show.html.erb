@@ -1,10 +1,6 @@
-<div id ="root" data-food-cart="<%=@food_cart.to_json(include: [:schedules, :menu, :food_items])%>"></div>
-<%= javascript_pack_tag 'FoodCarts/show' %>
+<%= render partial: 'shared/react_entry', locals: {data: @food_cart.to_json(include: [:schedules, :menu, :food_items]), content_type: "FOOD_CART"} %>
 <div>
   <%= link_to 'create schedule', new_food_cart_schedule_path(@food_cart) %>
-  <%= link_to 'Show food Items', new_menu_food_item_path(@food_cart) %>
-  
+  <%= link_to 'Add Menu', new_food_cart_menu_path(@food_cart) %>
+  <%= link_to 'Show Menu', food_cart_menu_path(@food_cart) %>
 </div>
-<script>
-  window.food_cart = "<%= @food_cart.to_json %>"
-</script>
