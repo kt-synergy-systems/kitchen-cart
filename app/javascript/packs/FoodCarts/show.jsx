@@ -11,7 +11,6 @@ const FoodCart = ({ foodCart }) => {
   useEffect(() => {
     console.log(userSelection);
   }, [userSelection]);
-
   return (
     <div className='FoodCart'>
       <img src='https://picsum.photos/400/300' alt='Lorem Picsum' />
