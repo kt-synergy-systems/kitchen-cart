@@ -1,3 +1,22 @@
-Kitchen Cart connects local communities and food trucks in a marketplace mobile web app. Currently being developed in Tokyo.
+# Kitchen Cart
 
-Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates), created by the [Le Wagon coding bootcamp](https://www.lewagon.com) team.
+## Table of contents
+* [General info](#general-info)
+* [Technologies](#technologies)
+* [Visit](#visit)
+
+## General info
+Kitchen Cart connects local communities and food trucks in Tokyo through a marketplace mobile web app.
+	
+## Technologies
+This project was created with:
+* Ruby on Rails
+* React.js
+* HTML/SCSS
+* Mapbox API
+* Cloudinary API
+* Google Maps API
+* Heroku
+	
+## Visit
+Kitchen Cart is currently under development and will be available soon.
