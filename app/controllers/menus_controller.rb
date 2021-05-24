@@ -48,9 +48,9 @@ class MenusController < ApplicationController
 
   private
 
-  # def menu_params
-  #   params.require(:menu).permit(:food_cart_id)
-  # end
+  def menu_params
+    params.require(:menu).permit(:food_cart_id, photos: [])
+  end
 
   #method for authorization in the before action
   def set_menu
