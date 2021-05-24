@@ -5,6 +5,7 @@
     <%= f.input :food_description, label:"Description" %>
     <%= f.input :food_type, label:"Food type" %>
     <%= f.input :food_price, label:"Price" %>
+    <%= f.input :photos, as: :file, input_html: {multiple: true}, label:"Photo Upload" %>
     <br>
     <br>
     <%= f.button :submit, label:"Create Food Item", class: "btn btn-primary" %>
