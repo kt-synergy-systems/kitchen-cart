@@ -63,7 +63,7 @@ class FoodCartsController < ApplicationController
   private
 
   def food_cart_params
-    params.require(:food_cart).permit(:name, :menu, :category, :cart_description, :schedule)
+    params.require(:food_cart).permit(:name, :menu, :category, :cart_description, :schedule, :photo)
   end
 
   def set_food_cart
