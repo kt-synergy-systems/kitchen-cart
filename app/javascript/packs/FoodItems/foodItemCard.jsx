@@ -1,18 +1,16 @@
-import React from 'react';
+import React from "react";
 
-const FoodItemCard = ({name, type, description, price, availability}) => {
+const FoodItemCard = ({ name, type, description, price, availability }) => {
   return (
-    <div>
-      <div className="food-item-card">
-        <img className="food-item-image" src="" alt="" />
-        <div className="food-item-text">
-          <h6>{name}</h6>
-          <p>{description}</p>
-          <p>{price}</p>
-        </div>
+    <div className="food-item-card">
+      <img className="food-item-image" src="" alt="" />
+      <div className="food-item-text">
+        <h6>{name}</h6>
+        <p>{description}</p>
+        <p>{price}</p>
       </div>
     </div>
-    )
-}
+  );
+};
 
 export default FoodItemCard;

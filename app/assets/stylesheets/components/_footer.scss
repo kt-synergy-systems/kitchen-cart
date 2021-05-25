@@ -1,6 +1,6 @@
 footer p {
   color: $green;
-  font-family: 'Open Sans', 'Helvetica', sans-serif;
+  font-family: "Open Sans", "Helvetica", sans-serif;
   font-size: 1em;
   line-height: 1.75;
   font-weight: 400;
@@ -8,14 +8,4 @@ footer p {
   padding: 3rem 0rem;
   margin-top: 0;
   margin-bottom: 0;
-}
-
-body {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-}
-
-main {
-  flex: 1 0 auto;
 }

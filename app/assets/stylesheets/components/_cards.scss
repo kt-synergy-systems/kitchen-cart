@@ -1,7 +1,6 @@
 /* Main Intro Card on Login Page */
 
 .main-intro-card {
-  margin: 30px;
   background-color: $tan;
   border-radius: 30px;
   justify-content: center;
@@ -18,7 +17,6 @@
   width: 343px;
   height: 160px;
   padding: 16px;
-  margin: 16px 16px 0 16px;
   background-color: $yellow;
 
   // card image | content layout
@@ -87,12 +85,19 @@
 }
 
 //food-item-card
+
+.food-item-card-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .food-item-card {
-  width: 164px;
-  height: 206px;
+  max-width: 600px;
+  width: 90%;
+  height: fit-content;
   border-radius: 8px;
   padding: 16px;
-  margin: 16px 16px 0 16px;
+  margin: 32px 0px 32px 0px;
   background-color: $tan;
 }
 
