@@ -8,6 +8,7 @@ class MenusController < ApplicationController
   def show
     @food_cart = FoodCart.find(params[:food_cart_id])
     @menu = @food_cart.menu
+    authorize @menu
   end
 
   def new
@@ -23,7 +24,7 @@ class MenusController < ApplicationController
     @user = current_user
 
     if @menu.save
-      redirect_to food_cart_path(@menu)
+      redirect_to food_cart_path(@food_cart)
     else
       render 'menus/new'
     end
@@ -48,14 +49,14 @@ class MenusController < ApplicationController
 
   private
 
-  def menu_params
-    params.require(:menu).permit(:food_cart_id, photos: [])
-  end
+  # def menu_params
+  # params.require(:menu).permit(photos: [])
+  # end
 
   #method for authorization in the before action
   def set_menu
     @food_cart = FoodCart.find(params[:food_cart_id])
     @menu = @food_cart.menu
-    authorize @menu
+    # authorize @menu
   end
 end
