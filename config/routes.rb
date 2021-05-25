@@ -8,4 +8,6 @@ Rails.application.routes.draw do
     end
     resources :schedules
   end
+
+  post 'food_carts/user_location'
 end
