@@ -1,8 +1,12 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import FoodCartCard from './foodCartCard';
+import geoLocation from '../../plugins/geolocation.js';
 
 const FoodCarts = ({ foodCarts }) => {
   // foodCarts = @food_carts variable from rails controller
+  useEffect(() => { geoLocation();
+  console.log('hello') }, []);
+
   console.log('HO', foodCarts);
   console.log(foodCarts[0]);
   return (

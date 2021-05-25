@@ -60,6 +60,11 @@ class FoodCartsController < ApplicationController
     redirect_to food_carts_path
   end
 
+  #Work in progress to grab current location
+  def user_location
+    @user_location = params[:javascriptobject]
+  end
+
   private
 
   def food_cart_params

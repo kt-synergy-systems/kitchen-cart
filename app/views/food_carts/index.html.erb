@@ -5,8 +5,6 @@
      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
 </div>
 
-<div id="root" data-food-carts="<%=@food_carts.to_json%>"></div>
-<%= javascript_pack_tag 'FoodCarts/index' %>
 <%# testing purposes for backend %>
 <% @food_carts.each do |food_cart| %>
   <div class="container m-3 p-3">

@@ -40,6 +40,7 @@ class SchedulesController < ApplicationController
   end
 
   def update
+    @food_cart = FoodCart.find(params[:id])
     @schedule = Schedule.find(params[:id])
     @schedule.update(schedule_params)
     authorize @schedule
