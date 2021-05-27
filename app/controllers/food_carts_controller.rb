@@ -48,7 +48,7 @@ class FoodCartsController < ApplicationController
 
   def destroy
     @food_cart = FoodCart.find(params[:id])
-    @food_cart.schedule.destroy unless @food_cart.schedule == nil
+    @food_cart.schedules.destroy unless @food_cart.schedules == nil
     @menu = @food_cart.menu
     if @menu != nil
       @food_items = @menu.food_items.each do |food_item|

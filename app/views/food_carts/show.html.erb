@@ -1,6 +1,8 @@
 <%= render partial: 'shared/react_entry', locals: {data: @food_cart.to_json(include: [:schedules, :menu, :food_items]), content_type: "FOOD_CART"} %>
 <div>
-  <%= link_to 'create schedule', new_food_cart_schedule_path(@food_cart) %>
+  <% if policy(@food_cart.schedules).create? %>
+    <%= link_to 'create schedule', new_food_cart_schedule_path(@food_cart) %>
+  <% end %>
   <%= link_to 'Add Menu', new_food_cart_menu_path(@food_cart) unless @food_cart.menu != nil %>
   <%= link_to 'Show Menu', food_cart_menu_path(@food_cart) %>
   <%= link_to 'show schedule', food_cart_schedules_path(@food_cart) %>
