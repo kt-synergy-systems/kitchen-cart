@@ -2,6 +2,9 @@
   <div class="nav-bar-links">
     <%= link_to 'Home', root_path %>
     <%= link_to 'Food Carts', food_carts_path %>
+    <%= link_to 'Sign In', new_user_session_path %>
+    <%= link_to 'Log Out', destroy_user_session_path, method: :delete %>
+    <%= link_to 'Sign Up', new_user_registration_path %>
   </div>
   <div class="hamburger">
     <div class="hamburger-slice"></div>
@@ -9,19 +12,17 @@
     <div class="hamburger-slice"></div>
   </div>
 </div>
-
 <script>
-var stuff = ['hamburger', 'hamburger-slice']
-const burg = document.querySelector('.hamburger');
-const links = document.querySelector('.nav-bar-links');
-burg.addEventListener('click', function() {
-  links.style.top = '60px';
-})
-document.addEventListener('click', function(e){
-  if (!stuff.includes(e.target.className)){
-    links.style.top = '-100px';
-    console.log(e.target.className)
-  }
-});
+  var stuff = ['hamburger', 'hamburger-slice']
+  const burg = document.querySelector('.hamburger');
+  const links = document.querySelector('.nav-bar-links');
+  burg.addEventListener('click', function() {
+    links.style.top = '60px';
+  })
+  document.addEventListener('click', function(e){
+    if (!stuff.includes(e.target.className)){
+      links.style.top = '-100px';
+      console.log(e.target.className)
+    }
+  });
 </script>
-
