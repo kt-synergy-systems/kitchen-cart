@@ -16,7 +16,7 @@ class SchedulePolicy < ApplicationPolicy
     end
 
     def create?
-      true
+      user == record.user
     end
 
     def show?

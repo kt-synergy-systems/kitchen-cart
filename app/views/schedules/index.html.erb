@@ -1,7 +1,9 @@
 <ul><% @schedules.each do |schedule|%>
     <li><%= schedule.date %> </li>
     <li><%= schedule.location %> </li>
-    <li><%= link_to 'Update Schedule', edit_food_cart_schedule_path(@food_cart, schedule) %></li>
+    <% if policy(schedule).update? %>
+      <li><%= link_to 'Update Schedule', edit_food_cart_schedule_path(@food_cart, schedule) %></li>
+    <% end %>
   <% end %>
 </ul>
 <%= render partial: 'shared/react_entry', locals: {data: @schedules.to_json, content_type: "SCHEDULES"} %>

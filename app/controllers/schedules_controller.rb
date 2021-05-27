@@ -29,23 +29,28 @@ class SchedulesController < ApplicationController
     if @schedule.save
       redirect_to food_cart_path(@food_cart)
     else
-      render 'schedule/new'
+      render :new
     end
   end
 
   def edit
     @food_cart = FoodCart.find(params[:food_cart_id])
+    @schedule = Schedule.find(params[:id])
     authorize @schedule
     @user = current_user
   end
 
   def update
-    @food_cart = FoodCart.find(params[:id])
     @schedule = Schedule.find(params[:id])
-    @schedule.update(schedule_params)
+    @food_cart = FoodCart.find(params[:food_cart_id])
     authorize @schedule
+    @schedule.update(schedule_params)
     @user = current_user
-    redirect_to food_cart_schedules(@schedule)
+    if @schedule.save
+      redirect_to food_cart_path(@food_cart)
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -55,6 +60,7 @@ class SchedulesController < ApplicationController
   end
 
   private
+
   def schedule_params
     params.require(:schedule).permit(:location, :date, :start_time, :end_time)
   end
@@ -64,4 +70,5 @@ class SchedulesController < ApplicationController
     @schedule = @food_cart.schedules
     authorize @schedule
   end
+  
 end
