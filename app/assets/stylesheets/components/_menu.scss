@@ -1,0 +1,46 @@
+.icons {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-direction: row;
+  padding: 1em;
+}
+
+.foodcart-intro {
+  display: flex;
+  align-items: left;
+  justify-content: flex;
+  flex-direction: column;
+  padding: 1em;
+}
+
+.menu-selection {
+  display: flex;
+  align-items: left;
+  justify-content: flex;
+  flex-direction: column;
+  padding: 1em;
+}
+
+.menu-buttons {
+  display: flex;
+  align-items: left;
+  justify-content: flex;
+  flex-direction: row;
+  align-content: space-between;
+}
+
+.food-item-card-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex;
+}
+
+.schedule-container {
+  display: flex;
+  align-items: left;
+  justify-content: flex;
+  flex-direction: row;
+  padding: 1em;
+}
