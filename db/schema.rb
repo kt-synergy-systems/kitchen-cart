@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_24_050651) do
+ActiveRecord::Schema.define(version: 2021_05_27_102915) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -101,6 +101,8 @@ ActiveRecord::Schema.define(version: 2021_05_24_050651) do
     t.string "last_name"
     t.string "phone_number"
     t.bigint "food_cart_id"
+    t.float "current_latitude"
+    t.float "current_longitude"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["food_cart_id"], name: "index_users_on_food_cart_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
