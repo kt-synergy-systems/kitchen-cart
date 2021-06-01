@@ -38,8 +38,8 @@ User.create!( {
 User.create!( {
                 first_name: 'Josh',
                 last_name: 'Hume',
-                email: 'josh@gmail.com',
-                password: 'foodcart3',
+                email: 'a@a.com',
+                password: '123123',
                 phone_number: '1234',
                 role: 1
 })
@@ -87,14 +87,18 @@ puts "generating foodcarts, menus and schedules"
 
   })
   time = Time.now
-  Schedule.create!(
-    {
-      location: ["Tokyo Station", "Meguro Station", "Shinagawa Station", "Shinjuku Station", "Shibuya Station"].sample,
-      date: ['Tue, 11 May 2021','Fri, 14 May 2021'].sample,
-      start_time: Time.now.strftime("%k:%M %p"),
-      end_time: (Time.now + 3.hour).strftime("%k:%M %p"),
-      food_cart: food_cart
-  })
+  20.times do
+    Schedule.create!(
+      {
+        location: ["Tokyo", "Meguro", "Shinagawa", "Shinjuku", "Shibuya"].sample,
+        latitude: 35.6812 + rand(-0.03..0.03),
+        longitude: 139.7671 + rand(-0.03..0.03),
+        date: Date.new(Date.today.year, Date.today.month, (1..Time.days_in_month(Date.today.month, Date.today.year)).to_a.sample),
+        start_time: Time.now.strftime("%k:%M %p"),
+        end_time: (Time.now + 3.hour).strftime("%k:%M %p"),
+        food_cart: food_cart
+    })
+  end
 end
 
 puts "done"
