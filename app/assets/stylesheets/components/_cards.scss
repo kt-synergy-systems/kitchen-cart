@@ -10,23 +10,33 @@
 // block of food cart cards
 .FoodCartCard {
   margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 //food_cart individual card
 .food_cart-card {
-  width: 343px;
-  height: 160px;
+  max-width: 800px;
+  width: 80vw;
+  min-height: 160px;
+  max-height: 200px;
   padding: 16px;
+  margin: 16px 0px 16px 0px;
   background-color: $yellow;
+  overflow: hidden;
 
   // card image | content layout
   border-radius: 8px;
   display: grid;
   grid-template-columns: 1.5fr 2fr;
-  flex-grow: 1;
   grid-gap: 16px;
 }
-
+@media only screen and (max-width: 400px) {
+  .food_cart-card {
+    width: 92vw;
+  }
+}
 .location-tag {
   position: absolute;
   font-size: 8px;
@@ -40,15 +50,20 @@
 
 .food_cart-image {
   position: relative;
-  width: 100%;
-  height: 128px;
-  object-fit: cover;
-  object-position: center;
-  border-radius: 8px;
+  height: 170px;
+
+  img {
+    object-fit: cover;
+    object-position: center;
+    height: 100%;
+    border-radius: 8px;
+  }
 }
 
 .food_cart-content {
   position: relative;
+  overflow: hidden;
+  overflow-y: scroll;
 }
 .food-cart-name {
   p {
@@ -71,8 +86,8 @@
   line-height: 12px;
   margin-top: 12px;
   overflow: hidden;
-  text-overflow: -o-ellipsis-lastline;
-  width: 16em;
+  overflow-y: scroll;
+  width: 90%;
   height: 3.7em;
 
   #text {
