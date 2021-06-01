@@ -11,16 +11,23 @@
 </div>
 
 <script>
-var stuff = ['hamburger', 'hamburger-slice']
+var stuff = ['hamburger', 'hamburger-slice'];
+var navOut = false;
 const burg = document.querySelector('.hamburger');
 const links = document.querySelector('.nav-bar-links');
 burg.addEventListener('click', function() {
-  links.style.top = '60px';
+  if (!navOut){
+    navOut = true;
+    links.style.top = '60px';
+  }else{
+    navOut = false;
+    links.style.top = '-100px';
+  }
 })
 document.addEventListener('click', function(e){
   if (!stuff.includes(e.target.className)){
     links.style.top = '-100px';
-    console.log(e.target.className)
+    navOut = false;
   }
 });
 </script>

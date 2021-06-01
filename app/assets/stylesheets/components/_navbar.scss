@@ -8,6 +8,7 @@
   text-emphasis: none;
   display: flex;
   padding: 16px;
+  z-index: 1000;
   align-items: center;
   a {
     text-emphasis: none;
@@ -52,6 +53,7 @@
     background-color: $red;
     top: -100px;
     right: 0px;
+    z-index: 1000000;
     border-bottom-left-radius: 4px;
   }
 }
