@@ -18,7 +18,7 @@ const FoodCart = ({ foodCart }) => {
         <h4>
           <i className="fas fa-external-link-alt"></i> &nbsp;{" "}
           <i className="far fa-heart"></i> &nbsp;{" "}
-          <i className="far fa-calendar-alt"></i> &nbsp;{" "}
+          <a href={`/food_carts/${foodCart.id}/schedules`}><i className="far fa-calendar-alt"></i></a> &nbsp;{" "}
           <i className="fas fa-map-marker-alt"></i>
         </h4>
       </div>
