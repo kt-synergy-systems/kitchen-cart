@@ -1,3 +1,23 @@
+<div className="schedule-top">
+  <h5>Weekly Schedule</h5>
+  <h2>Food Cart</h2>
+</div>
+<div className="hr"><hr /></div>
+<div className="calendar">
+  <h4>Months</h4>
+  <h5>Days</h5>
+</div>
+<div className="todays-location">
+  <p>Start time</p>
+  <p>End time</p>
+  <h4><i className="fas fa-map-marker-alt"></i> Location</h4>
+</div>
+<div className="future-locations">
+  <p>Start time</p>
+  <p>End time</p>
+  <h4><i className="fas fa-map-marker-alt"></i> Location</h4>
+</div>
+
 <ul><% @schedules.each do |schedule|%>
     <li><%= schedule.date %> </li>
     <li><%= schedule.location %> </li>
