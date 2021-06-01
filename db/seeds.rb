@@ -23,7 +23,7 @@ User.create!( {
                 email: 'dan@gmail.com',
                 password: 'foodcart1',
                 phone_number: '1234',
-                role: 0
+                role: 1
 })
 
 User.create!( {
@@ -32,7 +32,7 @@ User.create!( {
                 email: 'hongjoo@gmail.com',
                 password: 'foodcart2',
                 phone_number: '1234',
-                role: 0
+                role: 1
 })
 
 User.create!( {
@@ -41,7 +41,7 @@ User.create!( {
                 email: 'a@a.com',
                 password: '123123',
                 phone_number: '1234',
-                role: 0
+                role: 1
 })
 
 User.create!( {
@@ -50,7 +50,7 @@ User.create!( {
                 email: 'marisa@gmail.com',
                 password: 'foodcart4',
                 phone_number: '1234',
-                role: 0
+                role: 1
 })
 
 User.create!( {
@@ -59,7 +59,7 @@ User.create!( {
                 email: 'brandon@gmail.com',
                 password: 'foodcart5',
                 phone_number: '1234',
-                role: 0
+                role: 1
 })
 
 User.create!( {
@@ -68,7 +68,7 @@ User.create!( {
                 email: 'test@gmail.com',
                 password: 'foodcart6',
                 phone_number: '1234',
-                role: 1
+                role: 0
 })
 
 puts "done"
