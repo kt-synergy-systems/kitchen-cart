@@ -86,11 +86,6 @@
 
 //food-item-card
 
-.food-item-card-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
 .food-item-card {
   max-width: 600px;
   width: 90%;
@@ -102,6 +97,6 @@
 }
 
 .food-item-image {
-}
-.food-item-text {
+  padding-bottom: 15px;
+  width: 100%;
 }

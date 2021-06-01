@@ -1,4 +1,5 @@
 # Kitchen Cart
+<img src="https://github.com/brandon-lindberg/kitchen-cart/blob/master/kitchen-cart-screenshot.png" height="50%" width="50%">
 
 ## Table of contents
 * [General info](#general-info)

@@ -3,15 +3,16 @@ class FoodCartsController < ApplicationController
   after_action :verify_authorized, only: [:create, :show, :update, :destroy]
   def index
     @food_carts = policy_scope(FoodCart)
+    @schedules = 
     @markers = []
     @food_carts.map do |food_cart|
       food_cart.schedules.each do |schedule|
-        if schedule.date == Date.today
+      #  if schedule.date == Date.today
           @markers << {
             lat: schedule.latitude,
             lng: schedule.longitude
           }
-        end
+      #  end    # I commented this out for testing purposes 💌 Joshua
       end
     end
     @markers
@@ -61,7 +62,7 @@ class FoodCartsController < ApplicationController
     redirect_to food_carts_path
   end
 
-  #Work in progress to grab current location
+  # Work in progress to grab current location
   def user_location
     @user_location = params[:javascriptobject]
   end
