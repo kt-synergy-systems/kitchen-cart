@@ -57,8 +57,7 @@
     margin-bottom: 0;
   }
 }
-.icon {
-  position: absolute;
+.icons {
   top: -2px;
   right: 2px;
   p {
@@ -99,4 +98,8 @@
 .food-item-image {
   padding-bottom: 15px;
   width: 100%;
+}
+
+.uppercase {
+  text-transform: uppercase;
 }
