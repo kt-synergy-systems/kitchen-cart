@@ -11,7 +11,9 @@ const FoodCarts = ({ foodCarts, markers }) => {
   const [userLongitude, setUserLongitude] = useState(null);
   const geoLocate = () => {
     if (!navigator.geolocation) {
-      alert('Geolocation is not supported in this browser.');
+      alert(
+        'Please enable Gelocation in your browser to use this application.'
+      );
     } else {
       navigator.geolocation.getCurrentPosition((position, error) => {
         if (error) {
@@ -32,9 +34,7 @@ const FoodCarts = ({ foodCarts, markers }) => {
       });
     }
   }, [userLatitude && userLongitude]);
-  useEffect(() => {
-    console.log('MARKERS', markers);
-  }, [markers]);
+
   useEffect(() => {
     if (!worldMap) {
       mapboxgl.accessToken = process.env.MAPBOX_API_KEY;
@@ -48,7 +48,6 @@ const FoodCarts = ({ foodCarts, markers }) => {
     }
   }, []);
 
-  console.log('Hi!', foodCarts);
   console.log(foodCarts[0]);
   return (
     <div className='FoodCarts'>

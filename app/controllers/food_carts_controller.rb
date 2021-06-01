@@ -6,12 +6,13 @@ class FoodCartsController < ApplicationController
     @markers = []
     @food_carts.map do |food_cart|
       food_cart.schedules.each do |schedule|
-      #  if schedule.date == Date.today
+        if schedule.date == Date.today
           @markers << {
             lat: schedule.latitude,
-            lng: schedule.longitude
+            lng: schedule.longitude,
+            id: food_cart.id
           }
-      #  end    # I commented this out for testing purposes 💌 Joshua
+        end
       end
     end
     @markers
