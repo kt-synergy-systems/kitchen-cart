@@ -5,9 +5,17 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :validatable
 
-  # belongs_to :food_cart, -> { where admin: false }
-
+  belongs_to :food_cart
+  has_many :food_carts
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :phone_number, presence: true
+
+  enum role: [:employee, :admin]
+
+  after_initialize do
+    if self.new_record?
+      self.role ||= :employee
+    end
+  end
 end

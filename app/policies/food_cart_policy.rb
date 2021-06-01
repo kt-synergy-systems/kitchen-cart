@@ -1,4 +1,6 @@
 class FoodCartPolicy < ApplicationPolicy
+  attr_reader :current_user
+
   class Scope < Scope
     def resolve
       scope.all
@@ -6,8 +8,13 @@ class FoodCartPolicy < ApplicationPolicy
     end
   end
 
+  def initalize
+    @current_user = current_user
+    @food_cart = food_cart
+  end
+
   def create?
-    true
+    @current_user.role == 'admin'
   end
 
   def show?
@@ -15,10 +22,10 @@ class FoodCartPolicy < ApplicationPolicy
   end
 
   def update?
-    user == record.user
+    @current_user.role == 'admin'
   end
 
   def destroy?
-    user == record.user
+    @current_user.role == 'admin'
   end
 end
