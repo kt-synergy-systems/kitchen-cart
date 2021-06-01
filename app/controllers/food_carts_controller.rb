@@ -1,5 +1,6 @@
 class FoodCartsController < ApplicationController
   before_action :set_food_cart, only: [:show, :edit, :update, :destroy]
+  after_action :verify_authorized, only: [:create, :show, :update, :destroy]
   def index
     @food_carts = policy_scope(FoodCart)
     @schedules = 
