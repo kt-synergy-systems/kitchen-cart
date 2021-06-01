@@ -48,7 +48,6 @@ const FoodCarts = ({ foodCarts, markers }) => {
     }
   }, []);
 
-  console.log(foodCarts[0]);
   return (
     <div className='FoodCarts'>
       <div
@@ -65,16 +64,20 @@ const FoodCarts = ({ foodCarts, markers }) => {
       <button onClick={geoLocate}>Find Food Carts Near Me</button>{' '}
       <div className='FoodCartCard'>
         {/* list all food carts */}
-        {foodCarts.map((cart, index) => (
-          <FoodCartCard
-            key={index}
-            id={cart.id}
-            category={cart.category}
-            name={cart.name}
-            description={cart.cart_description}
-            url={`/food_carts/${cart.id}`}
-          />
-        ))}
+        {foodCarts.map((cart, index) => {
+          console.log(cart);
+          return (
+            <FoodCartCard
+              key={index}
+              id={cart.id}
+              category={cart.category}
+              name={cart.name}
+              description={cart.cart_description}
+              open={cart.open}
+              url={`/food_carts/${cart.id}`}
+            />
+          );
+        })}
       </div>
     </div>
   );

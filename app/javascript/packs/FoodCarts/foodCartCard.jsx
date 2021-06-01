@@ -1,6 +1,6 @@
 import React from 'react';
 
-const FoodCartCard = ({ name, url, category, description }) => {
+const FoodCartCard = ({ name, url, category, description, open }) => {
   return (
     <div className='food_cart-card'>
       <div className='food_cart-image'>
@@ -9,8 +9,7 @@ const FoodCartCard = ({ name, url, category, description }) => {
         </div>
         <img
           src='https://images.unsplash.com/photo-1565123409695-7b5ef63a2efb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1651&q=80'
-          alt='alttext'
-          className='food_cart-image'
+          alt='Food Cart'
         />
       </div>
       <div className='food_cart-content'>
@@ -21,11 +20,6 @@ const FoodCartCard = ({ name, url, category, description }) => {
               <a href={url}>{name}</a>
             </h6>
           </div>
-          <img
-            src='https://images.unsplash.com/photo-1565123409695-7b5ef63a2efb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1651&q=80'
-            alt='alttext'
-            className='food_cart-image'
-          />
         </div>
         <div className='food_cart-content'>
           <div className='d-flex'>
