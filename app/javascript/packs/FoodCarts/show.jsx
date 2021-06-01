@@ -1,5 +1,4 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import getFoodItemCard from "../Helper/getFoodItemCard";
 
 const FoodCart = ({ foodCart }) => {
@@ -23,16 +22,17 @@ const FoodCart = ({ foodCart }) => {
         </h4>
       </div>
       <div className="foodcart-intro">
-        <h5>{foodCart.category}</h5>
+        <h5 className="uppercase">{foodCart.category}</h5>
         <h2>{foodCart.name}</h2>
         <p>{foodCart.description}</p>
       </div>
+      <div className="hr"><hr /></div>
       <div className="menu-selection">
         <h5>Menu</h5>
         <div className="menu-buttons">
-          <button onClick={() => setUserSelection(null)}>All</button>&nbsp;&nbsp;&nbsp;
-          <button onClick={() => setUserSelection("food")}>Food</button>&nbsp;&nbsp;&nbsp;
-          <button onClick={() => setUserSelection("drink")}>Drinks</button>
+          <button className="all-button" onClick={() => setUserSelection(null)}>All</button>&nbsp;&nbsp;&nbsp;
+          <button className="food-button" onClick={() => setUserSelection("food")}>Food</button>&nbsp;&nbsp;&nbsp;
+          <button className="drinks-button" onClick={() => setUserSelection("drink")}>Drinks</button>
         </div>
       </div>
       <div className="food-item-card-container">
