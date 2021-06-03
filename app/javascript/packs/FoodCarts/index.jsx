@@ -3,7 +3,7 @@ import FoodCartCard from './foodCartCard';
 import mapboxgl from '!mapbox-gl';
 import Marker from './marker';
 
-const FoodCarts = ({ foodCarts, markers }) => {
+const FoodCarts = ({ foodCarts, markers, schedules }) => {
   // foodCarts = @food_carts variable from rails controller
   const mapContainer = useRef();
   const [worldMap, setWorldMap] = useState(null);
@@ -61,7 +61,8 @@ const FoodCarts = ({ foodCarts, markers }) => {
             <Marker key={index} worldMap={worldMap} foodCart={marker} />
           )
       )}
-      <button onClick={geoLocate}>Find Food Carts Near Me</button>{' '}
+      <div className='location-button-container'>
+        <button className='location-button' onClick={geoLocate}>Find Food Carts Near Me</button>{' '}</div>
       <div className='FoodCartCard'>
         {/* list all food carts */}
         {foodCarts.map((cart, index) => {
@@ -75,6 +76,7 @@ const FoodCarts = ({ foodCarts, markers }) => {
               description={cart.cart_description}
               open={cart.open}
               url={`/food_carts/${cart.id}`}
+              schedule={schedules[index]}
             />
           );
         })}

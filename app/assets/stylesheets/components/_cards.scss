@@ -81,21 +81,22 @@
 }
 
 .card-description {
-  font-size: 10px;
-  line-height: 12px;
-  margin-top: 12px;
-  overflow: hidden;
-  overflow-y: scroll;
+  font-size: 14px;
+  position: relative;
+  overflow: auto;
   width: 90%;
-  height: 3.7em;
-
-  #text {
-    font-size: 10px;
-  }
+  height: 6em;
 }
 
 .body-text-bold {
   font-size: 12px;
+}
+
+.heart-icon {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 5px;
 }
 
 //food-item-card
