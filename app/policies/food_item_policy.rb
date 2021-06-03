@@ -7,7 +7,7 @@ class FoodItemPolicy < ApplicationPolicy
   end
 
   def create?
-    true
+    @user.role == 'admin' || @user.role == 'employee'
   end
 
   def show?
@@ -15,10 +15,12 @@ class FoodItemPolicy < ApplicationPolicy
   end
 
   def update?
-    user == record.user
+    @user.role == 'admin' || @user.role == 'employee'
+    # user == record.user
   end
 
   def destroy?
-    user == record.user
+    @user.role == 'admin' || @user.role == 'employee'
+    # user == record.user
   end
 end
