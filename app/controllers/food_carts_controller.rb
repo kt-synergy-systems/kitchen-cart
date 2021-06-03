@@ -3,10 +3,11 @@ class FoodCartsController < ApplicationController
   after_action :verify_authorized, only: [:new, :create, :show, :update, :destroy]
   def index
     @food_carts = policy_scope(FoodCart)
-    @schedules = 
+    @schedules = []
     @markers = []
     @food_carts.map do |food_cart|
       food_cart.schedules.each do |schedule|
+        @schedules << schedule
         if schedule.date == Date.today
           @markers << {
             lat: schedule.latitude,
