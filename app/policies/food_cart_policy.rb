@@ -14,7 +14,7 @@ class FoodCartPolicy < ApplicationPolicy
   end
 
   def create?
-    @current_user.role == 'admin'
+    @user.role == 'admin'
   end
 
   def show?
@@ -22,10 +22,10 @@ class FoodCartPolicy < ApplicationPolicy
   end
 
   def update?
-    @current_user.role == 'admin'
+    @user.role == 'admin'
   end
 
   def destroy?
-    @current_user.role == 'admin'
+    @user.role == 'admin'
   end
 end
