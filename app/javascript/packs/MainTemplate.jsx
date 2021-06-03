@@ -18,7 +18,9 @@ const MainTemplate = ({ data, contentType }) => {
       case 'FOOD_CART':
         return <FoodCart foodCart={data} />;
       case 'SCHEDULES':
-        return <Schedules schedules={data} />;
+        return (
+          <Schedules schedules={data.schedules} foodCart={data.foodCart} />
+        );
       default:
         return '';
     }
