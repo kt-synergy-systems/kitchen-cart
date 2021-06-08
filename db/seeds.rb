@@ -85,16 +85,17 @@ puts "generating foodcarts, menus and schedules"
                  food_cart: food_cart
 
   })
-  time = Time.now
   20.times do
+    date = Date.new(Date.today.year, Date.today.month, (1..Time.days_in_month(Date.today.month, Date.today.year)).to_a.sample)
+    start_time = (date + (8..16).to_a.sample.hours).strftime("%k:%M %p")
     Schedule.create!(
       {
         location: ["Tokyo", "Meguro", "Shinagawa", "Shinjuku", "Shibuya"].sample,
         latitude: 35.6812 + rand(-0.03..0.03),
         longitude: 139.7671 + rand(-0.03..0.03),
-        date: Date.new(Date.today.year, Date.today.month, (1..Time.days_in_month(Date.today.month, Date.today.year)).to_a.sample),
-        start_time: Time.now.strftime("%k:%M %p"),
-        end_time: (Time.now + 3.hour).strftime("%k:%M %p"),
+        date: date,
+        start_time: start_time,
+        end_time: (date + (16..24).to_a.sample.hours).strftime("%k:%M %p"),
         food_cart: food_cart
     })
   end
