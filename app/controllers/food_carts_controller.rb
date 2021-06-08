@@ -79,4 +79,11 @@ class FoodCartsController < ApplicationController
     @food_cart = FoodCart.find(params[:id])
     authorize @food_cart
   end
+
 end
+
+# Assign a user as an employee to a food cart by food cart admin
+# searchs
+# employee adds food cart id to profile
+# list of employees
+# remove the food Cart ID from the employee
