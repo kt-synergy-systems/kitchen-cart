@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_01_121316) do
+ActiveRecord::Schema.define(version: 2021_06_08_120036) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,13 +76,13 @@ ActiveRecord::Schema.define(version: 2021_06_01_121316) do
   create_table "schedules", force: :cascade do |t|
     t.string "location"
     t.date "date"
-    t.time "start_time"
-    t.time "end_time"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "food_cart_id"
     t.float "latitude"
     t.float "longitude"
+    t.datetime "start_time", null: false
+    t.datetime "end_time", null: false
     t.index ["food_cart_id"], name: "index_schedules_on_food_cart_id"
   end
 
