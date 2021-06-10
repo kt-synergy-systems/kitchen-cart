@@ -16,6 +16,9 @@ class FoodCart < ApplicationRecord
   include PgSearch::Model
   pg_search_scope :search_by_name_location_category,
     against: [ :name, :category ],
+  associated_against: {
+    schedules: [:location]
+  },
   using: {
     tsearch: { prefix: true }
   }
