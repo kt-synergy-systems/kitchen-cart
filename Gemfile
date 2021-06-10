@@ -32,6 +32,9 @@ gem 'bootsnap', '>= 1.4.2', require: false
 # added geocoder for the map
 gem 'geocoder'
 
+#search
+gem 'pg_search'
+
 # Cloudinary Gem
 gem 'cloudinary', '~> 1.16.0'
 

@@ -1,4 +1,5 @@
 class FoodCart < ApplicationRecord
+
   has_many :users
   belongs_to :user
   has_many :schedules
@@ -11,4 +12,11 @@ class FoodCart < ApplicationRecord
   validates :category, presence: true
   # validates :open, default: false
   validates :cart_description, presence: true
+
+  include PgSearch::Model
+  pg_search_scope :search_by_name_location_category,
+    against: [ :name, :category ],
+  using: {
+    tsearch: { prefix: true }
+  }
 end
