@@ -1,6 +1,6 @@
 import React from 'react';
 
-const FoodCartCard = ({ name, url, category, description, open, schedule }) => {
+const FoodCartCard = ({ name, url, category, description, open, schedule, id }) => {
   return (
     <div className='food_cart-card'>
       <div className='food_cart-image'>
@@ -22,7 +22,7 @@ const FoodCartCard = ({ name, url, category, description, open, schedule }) => {
           </div>
         </div>
         <div className='heart-icon'>
-          <i className='far fa-heart'></i>
+          <a href={`/food_carts/${id}/like`}><i className='far fa-heart'></i></a>
         </div>
         <p className='card-description'>{description}</p>
         <h6 className='body-text-bold'>Price range</h6>
