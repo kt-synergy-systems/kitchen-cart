@@ -2,7 +2,12 @@ class FoodCartsController < ApplicationController
   before_action :set_food_cart, only: [:show, :edit, :update, :destroy]
   after_action :verify_authorized, only: [:new, :create, :show, :update, :destroy]
   def index
-    @food_carts = policy_scope(FoodCart)
+    if params[:query].present?
+      @food_carts = policy_scope(FoodCart).search_by_name_location_category(params[:query])
+    else
+      @food_carts = policy_scope(FoodCart)
+    end
+
     @schedules = []
     @markers = []
     @food_carts.map do |food_cart|
