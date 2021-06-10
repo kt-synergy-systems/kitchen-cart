@@ -1,5 +1,5 @@
 class FoodCartsController < ApplicationController
-  before_action :set_food_cart, only: [:show, :edit, :update, :destroy]
+  before_action :set_food_cart, only: [:show, :edit, :update, :destroy, :upvote]
   after_action :verify_authorized, only: [:new, :create, :show, :update, :destroy]
   def index
     if params[:query].present?
@@ -73,6 +73,12 @@ class FoodCartsController < ApplicationController
   def user_location
     @user_location = params[:javascriptobject]
   end
+
+
+  def upvote
+     @foodcart.upvote_from current_user
+     redirect food_carts_path
+   end
 
   private
 

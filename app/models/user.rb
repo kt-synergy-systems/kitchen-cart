@@ -5,6 +5,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :validatable
 
+  acts_as_voter
   has_many :food_carts
   validates :first_name, presence: true
   validates :last_name, presence: true

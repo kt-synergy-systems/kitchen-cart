@@ -7,6 +7,9 @@ Rails.application.routes.draw do
       resources :food_items
     end
     resources :schedules
+    member do
+      put "like" => "foodcarts#upvote"
+    end
   end
 
   post 'food_carts/user_location'
