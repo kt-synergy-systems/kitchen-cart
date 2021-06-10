@@ -85,7 +85,7 @@ puts "generating foodcarts, menus and schedules"
                  food_cart: food_cart
 
   })
-  20.times do
+  50.times do
     date = Date.new(Date.today.year, Date.today.month, (1..Time.days_in_month(Date.today.month, Date.today.year)).to_a.sample)
     start_time = (date + (8..16).to_a.sample.hours).strftime("%k:%M %p")
     Schedule.create!(

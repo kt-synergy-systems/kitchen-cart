@@ -33,9 +33,64 @@
   .detailed-schedules {
     display: flex;
     flex-direction: column;
-    .detailed-schedule {
+  }
+  .detailed-schedule {
+    display: flex;
+    justify-content: flex-start;
+    flex-grow: 1;
+    width: 100%;
+    padding: 16px;
+    height: 200px;
+    overflow-y: scroll;
+    .divider {
+      height: 100%;
+      width: 5px;
+      border-radius: 6px;
+      margin-left: 16px;
+      margin-right: 16px;
+    }
+    .detailed-time-info {
       display: flex;
-      padding: 16px;
+      margin-left: 16px;
+    }
+    .times-container {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      margin-right: 16px;
+    }
+    .place-info {
+      border-radius: 6px;
+      border-style: solid;
+      border-width: 1px;
+      margin-left: 16px;
+      margin-bottom: 16px;
     }
   }
+  .light-border {
+    border-style: solid;
+    border-radius: 6px;
+    border-color: lightgray;
+    border-width: 1px;
+  }
+  .green-text {
+    color: $green;
+  }
+  .tan-back {
+    background-color: $tan;
+  }
+}
+.tan-border {
+  border-color: $tan;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-row {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
 }
