@@ -35,6 +35,9 @@ gem 'geocoder'
 #search
 gem 'pg_search'
 
+#acts as votable
+gem 'acts_as_votable'
+
 # Cloudinary Gem
 gem 'cloudinary', '~> 1.16.0'
 

@@ -1,5 +1,6 @@
 class FoodCart < ApplicationRecord
 
+  acts_as_votable
   has_many :users
   belongs_to :user
   has_many :schedules
