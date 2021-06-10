@@ -18,6 +18,7 @@ export const MONTHS = [
 const DAYS_OF_WEEK = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
 
 const Schedules = ({ schedules, foodCart }) => {
+  const timeRegex = /(?<=T)\d\d:\d\d(?=.)/;
   const date = new Date();
   const year = date.getFullYear();
   const month = MONTHS[date.getMonth()];
@@ -41,24 +42,33 @@ const Schedules = ({ schedules, foodCart }) => {
     }
     return cards;
   };
+
   const getScheduleDataForDay = (m, d) => {
+    const scheduleForDay = [];
     schedules.forEach((schedule) => {
       const arr = schedule.date.split('-');
       const y = parseInt(arr[0]);
       const myMonth = parseInt(arr[1]);
-      const d = parseInt(arr[2].substring(0, 1));
-      console.log(y, myMonth, d, '🎲');
+      const myDay = parseInt(arr[2].substring(0, 2));
+      if (myMonth === m && myDay === d && y === year) {
+        scheduleForDay.push(schedule);
+      }
     });
+    return scheduleForDay;
   };
-  console.log(
-    schedules,
-    foodCart,
-    year,
-    month,
-    dayOfWeek,
-    dayOfMonth,
-    daysThisMonth
-  );
+
+  const getDetailedTimeInfo = (m, d) => {
+    return getScheduleDataForDay(m, d).map((timeSlot, index) => (
+      <div key={index} className='detailed-time-info flex-row'>
+        <div className='flex-column'>
+          <p>{timeSlot.start_time.match(timeRegex)}</p>
+          <p>{timeSlot.end_time.match(timeRegex)}</p>
+        </div>
+        <div className='place-info flex-row'>{timeSlot.location}</div>
+      </div>
+    ));
+  };
+  console.log(schedules);
   return (
     <div className='Schedules'>
       <div className='top-calendar'>
@@ -87,7 +97,10 @@ const Schedules = ({ schedules, foodCart }) => {
             month={month}
             today={true}
           />
-          {getScheduleDataForDay(dayOfMonth, dayOfWeek)}
+          <div className='divider green-back' />
+          <div className='times-container green-text'>
+            {getDetailedTimeInfo(MONTHS.indexOf(month) + 1, dayOfMonth)}
+          </div>
         </div>
         <div className='detailed-schedule tomorrow'>
           <DayCard
@@ -95,17 +108,27 @@ const Schedules = ({ schedules, foodCart }) => {
             dayOfMonth={dayOfMonth + 1}
             year={year}
             month={month}
-            today={true}
+            today={false}
+            lightBorder={true}
           />
+          <div className='divider tan-back' />
+          <div className='times-container'>
+            {getDetailedTimeInfo(MONTHS.indexOf(month) + 1, dayOfMonth + 1)}
+          </div>
         </div>
         <div className='detailed-schedule asatte'>
           <DayCard
-            dayOfWeek={DAYS_OF_WEEK[date.getDay() + 1]}
+            dayOfWeek={DAYS_OF_WEEK[date.getDay() + 2]}
             dayOfMonth={dayOfMonth + 2}
             year={year}
             month={month}
-            today={true}
+            today={false}
+            lightBorder={true}
           />
+          <div className='divider tan-back' />
+          <div className='times-container'>
+            {getDetailedTimeInfo(MONTHS.indexOf(month) + 1, dayOfMonth + 2)}
+          </div>
         </div>
       </div>
     </div>

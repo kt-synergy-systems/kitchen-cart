@@ -1,7 +1,14 @@
 import React from 'react';
 import { daysInMonth, MONTHS } from './index';
 
-export default function DayCard({ dayOfWeek, dayOfMonth, today, year, month }) {
+export default function DayCard({
+  dayOfWeek,
+  dayOfMonth,
+  today,
+  year,
+  month,
+  lightBorder,
+}) {
   const daysThisMonth = daysInMonth(month + 1, year);
   const getRealDayOfMonth = () => {
     if (dayOfMonth > 0) return dayOfMonth;
@@ -11,7 +18,10 @@ export default function DayCard({ dayOfWeek, dayOfMonth, today, year, month }) {
   };
   getRealDayOfMonth(0);
   return (
-    <div className={`DayCard ${today ? 'green-back' : ''}`}>
+    <div
+      className={`DayCard ${today ? 'green-back' : ''} ${
+        lightBorder && 'light-border'
+      }`}>
       <div className={'day-of-month'}>{getRealDayOfMonth()}</div>
       <div className='day-of-week'>{dayOfWeek}</div>
     </div>
