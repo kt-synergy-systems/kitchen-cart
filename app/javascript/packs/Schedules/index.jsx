@@ -18,7 +18,7 @@ export const MONTHS = [
 ];
 export const DAYS_OF_WEEK = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
 
-const Schedules = ({ schedules, foodCart }) => {
+const Schedules = ({ schedules, foodCart, user }) => {
   const date = new Date();
   const year = date.getFullYear();
   const [month, setMonth] = useState(MONTHS[date.getMonth()]);

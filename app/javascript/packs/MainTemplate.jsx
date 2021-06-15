@@ -10,16 +10,16 @@ const MainTemplate = ({ data, contentType }) => {
   const getCurrentPage = () => {
     switch (contentType) {
       case 'FOOD_CARTS':
-        return <FoodCarts foodCarts={data.food_carts} markers={data.markers} schedules={data.schedules} />;
+        return <FoodCarts foodCarts={data.food_carts} markers={data.markers} schedules={data.schedules} user={data.user} />;
       case 'HOME':
         return <Home />;
       case 'MENUS':
-        return <Menus menus={data} />;
+        return <Menus menus={data} user={data.user} />;
       case 'FOOD_CART':
-        return <FoodCart foodCart={data} />;
+        return <FoodCart foodCart={data} user={data.user} />;
       case 'SCHEDULES':
         return (
-          <Schedules schedules={data.schedules} foodCart={data.foodCart} />
+          <Schedules schedules={data.schedules} foodCart={data.foodCart} user={data.user} />
         );
       default:
         return '';
