@@ -8,6 +8,7 @@ export default function DayCard({
   year,
   month,
   lightBorder,
+  onClick,
 }) {
   const daysThisMonth = daysInMonth(month + 1, year);
   const getRealDayOfMonth = () => {
@@ -19,6 +20,7 @@ export default function DayCard({
   getRealDayOfMonth(0);
   return (
     <div
+      onClick={onClick ? onClick : () => {}}
       className={`DayCard ${today ? 'green-back' : ''} ${
         lightBorder && 'light-border'
       }`}>

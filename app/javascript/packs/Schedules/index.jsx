@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import DayCard from './DayCard';
+import DetailedSchedule from './DetailedSchedule';
 
 export const MONTHS = [
   'JANUARY',
@@ -15,121 +16,115 @@ export const MONTHS = [
   'NOVEMBER',
   'DECEMBER',
 ];
-const DAYS_OF_WEEK = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
+export const DAYS_OF_WEEK = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
 
 const Schedules = ({ schedules, foodCart }) => {
-  const timeRegex = /(?<=T)\d\d:\d\d(?=.)/;
   const date = new Date();
   const year = date.getFullYear();
-  const month = MONTHS[date.getMonth()];
-  const dayOfWeek = DAYS_OF_WEEK[date.getDay()];
-  const dayOfMonth = date.getDate();
+  const [month, setMonth] = useState(MONTHS[date.getMonth()]);
+  const [dayOfWeek, setDayOfWeek] = useState(DAYS_OF_WEEK[date.getDay()]);
+  const [dayOfMonth, setDayOfMonth] = useState(date.getDate());
+  const [viewingNextWeek, setViewingNextWeek] = useState(false);
   const daysThisMonth = daysInMonth(date.getMonth() + 1, year);
   const getCalendarCards = () => {
     const cards = [];
     for (let i = 0; i < 7; i++) {
-      const myDayOfMonth = i - date.getDay() + dayOfMonth;
+      let myDayOfMonth = i - DAYS_OF_WEEK.indexOf(dayOfWeek) + dayOfMonth;
+      if (myDayOfMonth > daysThisMonth) {
+        myDayOfMonth = myDayOfMonth - daysThisMonth;
+      }
+      const myDayOfWeek = DAYS_OF_WEEK[i];
       cards.push(
         <DayCard
-          dayOfWeek={DAYS_OF_WEEK[i]}
+          dayOfWeek={myDayOfWeek}
           dayOfMonth={myDayOfMonth}
           key={i}
           year={year}
           month={date.getMonth()}
           today={dayOfMonth === myDayOfMonth ? true : false}
+          onClick={() => {
+            setDayOfMonth(myDayOfMonth);
+            setDayOfWeek(myDayOfWeek);
+          }}
         />
       );
     }
     return cards;
   };
 
-  const getScheduleDataForDay = (m, d) => {
-    const scheduleForDay = [];
-    schedules.forEach((schedule) => {
-      const arr = schedule.date.split('-');
-      const y = parseInt(arr[0]);
-      const myMonth = parseInt(arr[1]);
-      const myDay = parseInt(arr[2].substring(0, 2));
-      if (myMonth === m && myDay === d && y === year) {
-        scheduleForDay.push(schedule);
-      }
-    });
-    return scheduleForDay;
-  };
-
-  const getDetailedTimeInfo = (m, d) => {
-    return getScheduleDataForDay(m, d).map((timeSlot, index) => (
-      <div key={index} className='detailed-time-info flex-row'>
-        <div className='flex-column'>
-          <p>{timeSlot.start_time.match(timeRegex)}</p>
-          <p>{timeSlot.end_time.match(timeRegex)}</p>
-        </div>
-        <div className='place-info flex-row'>{timeSlot.location}</div>
-      </div>
-    ));
-  };
-  console.log(schedules);
+  console.log('$$THESE ARE THE SCHEDULES$$', schedules);
   return (
     <div className='Schedules'>
       <div className='top-calendar'>
         <div>WEEKLY SCHEDULE</div>
         <h2>{foodCart.name}</h2>
-        <div style={{ justifyContent: 'center', display: 'flex' }}>
-          <div className='seperator' />
-        </div>
         <div
           style={{
+            justifyContent: 'center',
             display: 'flex',
-            width: '100%',
-            justifyContent: 'space-evenly',
-            marginTop: '16px',
-            marginBottom: '16px',
+            alignItems: 'center',
+            flexDirection: 'column',
           }}>
+          <div className='seperator' />
+          <div className='month-btn-container'>
+            <button
+              className='next-week-btn'
+              onClick={() => {
+                if (viewingNextWeek) {
+                  setDayOfMonth(date.getDate());
+                  setDayOfWeek(DAYS_OF_WEEK[date.getDay()]);
+                  setMonth(MONTHS[date.getMonth()]);
+                  setViewingNextWeek(false);
+                }
+              }}>
+              ˂
+            </button>
+            <div className='month-name'>{month}</div>
+            <button
+              className='next-week-btn'
+              onClick={() => {
+                if (!viewingNextWeek) {
+                  setDayOfMonth(dayOfMonth + 7);
+                  setViewingNextWeek(true);
+                  if (dayOfMonth + 7 > daysThisMonth) {
+                    const nextMonth = MONTHS[date.getMonth() + 1];
+                    setMonth(nextMonth ? nextMonth : MONTHS[0]);
+                  }
+                }
+              }}>
+              ˃
+            </button>
+          </div>
+        </div>
+        <div className='calendar-cards-container'>
           {getCalendarCards().map((card) => card)}
         </div>
       </div>
       <div className='detailed-schedules'>
-        <div className='detailed-schedule today'>
-          <DayCard
-            dayOfWeek={dayOfWeek}
-            dayOfMonth={dayOfMonth}
-            year={year}
-            month={month}
-            today={true}
-          />
-          <div className='divider green-back' />
-          <div className='times-container green-text'>
-            {getDetailedTimeInfo(MONTHS.indexOf(month) + 1, dayOfMonth)}
-          </div>
-        </div>
-        <div className='detailed-schedule tomorrow'>
-          <DayCard
-            dayOfWeek={DAYS_OF_WEEK[date.getDay() + 1]}
-            dayOfMonth={dayOfMonth + 1}
-            year={year}
-            month={month}
-            today={false}
-            lightBorder={true}
-          />
-          <div className='divider tan-back' />
-          <div className='times-container'>
-            {getDetailedTimeInfo(MONTHS.indexOf(month) + 1, dayOfMonth + 1)}
-          </div>
-        </div>
-        <div className='detailed-schedule asatte'>
-          <DayCard
-            dayOfWeek={DAYS_OF_WEEK[date.getDay() + 2]}
-            dayOfMonth={dayOfMonth + 2}
-            year={year}
-            month={month}
-            today={false}
-            lightBorder={true}
-          />
-          <div className='divider tan-back' />
-          <div className='times-container'>
-            {getDetailedTimeInfo(MONTHS.indexOf(month) + 1, dayOfMonth + 2)}
-          </div>
-        </div>
+        <DetailedSchedule
+          schedules={schedules}
+          dayOfWeek={dayOfWeek}
+          dayOfMonth={dayOfMonth}
+          year={year}
+          month={month}
+          isToday={true}
+        />
+        <DetailedSchedule
+          schedules={schedules}
+          dayOfWeek={DAYS_OF_WEEK[date.getDay() + 1]}
+          dayOfMonth={dayOfMonth + 1}
+          year={year}
+          month={month}
+          isToday={false}
+        />
+        <DetailedSchedule
+          schedules={schedules}
+          dayOfWeek={DAYS_OF_WEEK[date.getDay() + 2]}
+          dayOfMonth={dayOfMonth + 2}
+          year={year}
+          month={month}
+          isToday={false}
+        />
       </div>
     </div>
   );

@@ -8,8 +8,15 @@
   .seperator {
     height: 2px;
     width: 90%;
-    border-radius: 50%;
-    background-color: gray;
+    border-radius: 8px;
+    background-color: $green;
+  }
+  .calendar-cards-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    margin-top: 16px;
+    margin-bottom: 16px;
   }
   .DayCard {
     border-radius: 8px;
@@ -20,6 +27,8 @@
     width: 50px;
     height: fit-content;
     padding: 8px;
+    margin-left: 4px;
+    margin-right: 4px;
     background-color: $white;
     .day-of-month {
       font-size: x-large;
@@ -62,9 +71,10 @@
     .place-info {
       border-radius: 6px;
       border-style: solid;
-      border-width: 1px;
+      border-width: 2px;
       margin-left: 16px;
       margin-bottom: 16px;
+      padding: 8px;
     }
   }
   .light-border {
@@ -76,12 +86,26 @@
   .green-text {
     color: $green;
   }
-  .tan-back {
-    background-color: $tan;
+  .month-btn-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    padding: 8px;
+    font-weight: 100;
+    .month-name {
+      font-size: 30px;
+    }
   }
 }
 .tan-border {
-  border-color: $tan;
+  border-color: #f3d7b9;
+}
+.tan-back {
+  background-color: #f3d7b9;
+}
+.green-border {
+  border-color: $green;
 }
 
 .flex-column {
@@ -93,4 +117,20 @@
   width: 100%;
   display: flex;
   flex-direction: row;
+}
+
+.next-week-btn {
+  background-color: transparent;
+  border-style: none;
+  font-size: 40px;
+  color: $green;
+}
+
+@media only screen and (max-width: 600px) {
+  .DayCard {
+    max-width: 42px;
+  }
+  .calendar-cards-container {
+    overflow-y: scroll;
+  }
 }
