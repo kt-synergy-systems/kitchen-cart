@@ -1,0 +1,68 @@
+.search-bar {
+  color: rgba(0, 0, 0, 0.05);
+  background-color: $white;
+  border: 0px;
+  padding: 2em;
+  margin: 0 auto;
+}
+
+.form {
+  display: flex;
+  flex-wrap: wrap;
+  width: 85%;
+  margin: 0 auto;
+}
+
+input[type="search"] {
+  border: none;
+  whitespace: wrap;
+  border-radius: 5px 0px 0px 5px;
+	background: #E9E9E9;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	padding: 0.35em 0.75em;
+	border: none;
+	font-size: 1.1em;
+	text-decoration: none;
+	line-height: normal;
+	max-height: 3em;
+  flex: 2 0 250px;
+}
+
+input[type="search"]:focus {
+  background: $white;
+  outline: none;
+}
+
+.search-button {
+  flex: 1 0 90px;
+  max-height: 3em;
+  font-size: 1.1em;
+  text-transform: uppercase;
+  border-radius: 0px 5px 5px 0px;
+	background: skyblue;
+  color: white;
+  border: none;
+  padding: 0.35em 0.75em;
+  cursor: pointer;
+}
+
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+@media (max-width: 450px) {
+  .search-button {
+    border-radius: 5px;
+  }
+  input[type="search"] {
+    border-radius: 5px;
+  }
+}
