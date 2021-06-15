@@ -36,6 +36,8 @@ const FoodCarts = ({ foodCarts, markers, schedules, user, votes }) => {
     }
   }, [userLatitude && userLongitude]);
 
+  console.log('SCHEDULES', schedules);
+
   useEffect(() => {
     if (!worldMap) {
       mapboxgl.accessToken = process.env.MAPBOX_API_KEY;
@@ -48,6 +50,18 @@ const FoodCarts = ({ foodCarts, markers, schedules, user, votes }) => {
       setWorldMap(map);
     }
   }, []);
+
+  const getMySchedules = (myId) => {
+    const mySchedules = [];
+    if (schedules) {
+      schedules.forEach((sched) => {
+        if (sched.food_cart_id === myId) {
+          mySchedules.push(sched);
+        }
+      });
+    }
+    return mySchedules;
+  };
 
   return (
     <div className='FoodCarts'>
@@ -63,7 +77,10 @@ const FoodCarts = ({ foodCarts, markers, schedules, user, votes }) => {
           )
       )}
       <div className='location-button-container'>
-        <button className='location-button' onClick={geoLocate}>Find Food Carts Near Me</button>{' '}</div>
+        <button className='location-button' onClick={geoLocate}>
+          Find Food Carts Near Me
+        </button>{' '}
+      </div>
       <div className='FoodCartCard'>
         {/* list all food carts */}
         {foodCarts.map((cart, index) => {
@@ -77,7 +94,7 @@ const FoodCarts = ({ foodCarts, markers, schedules, user, votes }) => {
               description={cart.cart_description}
               open={cart.open}
               url={`/food_carts/${cart.id}`}
-              schedule={schedules[index]}
+              schedules={getMySchedules(cart.id)}
             />
           );
         })}
