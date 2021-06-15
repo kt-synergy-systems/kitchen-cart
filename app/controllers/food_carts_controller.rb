@@ -76,9 +76,9 @@ class FoodCartsController < ApplicationController
 
 
   def upvote
-     @foodcart.upvote_from current_user
-     redirect food_carts_path
-   end
+     @food_cart.upvote_from current_user
+     render json: @food_cart.to_json
+  end
 
   private
 

@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     end
     resources :schedules
     member do
-      put "like" => "foodcarts#upvote"
+      put "like" => "food_carts#upvote"
     end
   end
 
