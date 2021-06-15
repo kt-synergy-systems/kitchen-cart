@@ -28,4 +28,9 @@ class FoodCartPolicy < ApplicationPolicy
   def destroy?
     @user.role == 'admin'
   end
+
+  def upvote?
+    true
+  end
+  
 end
