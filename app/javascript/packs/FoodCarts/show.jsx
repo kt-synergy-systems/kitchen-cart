@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import getFoodItemCard from '../Helper/getFoodItemCard';
 
-const FoodCart = ({ foodCart }) => {
+const FoodCart = ({ foodCart, user }) => {
   console.log('HEEEEEEEEEEEEEEEEY', foodCart);
   const [userSelection, setUserSelection] = useState(null);
   const [filledIn, setFilledIn] = useState(false);

@@ -4,7 +4,8 @@ import mapboxgl from '!mapbox-gl';
 import Marker from './marker';
 import Search from './search';
 
-const FoodCarts = ({ foodCarts, markers, schedules }) => {
+const FoodCarts = ({ foodCarts, markers, schedules, user, votes }) => {
+  console.log(votes);
   // foodCarts = @food_carts variable from rails controller
   const mapContainer = useRef();
   const [worldMap, setWorldMap] = useState(null);

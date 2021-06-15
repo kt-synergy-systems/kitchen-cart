@@ -7,7 +7,7 @@ class FoodCartsController < ApplicationController
     else
       @food_carts = policy_scope(FoodCart)
     end
-
+    @votes = current_user.get_voted @food_carts
     @schedules = []
     @markers = []
     @food_carts.map do |food_cart|
@@ -76,8 +76,8 @@ class FoodCartsController < ApplicationController
 
 
   def upvote
-     @food_cart.upvote_from current_user
-     render json: @food_cart.to_json
+    @food_cart.upvote_from current_user
+    render json: @food_cart.to_json
   end
 
   private
