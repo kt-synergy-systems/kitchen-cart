@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import FoodCartCard from './foodCartCard';
 import mapboxgl from '!mapbox-gl';
 import Marker from './marker';
+import Search from './search';
 
 const FoodCarts = ({ foodCarts, markers, schedules, user, votes }) => {
   console.log(votes);
@@ -65,6 +66,7 @@ const FoodCarts = ({ foodCarts, markers, schedules, user, votes }) => {
 
   return (
     <div className='FoodCarts'>
+      <Search/>
       <div
         className='map-container'
         ref={mapContainer}
