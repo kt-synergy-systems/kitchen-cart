@@ -1,17 +1,16 @@
 import React, { useState, useEffect } from 'react';
+import { getCurrentSchedule } from './foodCartIsOpen';
+import { getDirections } from './getDirections';
 import getFoodItemCard from '../Helper/getFoodItemCard';
 
 const FoodCart = ({ foodCart, user }) => {
-  console.log('HEEEEEEEEEEEEEEEEY', foodCart);
   const [userSelection, setUserSelection] = useState(null);
   const [filledIn, setFilledIn] = useState(false);
   const schedules = foodCart.schedules;
   const menu = foodCart.menu;
   const foodItems = foodCart.food_items;
-  console.log(foodItems);
-  useEffect(() => {
-    console.log(userSelection);
-  }, [userSelection]);
+
+  const currentSchedule = getCurrentSchedule(schedules);
   const handleUpVote = async () => {
     const res = await fetch(`/food_carts/${foodCart.id}/like`, {
       method: 'PUT',
@@ -28,6 +27,7 @@ const FoodCart = ({ foodCart, user }) => {
     }
     console.log(res, data);
   };
+
   return (
     <div className='FoodCart'>
       <img
@@ -50,7 +50,14 @@ const FoodCart = ({ foodCart, user }) => {
           <a href={`/food_carts/${foodCart.id}/schedules`}>
             <i className='far fa-calendar-alt'></i>
           </a>{' '}
-          &nbsp; <i className='fas fa-map-marker-alt'></i>
+          &nbsp;{' '}
+          <i
+            className='fas fa-map-marker-alt cursor-pointer'
+            onClick={() => {
+              if (currentSchedule) {
+                getDirections(currentSchedule);
+              }
+            }}></i>
         </h4>
       </div>
       <div className='foodcart-intro'>
