@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { getCurrentSchedule } from './foodCartIsOpen';
 import { getDirections } from './getDirections';
-const date = new Date();
+
 const FoodCartCard = ({
   name,
   url,
@@ -16,11 +16,19 @@ const FoodCartCard = ({
   return (
     <div className='food_cart-card'>
       <div className='food_cart-image'>
-        {currentSchedule && (
+        {currentSchedule ? (
           <div
             className='location-tag cursor-pointer'
             onClick={() => getDirections(currentSchedule)}>
             <i className='fas fa-map-marker-alt'></i> {currentSchedule.location}
+          </div>
+        ) : (
+          <div
+            className='location-tag cursor-pointer'
+            onClick={() => {
+              window.open(`http://localhost:3000/food_carts/${id}/schedules`);
+            }}>
+            Sorry, we're closed.
           </div>
         )}
         <img
