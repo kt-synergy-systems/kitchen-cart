@@ -13,6 +13,7 @@ class FoodCart < ApplicationRecord
   validates :category, presence: true
   # validates :open, default: false
   validates :cart_description, presence: true
+  validates :phone_number, presence: true
 
   include PgSearch::Model
   pg_search_scope :search_by_name_location_category,
