@@ -2,6 +2,7 @@
 <div class="container m-5 p-4">
   <%= simple_form_for [ @food_cart ] do |f| %>
     <%= f.input :name, label:"Food Cart Name" %>
+    <%= f.input :phone_number, label:"Phone Number" %>
     <%= f.input :category, label:"Food Category" %>
     <%= f.input :cart_description, label:"Food Cart Description" %>
     <%= f.input :photo, as: :file, label:"Photo Upload" %>
