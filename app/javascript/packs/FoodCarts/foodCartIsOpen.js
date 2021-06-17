@@ -18,12 +18,9 @@ const getCurrentOpenHours = (scheduleForToday) => {
   return currentOpenSchedule;
 };
 
-const getScheduleForToday = (schedules) => {
-  schedules.filter((sched) => sched.date === today);
-  return schedules;
-};
+const getSchedForToday = (scheds) => scheds.filter((s) => s.date === today);
 
 export const getCurrentSchedule = (schedules) => {
-  const scheduleForToday = getScheduleForToday(schedules);
+  const scheduleForToday = getSchedForToday(schedules);
   return getCurrentOpenHours(scheduleForToday);
 };

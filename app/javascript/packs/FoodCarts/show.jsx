@@ -51,13 +51,15 @@ const FoodCart = ({ foodCart, user }) => {
             <i className='far fa-calendar-alt'></i>
           </a>{' '}
           &nbsp;{' '}
-          <i
-            className='fas fa-map-marker-alt cursor-pointer'
-            onClick={() => {
-              if (currentSchedule) {
-                getDirections(currentSchedule);
-              }
-            }}></i>
+          {currentSchedule && (
+            <i
+              className='fas fa-map-marker-alt cursor-pointer'
+              onClick={() => {
+                if (currentSchedule) {
+                  getDirections(currentSchedule);
+                }
+              }}></i>
+          )}
         </h4>
       </div>
       <div className='foodcart-intro'>
