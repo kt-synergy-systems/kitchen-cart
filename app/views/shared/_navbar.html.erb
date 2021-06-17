@@ -8,6 +8,10 @@
     <div class="hamburger-slice"></div>
     <div class="hamburger-slice"></div>
   </div>
+  <%if current_user%>
+    <%= link_to 'Create New Food Cart', new_food_cart_path %>
+  <%end%>
+
 </div>
 
 <script>

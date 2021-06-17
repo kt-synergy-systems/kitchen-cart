@@ -11,6 +11,7 @@ const FoodCarts = ({ foodCarts, markers, schedules, user, votes }) => {
   const [worldMap, setWorldMap] = useState(null);
   const [userLatitude, setUserLatitude] = useState(null);
   const [userLongitude, setUserLongitude] = useState(null);
+  const [showOnlyMyFoodCarts, setShowOnlyMyFoodCarts] = useState(false);
   const geoLocate = () => {
     if (!navigator.geolocation) {
       alert(
@@ -66,7 +67,7 @@ const FoodCarts = ({ foodCarts, markers, schedules, user, votes }) => {
 
   return (
     <div className='FoodCarts'>
-      <Search/>
+      <Search />
       <div
         className='map-container'
         ref={mapContainer}
@@ -82,23 +83,50 @@ const FoodCarts = ({ foodCarts, markers, schedules, user, votes }) => {
         <button className='location-button' onClick={geoLocate}>
           Find Food Carts Near Me
         </button>{' '}
+        <button
+          className='location-button'
+          onClick={() => {
+            showOnlyMyFoodCarts
+              ? setShowOnlyMyFoodCarts(false)
+              : setShowOnlyMyFoodCarts(true);
+          }}>
+          {!showOnlyMyFoodCarts ? 'Food Carts I Own' : 'Show All Food Carts'}
+        </button>
       </div>
       <div className='FoodCartCard'>
         {/* list all food carts */}
         {foodCarts.map((cart, index) => {
           console.log(cart);
-          return (
-            <FoodCartCard
-              key={index}
-              id={cart.id}
-              category={cart.category}
-              name={cart.name}
-              description={cart.cart_description}
-              open={cart.open}
-              url={`/food_carts/${cart.id}`}
-              schedules={getMySchedules(cart.id)}
-            />
-          );
+          console.log(user, 'USER');
+          if (showOnlyMyFoodCarts && cart.user_id === user.id) {
+            return (
+              <FoodCartCard
+                key={index}
+                id={cart.id}
+                category={cart.category}
+                name={cart.name}
+                description={cart.cart_description}
+                open={cart.open}
+                url={`/food_carts/${cart.id}`}
+                schedules={getMySchedules(cart.id)}
+                isEdit={true}
+              />
+            );
+          } else if (!showOnlyMyFoodCarts) {
+            return (
+              <FoodCartCard
+                key={index}
+                id={cart.id}
+                category={cart.category}
+                name={cart.name}
+                description={cart.cart_description}
+                open={cart.open}
+                url={`/food_carts/${cart.id}`}
+                schedules={getMySchedules(cart.id)}
+                isEdit={false}
+              />
+            );
+          }
         })}
       </div>
     </div>
