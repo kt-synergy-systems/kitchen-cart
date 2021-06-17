@@ -53,7 +53,9 @@ const FoodCartCard = ({
           ) : (
             <i className='fas fa-heart'></i>
           )}
-
+          <a href={`/food_carts/${id}/schedules`}>
+            <i className='far fa-calendar-alt'></i>
+          </a>{' '}
           {isEdit && (
             <a href={`/food_carts/${id}/edit`}>
               <i className='fas fa-edit'></i>
