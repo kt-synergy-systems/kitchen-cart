@@ -6,11 +6,18 @@ import Menus from './Menus/index';
 import Schedules from './Schedules/index';
 
 const MainTemplate = ({ data, contentType }) => {
-  console.log(data, contentType);
+  console.log(data, 'ASDFASDFDFSDAF');
   const getCurrentPage = () => {
     switch (contentType) {
       case 'FOOD_CARTS':
-        return <FoodCarts foodCarts={data.food_carts} markers={data.markers} schedules={data.schedules} user={data.user} />;
+        return (
+          <FoodCarts
+            foodCarts={data.food_carts}
+            markers={data.markers}
+            schedules={data.schedules}
+            user={data.user}
+          />
+        );
       case 'HOME':
         return <Home />;
       case 'MENUS':
@@ -19,7 +26,11 @@ const MainTemplate = ({ data, contentType }) => {
         return <FoodCart foodCart={data} user={data.user} />;
       case 'SCHEDULES':
         return (
-          <Schedules schedules={data.schedules} foodCart={data.foodCart} user={data.user} />
+          <Schedules
+            schedules={data.schedules}
+            foodCart={data.foodCart}
+            user={data.user}
+          />
         );
       default:
         return '';

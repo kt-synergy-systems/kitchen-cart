@@ -1,2 +1,2 @@
 <%# Map for the food carts %>
-<%= render partial: 'shared/react_entry', locals: {data: {food_carts: @food_carts, markers: @markers, schedules: @schedules}.to_json, content_type: "FOOD_CARTS", search: @search} %>
+<%= render partial: 'shared/react_entry', locals: {data: {food_carts: @food_carts, markers: @markers, schedules: @schedules, user: current_user}.to_json, content_type: "FOOD_CARTS", search: @search} %>

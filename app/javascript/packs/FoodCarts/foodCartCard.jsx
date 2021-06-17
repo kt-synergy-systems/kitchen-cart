@@ -10,6 +10,7 @@ const FoodCartCard = ({
   schedules,
   id,
   likedByUser,
+  isEdit,
 }) => {
   const currentSchedule = getCurrentSchedule(schedules);
 
@@ -36,6 +37,7 @@ const FoodCartCard = ({
           alt='Food Cart'
         />
       </div>
+
       <div className='food_cart-content'>
         <div className='d-flex'>
           <div className='food-cart-name'>
@@ -50,6 +52,12 @@ const FoodCartCard = ({
             <i className='far fa-heart'></i>
           ) : (
             <i className='fas fa-heart'></i>
+          )}
+
+          {isEdit && (
+            <a href={`/food_carts/${id}/edit`}>
+              <i className='fas fa-edit'></i>
+            </a>
           )}
         </div>
         <p className='card-description'>{description}</p>
