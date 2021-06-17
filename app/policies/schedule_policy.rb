@@ -16,8 +16,7 @@ class SchedulePolicy < ApplicationPolicy
     end
 
     def create?
-      @user.role == 'admin' || @user.role == 'employee'
-      # user == record.user
+      user == record.user
     end
 
     def show?
@@ -25,13 +24,11 @@ class SchedulePolicy < ApplicationPolicy
     end
 
     def update?
-      @user.role == 'admin' || @user.role == 'employee'
-      # user == record.user
+     user == record.user
     end
 
     def destroy
-      @user.role == 'admin' || @user.role == 'employee'
-      # user == record.user
+      user == record.user
     end
 
   end
