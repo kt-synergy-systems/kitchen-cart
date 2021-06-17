@@ -134,3 +134,13 @@
     overflow-y: scroll;
   }
 }
+
+.schedule-header{
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.add-schedule {
+  color: $red;
+}

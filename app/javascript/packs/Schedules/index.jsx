@@ -56,7 +56,10 @@ const Schedules = ({ schedules, foodCart, user }) => {
   return (
     <div className='Schedules'>
       <div className='top-calendar'>
-        <div>WEEKLY SCHEDULE</div>
+        <div className='schedule-header'>
+          <div>WEEKLY SCHEDULE</div>
+          <a className='add-schedule' href={`/food_carts/${foodCart.id}/schedules/new`}>+ ADD SCHEDULE</a>
+        </div>
         <h2>{foodCart.name}</h2>
         <div
           style={{
@@ -66,6 +69,7 @@ const Schedules = ({ schedules, foodCart, user }) => {
             flexDirection: 'column',
           }}>
           <div className='seperator' />
+
           <div className='month-btn-container'>
             <button
               className='next-week-btn'
