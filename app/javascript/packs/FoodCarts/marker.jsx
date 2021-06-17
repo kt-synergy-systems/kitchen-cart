@@ -3,7 +3,6 @@ import mapboxgl from '!mapbox-gl';
 import markerIcon from '../../../assets/images/food-cart.png';
 
 const Marker = ({ worldMap, foodCart }) => {
-  console.log(foodCart, '🎅');
   useEffect(() => {
     const onClick = () => {
       window.location = `/food_carts/${foodCart.id}`;
