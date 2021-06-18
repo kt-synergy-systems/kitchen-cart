@@ -1,2 +1,2 @@
 
-<%= render partial: 'shared/react_entry', locals: {data: {schedules: @schedules, foodCart: @food_cart}.to_json, content_type: "SCHEDULES"} %>
+<%= render partial: 'shared/react_entry', locals: {data: {schedules: @schedules, foodCart: @food_cart, user: current_user}.to_json, content_type: "SCHEDULES"} %>

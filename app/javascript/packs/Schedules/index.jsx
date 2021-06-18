@@ -58,7 +58,14 @@ const Schedules = ({ schedules, foodCart, user }) => {
       <div className='top-calendar'>
         <div className='schedule-header'>
           <div>WEEKLY SCHEDULE</div>
-          <a className='add-schedule' href={`/food_carts/${foodCart.id}/schedules/new`}>+ ADD SCHEDULE</a>
+          {user.id === foodCart.user_id && (
+            <a
+              className='add-schedule'
+              href={`/food_carts/${foodCart.id}/schedules/new`}>
+              + ADD SCHEDULE{' '}
+              {console.log(user.id, foodCart.user_id, 'FRIED PLUTONIUM')}
+            </a>
+          )}
         </div>
         <h2>{foodCart.name}</h2>
         <div
