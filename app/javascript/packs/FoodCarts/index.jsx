@@ -1,8 +1,8 @@
 import React, { useEffect, useState, useRef } from 'react';
 import FoodCartCard from './FoodCartCard';
 import mapboxgl from '!mapbox-gl';
-import Marker from './Marker';
-import Search from './Search';
+import Marker from './marker';
+import Search from './search';
 import MapFoodCartCard from './MapFoodCartCard';
 import { getCurrentSchedule } from './foodCartIsOpen';
 
