@@ -52,7 +52,6 @@ const Schedules = ({ schedules, foodCart, user }) => {
     return cards;
   };
 
-  console.log('$$THESE ARE THE SCHEDULES$$', schedules);
   return (
     <div className='Schedules'>
       <div className='top-calendar'>
@@ -63,7 +62,6 @@ const Schedules = ({ schedules, foodCart, user }) => {
               className='add-schedule'
               href={`/food_carts/${foodCart.id}/schedules/new`}>
               + ADD SCHEDULE{' '}
-              {console.log(user.id, foodCart.user_id, 'FRIED PLUTONIUM')}
             </a>
           )}
         </div>

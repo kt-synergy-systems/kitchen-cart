@@ -1,12 +1,11 @@
 import React from 'react';
 import Home from './Pages/Home';
 import FoodCarts from './FoodCarts/index';
-import FoodCart from './FoodCarts/show';
+import FoodCart from './FoodCarts/Show';
 import Menus from './Menus/index';
 import Schedules from './Schedules/index';
 
 const MainTemplate = ({ data, contentType }) => {
-  console.log(data, 'ASDFASDFDFSDAF');
   const getCurrentPage = () => {
     switch (contentType) {
       case 'FOOD_CARTS':
