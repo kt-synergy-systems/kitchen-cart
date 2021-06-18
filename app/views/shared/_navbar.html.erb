@@ -2,15 +2,19 @@
   <div class="nav-bar-links">
     <%= link_to 'Home', root_path %>
     <%= link_to 'Food Carts', food_carts_path %>
+    <%if current_user%>
+      <%= link_to 'Create New Food Cart', new_food_cart_path %>
+      <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+    <% else %>
+      <%= link_to "Sign Up", new_user_registration_path %>
+      <%= link_to "Sign In", new_user_session_path %>
+  <%end%>
   </div>
   <div class="hamburger">
     <div class="hamburger-slice"></div>
     <div class="hamburger-slice"></div>
     <div class="hamburger-slice"></div>
   </div>
-  <%if current_user%>
-    <%= link_to 'Create New Food Cart', new_food_cart_path %>
-  <%end%>
 
 </div>
 
@@ -19,20 +23,23 @@ var stuff = ['hamburger', 'hamburger-slice'];
 var navOut = false;
 const burg = document.querySelector('.hamburger');
 const links = document.querySelector('.nav-bar-links');
+const setLinksToTop = () => {
+  navOut = false;
+  links.style.top = `-${links.getBoundingClientRect().height}px`;
+};
 burg.addEventListener('click', function() {
   if (!navOut){
     navOut = true;
     links.style.top = '60px';
   }else{
-    navOut = false;
-    links.style.top = '-100px';
+    setLinksToTop();
   }
 })
 document.addEventListener('click', function(e){
   if (!stuff.includes(e.target.className)){
-    links.style.top = '-100px';
-    navOut = false;
+    setLinksToTop();
   }
 });
+document.addEventListener('resize', setLinksToTop)
 </script>
 
