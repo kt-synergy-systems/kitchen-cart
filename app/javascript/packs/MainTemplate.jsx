@@ -12,7 +12,6 @@ const MainTemplate = ({ data, contentType }) => {
         return (
           <FoodCarts
             foodCarts={data.food_carts}
-            markers={data.markers}
             schedules={data.schedules}
             user={data.user}
           />

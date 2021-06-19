@@ -9,20 +9,11 @@ class FoodCartsController < ApplicationController
     end
     @votes = current_user.get_voted @food_carts
     @schedules = []
-    @markers = []
     @food_carts.map do |food_cart|
       food_cart.schedules.each do |schedule|
         @schedules << schedule
-        if schedule.date == Date.today
-          @markers << {
-            lat: schedule.latitude,
-            lng: schedule.longitude,
-            id: food_cart.id
-          }
-        end
       end
     end
-    @markers
   end
 
   def show
