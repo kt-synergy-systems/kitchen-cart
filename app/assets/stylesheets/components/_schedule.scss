@@ -135,7 +135,7 @@
   }
 }
 
-.schedule-header{
+.schedule-header {
   display: flex;
   justify-content: space-between;
   padding: 10px;
@@ -143,4 +143,24 @@
 
 .add-schedule {
   color: $red;
+}
+
+.new-schedule {
+  input[type='text'] {
+    border-radius: 8px;
+    font-size: 16px;
+    border-width: 1px;
+  }
+  .search-button {
+    border-radius: 8px;
+  }
+  .simple-form-container {
+    max-width: 800px;
+  }
+  .top-container {
+    padding: 16px;
+  }
+  .bottom-container {
+    padding: 16px;
+  }
 }
