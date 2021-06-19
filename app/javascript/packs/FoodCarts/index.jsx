@@ -6,7 +6,7 @@ import Search from './search';
 import MapFoodCartCard from './MapFoodCartCard';
 import { getCurrentSchedule } from './foodCartIsOpen';
 
-const FoodCarts = ({ foodCarts, markers, schedules, user, votes }) => {
+const FoodCarts = ({ foodCarts, schedules, user, votes }) => {
   const mapContainer = useRef();
   const [worldMap, setWorldMap] = useState(null);
   const [userLatitude, setUserLatitude] = useState(null);
@@ -16,15 +16,18 @@ const FoodCarts = ({ foodCarts, markers, schedules, user, votes }) => {
   const [currentMapCardCart, setCurrentMapCardCart] = useState(null);
   const [currentMapCardSchedule, setCurrentMapCardSchedule] = useState(null);
   let allClosedFoodCarts = [];
+  let allOpenSchedules = [];
   let allOpenFoodCarts = [];
   foodCarts.map((fc) => {
     const myScheds = schedules.filter((s) => s.food_cart_id === fc.id);
     if (getCurrentSchedule(myScheds)) {
+      allOpenSchedules.push(getCurrentSchedule(myScheds));
       allOpenFoodCarts.push(fc);
     } else {
       allClosedFoodCarts.push(fc);
     }
   });
+  console.log(allOpenFoodCarts);
   const geoLocate = () => {
     if (!navigator.geolocation) {
       alert(
@@ -90,20 +93,16 @@ const FoodCarts = ({ foodCarts, markers, schedules, user, votes }) => {
         ref={mapContainer}
         id='map'
         style={{ position: 'relative', height: '300px', width: '100vw' }}></div>
-      {markers.map((marker, index) => {
-        const mySched = getCurrentSchedule(
-          schedules.filter((s) => s.food_cart_id === marker.id)
-        );
-        if (worldMap && mySched) {
+      {allOpenSchedules.map((sched, index) => {
+        if (worldMap) {
           return (
             <Marker
               key={index}
               worldMap={worldMap}
-              foodCart={marker}
+              sched={sched}
               foodCarts={foodCarts}
               setMapCardOpened={setMapCardOpened}
               setCurrentMapCardCart={setCurrentMapCardCart}
-              mySched={mySched}
               setCurrentMapCardSchedule={setCurrentMapCardSchedule}
             />
           );

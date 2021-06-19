@@ -4,16 +4,16 @@ import markerIcon from '../../../assets/images/food-cart.png';
 
 const Marker = ({
   worldMap,
-  foodCart,
+  sched,
   foodCarts,
   setMapCardOpened,
   setCurrentMapCardCart,
   mySched,
   setCurrentMapCardSchedule,
 }) => {
-  const myFoodCart = foodCarts.filter((c) => c.id === foodCart.id)[0];
+  const myFoodCart = foodCarts.filter((c) => c.id === sched.food_cart_id)[0];
   useEffect(() => {
-    if (foodCart.lat && foodCart.lng) {
+    if (sched.latitude && sched.longitude) {
       const div = document.createElement('div');
       const label = document.createElement('div');
       div.className = 'marker';
@@ -41,7 +41,7 @@ const Marker = ({
       div.addEventListener('mouseenter', handleMouseEnter);
       div.addEventListener('mouseleave', handleMouseLeave);
       new mapboxgl.Marker(div)
-        .setLngLat([foodCart.lng, foodCart.lat])
+        .setLngLat([sched.longitude, sched.latitude])
         .addTo(worldMap);
       return () => {
         div.remove();
@@ -51,7 +51,7 @@ const Marker = ({
         div.removeEventListener('mouseleave', handleMouseLeave);
       };
     }
-  }, [foodCart]);
+  }, [sched]);
   return null;
 };
 
