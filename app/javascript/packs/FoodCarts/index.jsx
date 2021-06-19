@@ -87,11 +87,7 @@ const FoodCarts = ({ foodCarts, schedules, user, votes }) => {
         currentMapCardSchedule={currentMapCardSchedule}
       />
       <Search opened={mapCardOpened} />
-      <div
-        className='map-container'
-        ref={mapContainer}
-        id='map'
-        style={{ position: 'relative', height: '300px', width: '100vw' }}></div>
+      <div className='map-container' ref={mapContainer} id='map'></div>
       {allOpenSchedules.map((sched, index) => {
         if (worldMap) {
           return (

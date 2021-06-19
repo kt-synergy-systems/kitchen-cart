@@ -21,3 +21,9 @@
   transition: width 0.3s, opacity 0.3s;
   z-index: 100000;
 }
+
+#map {
+  position: relative;
+  height: 300px;
+  width: 100vw;
+}

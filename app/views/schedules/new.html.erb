@@ -1,10 +1,14 @@
 <h1>Schedule</h1>
+<p>Click on the map to pinpoint where your food cart will be.</p>
+<div id="map"></div>
 <div class="container m-5 p-4">
   <%= simple_form_for [ @food_cart, @schedule ] do |f| %>
     <%= f.input :location, label:"Location" %>
     <%= f.input :date, label:"Date" %>
     <%= f.input :start_time, label:"Open" %>
     <%= f.input :end_time, label:"Closed" %>
+    <%= f.input :latitude, :as => :hidden %>
+    <%= f.input :longitude, :as => :hidden %>
     <br>
     <br>
     <%= f.button :submit, label:"Create Schedule", class: "btn btn-primary" %>
@@ -13,3 +17,5 @@
 <script>
   window.schedule = "<%= @schedule.to_json %>"
 </script>
+
+<%= javascript_pack_tag 'Schedules/new' %>
