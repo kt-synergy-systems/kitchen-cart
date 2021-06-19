@@ -27,7 +27,6 @@ const FoodCarts = ({ foodCarts, schedules, user, votes }) => {
       allClosedFoodCarts.push(fc);
     }
   });
-  console.log(allOpenFoodCarts);
   const geoLocate = () => {
     if (!navigator.geolocation) {
       alert(
@@ -100,7 +99,7 @@ const FoodCarts = ({ foodCarts, schedules, user, votes }) => {
               key={index}
               worldMap={worldMap}
               sched={sched}
-              foodCarts={foodCarts}
+              myFoodCart={allOpenFoodCarts[index]}
               setMapCardOpened={setMapCardOpened}
               setCurrentMapCardCart={setCurrentMapCardCart}
               setCurrentMapCardSchedule={setCurrentMapCardSchedule}

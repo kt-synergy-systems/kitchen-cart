@@ -5,13 +5,11 @@ import markerIcon from '../../../assets/images/food-cart.png';
 const Marker = ({
   worldMap,
   sched,
-  foodCarts,
+  myFoodCart,
   setMapCardOpened,
   setCurrentMapCardCart,
-  mySched,
   setCurrentMapCardSchedule,
 }) => {
-  const myFoodCart = foodCarts.filter((c) => c.id === sched.food_cart_id)[0];
   useEffect(() => {
     if (sched.latitude && sched.longitude) {
       const div = document.createElement('div');
@@ -23,7 +21,7 @@ const Marker = ({
       const onClick = () => {
         setMapCardOpened(true);
         setCurrentMapCardCart(myFoodCart);
-        setCurrentMapCardSchedule(mySched);
+        setCurrentMapCardSchedule(sched);
         label.style.opacity = '0';
       };
       const handleMouseEnter = () => {
