@@ -1,21 +1,28 @@
-<h1>Schedule</h1>
-<p>Click on the map to pinpoint where your food cart will be.</p>
-<div id="map"></div>
-<div class="container m-5 p-4">
-  <%= simple_form_for [ @food_cart, @schedule ] do |f| %>
-    <%= f.input :location, label:"Location" %>
-    <%= f.input :date, label:"Date" %>
-    <%= f.input :start_time, label:"Open" %>
-    <%= f.input :end_time, label:"Closed" %>
-    <%= f.input :latitude, :as => :hidden %>
-    <%= f.input :longitude, :as => :hidden %>
-    <br>
-    <br>
-    <%= f.button :submit, label:"Create Schedule", class: "btn btn-primary" %>
-  <% end %>
+<div class="new-schedule">
+  <div class="top-container">
+    <h1>Schedule</h1>
+    <p>Drop a pin on the map to mark where your food cart will be.</p>
+    <form id="search-form">
+        <input type="text" id="search-input" name="search-input" placeholder="Search by area name">
+        <button class="search-button" id="search-btn">Search</button>
+    </form>
+  </div>
+  <div id="map"></div>
+  <div class="bottom-container">
+    <div class="simple-form-container">
+      <%= simple_form_for [ @food_cart, @schedule ] do |f| %>
+        <%= f.input :location, label:"Location" %>
+        <%= f.input :date, label:"Date" %>
+        <%= f.input :start_time, label:"Open" %>
+        <%= f.input :end_time, label:"Closed" %>
+        <%= f.input :latitude, :as => :hidden %>
+        <%= f.input :longitude, :as => :hidden %>
+        <br>
+        <br>
+        <%= f.button :submit, label:"Create Schedule", class: "btn btn-primary", id: "simple-form-btn" %>
+      <% end %>
+    </div>
+  </div>
 </div>
-<script>
-  window.schedule = "<%= @schedule.to_json %>"
-</script>
 
 <%= javascript_pack_tag 'Schedules/new' %>
