@@ -150,17 +150,27 @@
     border-radius: 8px;
     font-size: 16px;
     border-width: 1px;
+    background-color: transparent;
+    width: 100%;
   }
   .search-button {
     border-radius: 8px;
   }
   .simple-form-container {
-    max-width: 800px;
+    max-width: 600px;
   }
   .top-container {
     padding: 16px;
   }
   .bottom-container {
     padding: 16px;
+  }
+  input[type='datetime-local'] {
+    background-color: transparent;
+    border-radius: 8px;
+    border-color: gray;
+    border-style: solid;
+    border-width: 1px;
+    width: 100%;
   }
 }

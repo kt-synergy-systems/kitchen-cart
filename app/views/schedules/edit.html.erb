@@ -1,15 +1,2 @@
-<h1>Edit Schedule</h1>
-<div class="container m-5 p-4">
-  <%= simple_form_for [ @food_cart, @schedule ] do |f| %>
-    <%= f.input :location, label:"Location" %>
-    <%= f.input :date, label:"Date" %>
-    <%= f.input :start_time, label:"Open" %>
-    <%= f.input :end_time, label:"Closed" %>
-    <br>
-    <br>
-    <%= f.button :submit, label:"Create Schedule", class: "btn btn-primary" %>
-  <% end %>
-</div>
-<script>
-  window.schedule = "<%= @schedule.to_json %>"
-</script>
+<div id="data-div" data-data="<%={schedule: @schedule, food_cart: @food_cart}.to_json%>" hidden></div>
+<%= render partial: 'shared/schedule' %>

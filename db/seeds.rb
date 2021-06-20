@@ -83,8 +83,8 @@ puts "generating foodcarts, menus and schedules"
         latitude: 35.6812 + rand(-0.03..0.03),
         longitude: 139.7671 + rand(-0.03..0.03),
         date: date,
-        start_time: start_time,
-        end_time: (date + (16..24).to_a.sample.hours).strftime("%k:%M %p"),
+        start_time: date + (6..12).to_a.sample.hours,
+        end_time: date + (13..23).to_a.sample.hours,
         food_cart: food_cart
     })
   end
