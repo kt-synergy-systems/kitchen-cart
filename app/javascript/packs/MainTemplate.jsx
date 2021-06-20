@@ -14,6 +14,7 @@ const MainTemplate = ({ data, contentType }) => {
             foodCarts={data.food_carts}
             schedules={data.schedules}
             user={data.user}
+            votes={data.votes}
           />
         );
       case 'HOME':
@@ -21,7 +22,13 @@ const MainTemplate = ({ data, contentType }) => {
       case 'MENUS':
         return <Menus menus={data} user={data.user} />;
       case 'FOOD_CART':
-        return <FoodCart foodCart={data} user={data.user} />;
+        return (
+          <FoodCart
+            foodCart={JSON.parse(data.food_cart)}
+            user={data.user}
+            isLiked={data.is_liked}
+          />
+        );
       case 'SCHEDULES':
         return (
           <Schedules

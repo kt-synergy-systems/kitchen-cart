@@ -14,6 +14,8 @@ class FoodCartsController < ApplicationController
         @schedules << schedule
       end
     end
+    puts "**********************************************************"
+    p @votes
   end
 
   def show

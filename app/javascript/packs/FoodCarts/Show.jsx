@@ -3,12 +3,14 @@ import { getCurrentSchedule } from './foodCartIsOpen';
 import { getDirections } from './getDirections';
 import getFoodItemCard from '../Helper/getFoodItemCard';
 
-const FoodCart = ({ foodCart, user }) => {
+const FoodCart = ({ foodCart, user, isLiked }) => {
   const [userSelection, setUserSelection] = useState(null);
-  const [filledIn, setFilledIn] = useState(false);
+  const [filledIn, setFilledIn] = useState(isLiked ? true : false);
   const schedules = foodCart.schedules;
   const menu = foodCart.menu;
   const foodItems = foodCart.food_items;
+
+  console.log(foodCart, user, isLiked);
 
   const currentSchedule = getCurrentSchedule(schedules);
   const handleUpVote = async () => {
