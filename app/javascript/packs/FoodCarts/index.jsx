@@ -7,7 +7,6 @@ import MapFoodCartCard from './MapFoodCartCard';
 import { getCurrentSchedule } from './foodCartIsOpen';
 
 const FoodCarts = ({ foodCarts, schedules, user, votes }) => {
-  console.log(votes);
   const mapContainer = useRef();
   const [worldMap, setWorldMap] = useState(null);
   const [userLatitude, setUserLatitude] = useState(null);
@@ -16,18 +15,14 @@ const FoodCarts = ({ foodCarts, schedules, user, votes }) => {
   const [mapCardOpened, setMapCardOpened] = useState(false);
   const [currentMapCardCart, setCurrentMapCardCart] = useState(null);
   const [currentMapCardSchedule, setCurrentMapCardSchedule] = useState(null);
-  let allClosedFoodCarts = [];
-  let allOpenSchedules = [];
-  let allOpenFoodCarts = [];
-  foodCarts.map((fc) => {
-    const myScheds = schedules.filter((s) => s.food_cart_id === fc.id);
-    if (getCurrentSchedule(myScheds)) {
-      allOpenSchedules.push(getCurrentSchedule(myScheds));
-      allOpenFoodCarts.push(fc);
-    } else {
-      allClosedFoodCarts.push(fc);
-    }
-  });
+  const allClosedFoodCarts = [];
+  const allOpenLikedCarts = [];
+  const allClosedLikedCarts = [];
+  const allOpenNotLikedCarts = [];
+  const allClosedNotLikedCarts = [];
+  const allOpenSchedules = [];
+  const allOpenFoodCarts = [];
+
   const isLiked = (cart) => {
     if (votes && votes.length) {
       const likedCart = votes.filter((vote) => vote.id === cart.id)[0];
@@ -35,6 +30,26 @@ const FoodCarts = ({ foodCarts, schedules, user, votes }) => {
     }
     return false;
   };
+
+  foodCarts.map((fc) => {
+    const myScheds = schedules.filter((s) => s.food_cart_id === fc.id);
+    if (getCurrentSchedule(myScheds)) {
+      allOpenSchedules.push(getCurrentSchedule(myScheds));
+      allOpenFoodCarts.push(fc);
+      if (isLiked(fc)) {
+        allOpenLikedCarts.push(fc);
+      } else {
+        allOpenNotLikedCarts.push(fc);
+      }
+    } else {
+      if (isLiked(fc)) {
+        allClosedLikedCarts.push(fc);
+      } else {
+        allClosedNotLikedCarts.push(fc);
+      }
+      allClosedFoodCarts.push(fc);
+    }
+  });
 
   const geoLocate = () => {
     if (!navigator.geolocation) {
@@ -148,7 +163,22 @@ const FoodCarts = ({ foodCarts, schedules, user, votes }) => {
         })}
 
         {!showOnlyMyFoodCarts &&
-          allOpenFoodCarts.map((cart, index) => (
+          allOpenLikedCarts.map((cart, index) => (
+            <FoodCartCard
+              key={index}
+              id={cart.id}
+              category={cart.category}
+              name={cart.name}
+              description={cart.cart_description}
+              open={cart.open}
+              url={`/food_carts/${cart.id}`}
+              schedules={getMySchedules(cart.id)}
+              isEdit={cart.user_id === user.id ? true : false}
+              likedByUser={isLiked(cart)}
+            />
+          ))}
+        {!showOnlyMyFoodCarts &&
+          allOpenNotLikedCarts.map((cart, index) => (
             <FoodCartCard
               key={index}
               id={cart.id}
@@ -164,7 +194,22 @@ const FoodCarts = ({ foodCarts, schedules, user, votes }) => {
           ))}
 
         {!showOnlyMyFoodCarts &&
-          allClosedFoodCarts.map((cart, index) => (
+          allClosedLikedCarts.map((cart, index) => (
+            <FoodCartCard
+              key={index}
+              id={cart.id}
+              category={cart.category}
+              name={cart.name}
+              description={cart.cart_description}
+              open={cart.open}
+              url={`/food_carts/${cart.id}`}
+              schedules={getMySchedules(cart.id)}
+              isEdit={cart.user_id === user.id ? true : false}
+              likedByUser={isLiked(cart)}
+            />
+          ))}
+        {!showOnlyMyFoodCarts &&
+          allClosedNotLikedCarts.map((cart, index) => (
             <FoodCartCard
               key={index}
               id={cart.id}

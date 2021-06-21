@@ -10,8 +10,6 @@ const FoodCart = ({ foodCart, user, isLiked }) => {
   const menu = foodCart.menu;
   const foodItems = foodCart.food_items;
 
-  console.log(foodCart, user, isLiked);
-
   const currentSchedule = getCurrentSchedule(schedules);
   const handleUpVote = async () => {
     const res = await fetch(`/food_carts/${foodCart.id}/like`, {
@@ -27,7 +25,6 @@ const FoodCart = ({ foodCart, user, isLiked }) => {
     if (res.ok) {
       setFilledIn(true);
     }
-    console.log(res, data);
   };
 
   return (
