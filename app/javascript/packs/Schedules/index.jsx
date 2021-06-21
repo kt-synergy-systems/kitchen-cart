@@ -26,6 +26,7 @@ const Schedules = ({ schedules, foodCart, user }) => {
   const [dayOfMonth, setDayOfMonth] = useState(date.getDate());
   const [viewingNextWeek, setViewingNextWeek] = useState(false);
   const daysThisMonth = daysInMonth(date.getMonth() + 1, year);
+  console.log(schedules);
   const getCalendarCards = () => {
     const cards = [];
     for (let i = 0; i < 7; i++) {

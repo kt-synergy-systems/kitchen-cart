@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { getCurrentSchedule } from './foodCartIsOpen';
 import { getDirections } from './getDirections';
 
@@ -13,6 +13,25 @@ const FoodCartCard = ({
   isEdit,
 }) => {
   const currentSchedule = getCurrentSchedule(schedules);
+  const [heartFilledIn, setHeartFilledIn] = useState(
+    likedByUser ? true : false
+  );
+  const handleUpVote = async () => {
+    const res = await fetch(`/food_carts/${id}/like`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        'X-CSRF-Token': document.getElementsByName('csrf-token')[0].content,
+      },
+      credentials: 'same-origin',
+    });
+    const data = await res.json();
+    if (res.ok) {
+      setHeartFilledIn(true);
+    }
+    console.log(res, data);
+  };
 
   return (
     <div className='food_cart-card'>
@@ -48,10 +67,10 @@ const FoodCartCard = ({
           </div>
         </div>
         <div className='heart-icon'>
-          {likedByUser ? (
+          {heartFilledIn ? (
             <i className='far fa-heart'></i>
           ) : (
-            <i className='fas fa-heart'></i>
+            <i className='fas fa-heart' onClick={handleUpVote}></i>
           )}
           <a href={`/food_carts/${id}/schedules`}>
             <i className='far fa-calendar-alt'></i>

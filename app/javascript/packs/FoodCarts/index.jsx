@@ -7,6 +7,7 @@ import MapFoodCartCard from './MapFoodCartCard';
 import { getCurrentSchedule } from './foodCartIsOpen';
 
 const FoodCarts = ({ foodCarts, schedules, user, votes }) => {
+  console.log(votes);
   const mapContainer = useRef();
   const [worldMap, setWorldMap] = useState(null);
   const [userLatitude, setUserLatitude] = useState(null);
@@ -27,6 +28,14 @@ const FoodCarts = ({ foodCarts, schedules, user, votes }) => {
       allClosedFoodCarts.push(fc);
     }
   });
+  const isLiked = (cart) => {
+    if (votes && votes.length) {
+      const likedCart = votes.filter((vote) => vote.id === cart.id)[0];
+      if (likedCart) return true;
+    }
+    return false;
+  };
+
   const geoLocate = () => {
     if (!navigator.geolocation) {
       alert(
@@ -132,6 +141,7 @@ const FoodCarts = ({ foodCarts, schedules, user, votes }) => {
                 url={`/food_carts/${cart.id}`}
                 schedules={getMySchedules(cart.id)}
                 isEdit={true}
+                likedByUser={isLiked(cart)}
               />
             );
           }
@@ -149,6 +159,7 @@ const FoodCarts = ({ foodCarts, schedules, user, votes }) => {
               url={`/food_carts/${cart.id}`}
               schedules={getMySchedules(cart.id)}
               isEdit={cart.user_id === user.id ? true : false}
+              likedByUser={isLiked(cart)}
             />
           ))}
 
@@ -164,6 +175,7 @@ const FoodCarts = ({ foodCarts, schedules, user, votes }) => {
               url={`/food_carts/${cart.id}`}
               schedules={getMySchedules(cart.id)}
               isEdit={cart.user_id === user.id ? true : false}
+              likedByUser={isLiked(cart)}
             />
           ))}
       </div>
