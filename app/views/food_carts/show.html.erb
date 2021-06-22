@@ -5,8 +5,6 @@
     <%= link_to 'Create Schedule', new_food_cart_schedule_path(@food_cart) %>
   <% end %>
   <% if @food_cart.user == current_user %>
-    <%= @food_cart.user.first_name %>
-    <%= @food_cart.user %>
     <%= link_to 'Add Menu', new_food_cart_menu_path(@food_cart) unless @food_cart.menu != nil %>
   <% end %>
   <%= link_to 'Show Menu', food_cart_menu_path(@food_cart) %>
