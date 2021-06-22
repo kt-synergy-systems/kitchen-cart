@@ -132,7 +132,7 @@ const FoodCarts = ({ foodCarts, schedules, user, votes }) => {
           Find Food Carts Near Me
         </button>{' '}
         <button
-          className='location-button'
+          className='owned-button'
           onClick={() => {
             showOnlyMyFoodCarts
               ? setShowOnlyMyFoodCarts(false)

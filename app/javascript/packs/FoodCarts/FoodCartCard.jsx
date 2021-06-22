@@ -71,10 +71,10 @@ const FoodCartCard = ({
             <i className='far fa-heart'></i>
           ) : (
             <i className='fas fa-heart' onClick={handleUpVote}></i>
-          )}
+          )}&nbsp;&nbsp;{' '}
           <a href={`/food_carts/${id}/schedules`}>
             <i className='far fa-calendar-alt'></i>
-          </a>{' '}
+          </a>&nbsp;&nbsp;{' '}
           {isEdit && (
             <a href={`/food_carts/${id}/edit`}>
               <i className='fas fa-edit'></i>
