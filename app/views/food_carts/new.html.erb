@@ -11,3 +11,5 @@
     <%= f.button :submit, label:"Create Food Cart", class: "btn btn-primary" %>
   <% end %>
 </div>
+
+<%= render partial: 'shared/react_entry', locals: {data: {food_cart: @food_cart, user: current_user}.to_json, content_type: "NEW_FOOD_CART"} %>
