@@ -15,7 +15,15 @@ const NewFoodCart = ({
     <input className="form-control string required" type="text" name="food_cart[category]" defaultValue={foodCart.category} id="food_cart_category" />
     <div className="form-group text required food_cart_cart_description"><label className="text required" htmlFor="food_cart_cart_description">Food Cart Description</label><textarea className="form-control text required" name="food_cart[cart_description]" defaultValue={foodCart.cart_description} id="food_cart_cart_description"></textarea></div>
     <input className="form-control-file file optional" type="file" name="food_cart[photo]" id="food_cart_photo" defaultValue={foodCart.photo} />
-    <input type="submit" name="commit" value="Create Food cart" label="Create Food Cart" className="btn btn btn-primary" data-disable-with="Create Food cart" />
-  </form></div>)}
+    <input type="submit" name="commit" value="Save Food cart" label="Save Food Cart" className="btn btn btn-primary" data-disable-with="Save Food cart" />
+  </form>
+    <button onClick={function() {
+      fetch(`/food_carts/${foodCart.id}`, { method: 'delete',  headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        'X-CSRF-Token': document.getElementsByName('csrf-token')[0].content,
+      }}).then((response) => response.json()).then((data) => console.log(data))
+    }}>Delete</button>
+  </div>)}
 
 export default NewFoodCart;

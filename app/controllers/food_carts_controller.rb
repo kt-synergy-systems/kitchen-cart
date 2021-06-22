@@ -48,16 +48,8 @@ class FoodCartsController < ApplicationController
 
   def destroy
     @food_cart = FoodCart.find(params[:id])
-    @food_cart.schedules.destroy unless @food_cart.schedules == nil
-    @menu = @food_cart.menu
-    if @menu != nil
-      @food_items = @menu.food_items.each do |food_item|
-        food_item.destroy
-      end
-      @menu.destroy
-    end
     @food_cart.destroy
-    redirect_to food_carts_path
+    render json: { 'ok' => true }.to_json
   end
 
   # Work in progress to grab current location

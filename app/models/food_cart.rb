@@ -3,8 +3,8 @@ class FoodCart < ApplicationRecord
   acts_as_votable
   has_many :users
   belongs_to :user
-  has_many :schedules
-  has_one :menu
+  has_many :schedules, dependent: :destroy
+  has_one :menu, dependent: :destroy
   has_many :food_items, through: :menu
 
   has_one_attached :photo
