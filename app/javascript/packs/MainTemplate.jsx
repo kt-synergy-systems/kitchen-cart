@@ -4,6 +4,7 @@ import FoodCarts from './FoodCarts/index';
 import FoodCart from './FoodCarts/Show';
 import Menus from './Menus/index';
 import Schedules from './Schedules/index';
+import NewFoodCart from './FoodCarts/New';
 
 const MainTemplate = ({ data, contentType }) => {
   const getCurrentPage = () => {
@@ -15,7 +16,14 @@ const MainTemplate = ({ data, contentType }) => {
             schedules={data.schedules}
             user={data.user}
             votes={data.votes}
-          />
+            />
+            );
+      case 'NEW_FOOD_CART':
+        return (
+          <NewFoodCart
+            foodCart={data.food_cart}
+            user={data.user}
+          /> 
         );
       case 'HOME':
         return <Home />;

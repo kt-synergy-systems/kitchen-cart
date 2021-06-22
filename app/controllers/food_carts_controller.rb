@@ -65,7 +65,6 @@ class FoodCartsController < ApplicationController
     @user_location = params[:javascriptobject]
   end
 
-
   def upvote
     @food_cart.upvote_from current_user
     render json: @food_cart.to_json
