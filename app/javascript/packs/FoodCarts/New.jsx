@@ -18,11 +18,14 @@ const NewFoodCart = ({
     <input type="submit" name="commit" value="Save Food cart" label="Save Food Cart" className="btn btn btn-primary" data-disable-with="Save Food cart" />
   </form>
     <button onClick={function() {
+      const confirmDelete = confirm('Are you sure?')
+      if (confirmDelete) {
       fetch(`/food_carts/${foodCart.id}`, { method: 'delete',  headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
         'X-CSRF-Token': document.getElementsByName('csrf-token')[0].content,
-      }}).then((response) => response.json()).then((data) => console.log(data))
+      }}).then((response) => response.json()).then((data) => {if (data.ok) {window.location = '/food_carts'}})
+      }
     }}>Delete</button>
   </div>)}
 
