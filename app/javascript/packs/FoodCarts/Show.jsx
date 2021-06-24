@@ -91,7 +91,7 @@ const FoodCart = ({ foodCart, user, isLiked }) => {
       </div>
       <div className='food-item-card-container'>
         {foodItems.map((item, index) =>
-          getFoodItemCard(item, index, userSelection)
+          getFoodItemCard(item, index, userSelection, foodCart)
         )}
       </div>
     </div>

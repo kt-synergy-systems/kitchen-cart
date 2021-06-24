@@ -5,7 +5,7 @@ const NewFoodItem = ({
 }) => {
     console.log(foodItem);
   return (<div>
-    <form className="simple_form new_food_item" id="new_food_item" noValidate="novalidate" encType="multipart/form-data" action={edit ? `/food_items/update/${foodItem.id}` : `/food_carts/${foodItem.menu.food_cart_id}/menus/${foodItem.menu_id}/food_items` } acceptCharset="UTF-8" method={edit ? "patch" : "post" }>
+    <form className="simple_form new_food_item" id="new_food_item" noValidate="novalidate" encType="multipart/form-data" action={edit ? `/food_carts/update/${foodItem.menu.food_cart_id}` : `/food_carts/${foodItem.menu.food_cart_id}/menus/${foodItem.menu_id}/food_items` } acceptCharset="UTF-8" method={edit ? "patch" : "post" }>
     <input type="hidden" name="authenticity_token" value={document.getElementsByName(`csrf-token`)[0].content}></input>
     <h1>{edit ? 'Edit Food Item' : 'New Food Item'}</h1>
     <label htmlFor="food_item_name">Food Item Name</label>

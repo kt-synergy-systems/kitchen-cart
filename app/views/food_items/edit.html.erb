@@ -1,0 +1,1 @@
+<%= render partial: 'shared/react_entry', locals: {data: {food_item: @food_item.to_json( include: [ :menu ] ), user: current_user}.to_json, content_type: "EDIT_FOOD_ITEM"} %>

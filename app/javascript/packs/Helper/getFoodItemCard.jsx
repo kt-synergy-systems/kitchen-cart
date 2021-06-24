@@ -1,7 +1,7 @@
 import React from 'react';
 import FoodItemCard from '../FoodItems/foodItemCard';
 
-function getFoodItemCard(item, index, userSelection) {
+function getFoodItemCard(item, index, userSelection, foodCart) {
   switch (userSelection) {
     case 'food':
       if (item.food_type === 'food') {
@@ -14,6 +14,8 @@ function getFoodItemCard(item, index, userSelection) {
             type={item.food_type}
             price={item.food_price}
             availability={item.food_availability}
+            menu_id={item.menu_id}
+            food_cart={foodCart}
           />
         );
       } else {
@@ -30,6 +32,8 @@ function getFoodItemCard(item, index, userSelection) {
             type={item.food_type}
             price={item.food_price}
             availability={item.food_availability}
+            menu_id={item.menu_id}
+            food_cart={foodCart}
           />
         );
       } else {
@@ -45,6 +49,8 @@ function getFoodItemCard(item, index, userSelection) {
           type={item.food_type}
           price={item.food_price}
           availability={item.food_availability}
+          menu_id={item.menu_id}
+          food_cart={foodCart}
         />
       );
   }
