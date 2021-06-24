@@ -1,5 +1,1 @@
-<h1>Food Item</h1>
-<%= @food_item %>
-<% @food_item.photos.each do |photo| %>
-  <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-<% end %>
+<%= render partial: 'shared/react_entry', locals: {data: {food_item: @food_item.to_json( include: [ :menu ] ), user: current_user}.to_json, content_type: "FOOD_ITEM"} %>

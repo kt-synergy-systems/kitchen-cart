@@ -12,6 +12,7 @@ class FoodItemsController < ApplicationController
     @food_cart = FoodCart.find(params[:food_cart_id])
     @menu = @food_cart.menu
     @food_item = FoodItem.new
+    @food_item.menu = @menu
 
     authorize @food_item
   end
@@ -45,7 +46,7 @@ class FoodItemsController < ApplicationController
   def destroy
     @food_item = FoodItem.find(params[:id])
     @food_item.destroy
-    redirect_to food_items_path
+    render json: { 'ok' => true }.to_json
   end
 
   private
