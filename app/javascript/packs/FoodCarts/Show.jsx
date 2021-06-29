@@ -1,25 +1,27 @@
-import React, { useState, useEffect } from 'react';
-import { getCurrentSchedule } from './foodCartIsOpen';
-import { getDirections } from './getDirections';
-import getFoodItemCard from '../Helper/getFoodItemCard';
+import React, { useState, useEffect } from "react";
+import { getCurrentSchedule } from "./foodCartIsOpen";
+import { getDirections } from "./getDirections";
+import getFoodItemCard from "../Helper/getFoodItemCard";
 
-const FoodCart = ({ foodCart, user, isLiked }) => {
+const FoodCart = ({ foodCart, user, isLiked, photoKey }) => {
   const [userSelection, setUserSelection] = useState(null);
   const [filledIn, setFilledIn] = useState(isLiked ? true : false);
   const schedules = foodCart.schedules;
   const menu = foodCart.menu;
   const foodItems = foodCart.food_items;
 
+  console.log(photoKey, "🎅");
+
   const currentSchedule = getCurrentSchedule(schedules);
   const handleUpVote = async () => {
     const res = await fetch(`/food_carts/${foodCart.id}/like`, {
-      method: 'PUT',
+      method: "PUT",
       headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-        'X-CSRF-Token': document.getElementsByName('csrf-token')[0].content,
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        "X-CSRF-Token": document.getElementsByName("csrf-token")[0].content,
       },
-      credentials: 'same-origin',
+      credentials: "same-origin",
     });
     const data = await res.json();
     if (res.ok) {
@@ -29,27 +31,34 @@ const FoodCart = ({ foodCart, user, isLiked }) => {
 
   return (
     <div className='FoodCart'>
-      <img
-        src='https://picsum.photos/400/300'
-        alt='Lorem Picsum'
-        width='100%'
-      />
+      {photoKey ? (
+        <img
+          alt='go to heaven'
+          src={`http://res.cloudinary.com/kitchen-cart/image/upload/c_thumb/${photoKey}`}
+          width='100%'
+        />
+      ) : (
+        <img
+          alt='We love you'
+          width='100%'
+          src={`https://images.unsplash.com/photo-1565123409695-7b5ef63a2efb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1651&q=80`}></img>
+      )}
       <div className='icons'>
         <h4>
-          <i className='fas fa-external-link-alt'></i> &nbsp;{' '}
+          <i className='fas fa-external-link-alt'></i> &nbsp;{" "}
           {filledIn ? (
             <>
-              <i className='fas fa-heart'></i>&nbsp;{' '}
+              <i className='fas fa-heart'></i>&nbsp;{" "}
             </>
           ) : (
             <>
-              <i className='far fa-heart' onClick={handleUpVote}></i> &nbsp;{' '}
+              <i className='far fa-heart' onClick={handleUpVote}></i> &nbsp;{" "}
             </>
           )}
           <a href={`/food_carts/${foodCart.id}/schedules`}>
             <i className='far fa-calendar-alt'></i>
-          </a>{' '}
-          &nbsp;{' '}
+          </a>{" "}
+          &nbsp;{" "}
           {currentSchedule && (
             <i
               className='fas fa-map-marker-alt cursor-pointer'
@@ -78,13 +87,13 @@ const FoodCart = ({ foodCart, user, isLiked }) => {
           &nbsp;&nbsp;&nbsp;
           <button
             className='food-button'
-            onClick={() => setUserSelection('food')}>
+            onClick={() => setUserSelection("food")}>
             Food
           </button>
           &nbsp;&nbsp;&nbsp;
           <button
             className='drinks-button'
-            onClick={() => setUserSelection('drink')}>
+            onClick={() => setUserSelection("drink")}>
             Drinks
           </button>
         </div>
