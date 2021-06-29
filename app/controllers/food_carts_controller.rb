@@ -42,7 +42,8 @@ class FoodCartsController < ApplicationController
 
   def update
     @food_cart = FoodCart.find(params[:id])
-    @food_cart.update(food_cart_params)
+    authorize @food_cart
+    @food_cart.update!(food_cart_params)
     redirect_to food_cart_path(@food_cart)
   end
 
