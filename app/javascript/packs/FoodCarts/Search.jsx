@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const Search = ({ name, category, description, open, schedule, id }) => {
   return (
@@ -11,6 +11,8 @@ const Search = ({ name, category, description, open, schedule, id }) => {
           type='search'
           className='form-control'
           placeholder='Find by name or location'
+          name='query'
+          id='query'
         />
         <button type='submit' className='search-button'>
           Search
