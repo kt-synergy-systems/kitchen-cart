@@ -10,8 +10,8 @@ const NewFoodCart = ({ user, foodCart, edit }) => {
         action={edit ? `/food_carts/${foodCart.id}` : "/food_carts"}
         acceptCharset='UTF-8'
         encType='multipart/form-data'
-        method={"POST"}>
-        <input type='hidden' name='_method' value='patch' />
+        method='POST'>
+        {edit && <input type='hidden' name='_method' value='patch' />}
         <input
           type='hidden'
           name='authenticity_token'

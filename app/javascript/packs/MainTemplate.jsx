@@ -36,6 +36,7 @@ const MainTemplate = ({ data, contentType }) => {
             user={data.user}
             isLiked={data.is_liked}
             photoKey={data.photo_key}
+            photos={data.photos}
           />
         );
       case "SCHEDULES":

@@ -18,6 +18,9 @@ class FoodCartsController < ApplicationController
 
   def show
     @food_cart = FoodCart.find(params[:id])
+    @photos = @food_cart.food_items.map do |item|
+      {food_item_id: item.id, key: item.photo.key}
+    end
   end
 
   def new

@@ -3,14 +3,13 @@ import { getCurrentSchedule } from "./foodCartIsOpen";
 import { getDirections } from "./getDirections";
 import getFoodItemCard from "../Helper/getFoodItemCard";
 
-const FoodCart = ({ foodCart, user, isLiked, photoKey }) => {
+const FoodCart = ({ foodCart, user, isLiked, photoKey, photos }) => {
   const [userSelection, setUserSelection] = useState(null);
   const [filledIn, setFilledIn] = useState(isLiked ? true : false);
   const schedules = foodCart.schedules;
   const menu = foodCart.menu;
   const foodItems = foodCart.food_items;
-
-  console.log(photoKey, "🎅");
+  console.log('🎅', photos)
 
   const currentSchedule = getCurrentSchedule(schedules);
   const handleUpVote = async () => {
@@ -100,7 +99,7 @@ const FoodCart = ({ foodCart, user, isLiked, photoKey }) => {
       </div>
       <div className='food-item-card-container'>
         {foodItems.map((item, index) =>
-          getFoodItemCard(item, index, userSelection, foodCart)
+          getFoodItemCard(item, index, userSelection, foodCart, photos.find((el) => el.food_item_id === item.id))
         )}
       </div>
     </div>

@@ -1,6 +1,6 @@
 class FoodItem < ApplicationRecord
   belongs_to :menu
-  has_many_attached :photos
+  has_one_attached :photo
 
   validates :food_name, presence: true
   validates :food_price, presence: true
