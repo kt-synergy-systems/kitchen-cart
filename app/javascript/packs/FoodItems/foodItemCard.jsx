@@ -1,9 +1,9 @@
 import React from "react";
 
-const FoodItemCard = ({ name, type, description, price, availability, id, menu_id, food_cart }) => {
+const FoodItemCard = ({ name, type, description, price, availability, id, menu_id, food_cart, imgSrc }) => {
   return (
     <div className="food-item-card">
-      <img className="food-item-image" src="https://picsum.photos/400/300" alt="Lorem Picsum" />
+      <img className="food-item-image" src={imgSrc} alt="Lorem Picsum" />
       <div className="food-item-text">
         <h5>{name}</h5>
         <p>{description}</p>

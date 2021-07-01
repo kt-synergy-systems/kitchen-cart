@@ -1,7 +1,8 @@
 import React from 'react';
 import FoodItemCard from '../FoodItems/foodItemCard';
 
-function getFoodItemCard(item, index, userSelection, foodCart) {
+function getFoodItemCard(item, index, userSelection, foodCart, photo) {
+  console.log(photo, '🤓')
   switch (userSelection) {
     case 'food':
       if (item.food_type === 'food') {
@@ -16,6 +17,7 @@ function getFoodItemCard(item, index, userSelection, foodCart) {
             availability={item.food_availability}
             menu_id={item.menu_id}
             food_cart={foodCart}
+            imgSrc={photo.key ? photo.key : '/#'}
           />
         );
       } else {
@@ -34,6 +36,7 @@ function getFoodItemCard(item, index, userSelection, foodCart) {
             availability={item.food_availability}
             menu_id={item.menu_id}
             food_cart={foodCart}
+            imgSrc={photo.key ? photo.key : '/#'}
           />
         );
       } else {
@@ -51,6 +54,7 @@ function getFoodItemCard(item, index, userSelection, foodCart) {
           availability={item.food_availability}
           menu_id={item.menu_id}
           food_cart={foodCart}
+          imgSrc={photo.key ? `http://res.cloudinary.com/kitchen-cart/image/upload/c_thumb/${photo.key}` : '/#'}
         />
       );
   }
