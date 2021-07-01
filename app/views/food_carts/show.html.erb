@@ -8,8 +8,12 @@
     <%= link_to 'Add Menu', new_food_cart_menu_path(@food_cart) unless @food_cart.menu != nil %>
   <% end %>
   <%= link_to 'Show Menu', food_cart_menu_path(@food_cart) %>
-  <%= link_to 'show schedule', food_cart_schedules_path(@food_cart) %>
+  <%= link_to 'Show Schedule', food_cart_schedules_path(@food_cart) %>
   <%= link_to 'Add Food Item', new_food_cart_menu_food_item_path(@food_cart, @food_cart.menu) %>
 
 </div>
 
+<!-- Dynamic titles and descriptions for food cart -->
+<% content_for :meta_title, "#{@food_cart.name} is on #{DEFAULT_META["meta_product_name"]}" %>
+<% content_for :meta_description, @food_cart.description %>
+<% content_for :meta_image, cl_image_path(@food_cart.photo.path) %>
