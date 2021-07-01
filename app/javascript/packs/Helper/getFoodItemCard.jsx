@@ -17,7 +17,7 @@ function getFoodItemCard(item, index, userSelection, foodCart, photo) {
             availability={item.food_availability}
             menu_id={item.menu_id}
             food_cart={foodCart}
-            imgSrc={photo.key ? photo.key : '/#'}
+            imgSrc={photo.key ? `http://res.cloudinary.com/kitchen-cart/image/upload/c_thumb/${photo.key}` : 'https://picsum.photos/400/300'}
           />
         );
       } else {
@@ -36,7 +36,7 @@ function getFoodItemCard(item, index, userSelection, foodCart, photo) {
             availability={item.food_availability}
             menu_id={item.menu_id}
             food_cart={foodCart}
-            imgSrc={photo.key ? photo.key : '/#'}
+            imgSrc={photo.key ? `http://res.cloudinary.com/kitchen-cart/image/upload/c_thumb/${photo.key}` : 'https://picsum.photos/400/300'}
           />
         );
       } else {
@@ -54,7 +54,7 @@ function getFoodItemCard(item, index, userSelection, foodCart, photo) {
           availability={item.food_availability}
           menu_id={item.menu_id}
           food_cart={foodCart}
-          imgSrc={photo.key ? `http://res.cloudinary.com/kitchen-cart/image/upload/c_thumb/${photo.key}` : '/#'}
+          imgSrc={photo.key ? `http://res.cloudinary.com/kitchen-cart/image/upload/c_thumb/${photo.key}` : 'https://picsum.photos/400/300'}
         />
       );
   }
