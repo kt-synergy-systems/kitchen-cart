@@ -9,6 +9,7 @@ class FoodCartsController < ApplicationController
     end
     @votes = current_user.get_voted @food_carts
     @schedules = []
+    @date = Date.today
     @food_carts.map do |food_cart|
       food_cart.schedules.each do |schedule|
         @schedules << schedule

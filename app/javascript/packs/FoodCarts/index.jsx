@@ -1,12 +1,12 @@
-import React, { useEffect, useState, useRef } from 'react';
-import FoodCartCard from './FoodCartCard';
-import mapboxgl from '!mapbox-gl';
-import Marker from './marker';
-import Search from './Search';
-import MapFoodCartCard from './MapFoodCartCard';
-import { getCurrentSchedule } from './foodCartIsOpen';
+import React, { useEffect, useState, useRef } from "react";
+import FoodCartCard from "./FoodCartCard";
+import mapboxgl from "!mapbox-gl";
+import Marker from "./marker";
+import Search from "./Search";
+import MapFoodCartCard from "./MapFoodCartCard";
+import { getCurrentSchedule } from "./foodCartIsOpen";
 
-const FoodCarts = ({ foodCarts, schedules, user, votes }) => {
+const FoodCarts = ({ foodCarts, schedules, user, votes, date }) => {
   const mapContainer = useRef();
   const [worldMap, setWorldMap] = useState(null);
   const [userLatitude, setUserLatitude] = useState(null);
@@ -54,7 +54,7 @@ const FoodCarts = ({ foodCarts, schedules, user, votes }) => {
   const geoLocate = () => {
     if (!navigator.geolocation) {
       alert(
-        'Please enable Gelocation in your browser to use this application.'
+        "Please enable Gelocation in your browser to use this application."
       );
     } else {
       navigator.geolocation.getCurrentPosition((position, error) => {
@@ -82,7 +82,7 @@ const FoodCarts = ({ foodCarts, schedules, user, votes }) => {
       mapboxgl.accessToken = process.env.MAPBOX_API_KEY;
       const map = new mapboxgl.Map({
         container: mapContainer.current,
-        style: 'mapbox://styles/mapbox/streets-v11',
+        style: "mapbox://styles/mapbox/streets-v11",
         center: [139.7528, 35.6852],
         zoom: 10,
       });
@@ -102,8 +102,16 @@ const FoodCarts = ({ foodCarts, schedules, user, votes }) => {
     return mySchedules;
   };
 
+  const todaysScheds = (myId) => {
+    getMySchedules(myId).forEach((sched) => {
+      if (sched.date === date) {
+        return true;
+      }
+    });
+  };
+
   return (
-    <div className='FoodCarts'>
+    <div className="FoodCarts">
       <MapFoodCartCard
         opened={mapCardOpened}
         setMapCardOpened={setMapCardOpened}
@@ -111,7 +119,7 @@ const FoodCarts = ({ foodCarts, schedules, user, votes }) => {
         currentMapCardSchedule={currentMapCardSchedule}
       />
       <Search opened={mapCardOpened} />
-      <div className='map-container' ref={mapContainer} id='map'></div>
+      <div className="map-container" ref={mapContainer} id="map"></div>
       {allOpenSchedules.map((sched, index) => {
         if (worldMap) {
           return (
@@ -127,24 +135,25 @@ const FoodCarts = ({ foodCarts, schedules, user, votes }) => {
           );
         }
       })}
-      <div className='location-button-container'>
-        <button className='location-button' onClick={geoLocate}>
+      <div className="location-button-container">
+        <button className="location-button" onClick={geoLocate}>
           Find Food Carts Near Me
-        </button>{' '}
+        </button>{" "}
         <button
-          className='location-button'
+          className="location-button"
           onClick={() => {
             showOnlyMyFoodCarts
               ? setShowOnlyMyFoodCarts(false)
               : setShowOnlyMyFoodCarts(true);
-          }}>
-          {!showOnlyMyFoodCarts ? 'Food Carts I Own' : 'Show All Food Carts'}
+          }}
+        >
+          {!showOnlyMyFoodCarts ? "Food Carts I Own" : "Show All Food Carts"}
         </button>
       </div>
-      <div className='FoodCartCard'>
+      <div className="FoodCartCard">
         {/* list all food carts */}
         {foodCarts.map((cart, index) => {
-          if (showOnlyMyFoodCarts && cart.user_id === user.id) {
+          if (cart.user_id === user.id && todaysScheds(cart.id) === true) {
             return (
               <FoodCartCard
                 key={index}
