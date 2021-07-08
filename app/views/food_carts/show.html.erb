@@ -1,4 +1,4 @@
-<%= render partial: 'shared/react_entry', locals: {data: {food_cart: @food_cart.to_json(include: [:schedules, :menu, :food_items]), user: current_user, is_liked: current_user.voted_up_on?(@food_cart), photo_key: @food_cart.photo.key, photos: @photos}.to_json, content_type: "FOOD_CART"} %>
+<%= render partial: 'shared/react_entry', locals: {data: {food_cart: @food_cart.to_json(include: [:schedules, :menu, :food_items]), user: current_user, is_liked: current_user.liked?(@food_cart), photo_key: @food_cart.photo.key, photos: @photos}.to_json, content_type: "FOOD_CART"} %>
 <div class="schedule-container">
   <% if policy(@food_cart.schedules).create? %>
     <%= link_to 'Create Schedule', new_food_cart_schedule_path(@food_cart) %>
