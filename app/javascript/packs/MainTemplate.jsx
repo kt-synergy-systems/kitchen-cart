@@ -16,7 +16,7 @@ const MainTemplate = ({ data, contentType }) => {
             foodCarts={data.food_carts}
             schedules={data.schedules}
             user={data.user}
-            votes={data.votes}
+            likes={data.likes}
           />
         );
       case "NEW_FOOD_CART":
