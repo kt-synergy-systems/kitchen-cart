@@ -87,7 +87,6 @@ const FoodCartCard = ({
           )}
         </div>
         <p className='card-description'>{description}</p>
-        <h6 className='body-text-bold'>Price range</h6>
       </div>
     </div>
   );
