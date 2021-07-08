@@ -1,6 +1,6 @@
 class FoodCartsController < ApplicationController
-  before_action :set_food_cart, only: [:show, :edit, :update, :destroy, :upvote]
-  after_action :verify_authorized, only: [:new, :create, :show, :update, :destroy]
+  before_action :set_food_cart, only: %i[show edit update destroy upvote downvote]
+  after_action :verify_authorized, only: %i[new create show update destroy]
   def index
     if params[:query].present?
       @food_carts = policy_scope(FoodCart).search_by_name_location_category(params[:query])
@@ -19,7 +19,7 @@ class FoodCartsController < ApplicationController
   def show
     @food_cart = FoodCart.find(params[:id])
     @photos = @food_cart.food_items.map do |item|
-      {food_item_id: item.id, key: item.photo.key}
+      { food_item_id: item.id, key: item.photo.key }
     end
   end
 
@@ -49,7 +49,6 @@ class FoodCartsController < ApplicationController
     @food_cart.update!(food_cart_params)
 
     redirect_to food_cart_path(@food_cart)
-
   end
 
   def destroy
@@ -68,6 +67,11 @@ class FoodCartsController < ApplicationController
     render json: @food_cart.to_json
   end
 
+  def downvote
+    @food_cart.downvote_from current_user
+    render json: @food_cart.to_json
+  end
+
   private
 
   def food_cart_params
@@ -78,7 +82,6 @@ class FoodCartsController < ApplicationController
     @food_cart = FoodCart.find(params[:id])
     authorize @food_cart
   end
-
 end
 
 # Assign a user as an employee to a food cart by food cart admin

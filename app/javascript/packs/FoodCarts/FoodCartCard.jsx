@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { getCurrentSchedule } from './foodCartIsOpen';
-import { getDirections } from './getDirections';
+import React, { useState } from "react";
+import { getCurrentSchedule } from "./foodCartIsOpen";
+import { getDirections } from "./getDirections";
 
 const FoodCartCard = ({
   name,
@@ -16,21 +16,24 @@ const FoodCartCard = ({
   const [heartFilledIn, setHeartFilledIn] = useState(
     likedByUser ? true : false
   );
+  const requestObject = {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      "X-CSRF-Token": document.getElementsByName("csrf-token")[0].content,
+    },
+    credentials: "same-origin",
+  };
   const handleUpVote = async () => {
-    const res = await fetch(`/food_carts/${id}/like`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-        'X-CSRF-Token': document.getElementsByName('csrf-token')[0].content,
-      },
-      credentials: 'same-origin',
-    });
-    const data = await res.json();
-    if (res.ok) {
-      setHeartFilledIn(true);
-    }
-    console.log(res, data);
+    await fetch(`/food_carts/${id}/like`, requestObject);
+    setHeartFilledIn(true);
+  };
+
+  const handleUnlike = async () => {
+    console.log(id);
+    await fetch(`/food_carts/${id}/unlike`, requestObject);
+    setHeartFilledIn(false);
   };
 
   return (
@@ -68,13 +71,15 @@ const FoodCartCard = ({
         </div>
         <div className='heart-icon'>
           {heartFilledIn ? (
-            <i className='far fa-heart'></i>
+            <i className='fas fa-heart' onClick={handleUnlike}></i>
           ) : (
-            <i className='fas fa-heart' onClick={handleUpVote}></i>
-          )}&nbsp;&nbsp;{' '}
+            <i className='far fa-heart' onClick={handleUpVote}></i>
+          )}
+          &nbsp;&nbsp;{" "}
           <a href={`/food_carts/${id}/schedules`}>
             <i className='far fa-calendar-alt'></i>
-          </a>&nbsp;&nbsp;{' '}
+          </a>
+          &nbsp;&nbsp;{" "}
           {isEdit && (
             <a href={`/food_carts/${id}/edit`}>
               <i className='fas fa-edit'></i>
