@@ -23,6 +23,7 @@ const FoodCart = ({ foodCart, photoKey, photos, isLiked }) => {
   };
 
   const currentSchedule = getCurrentSchedule(schedules);
+  
   const handleUpVote = async () => {
     await fetch(`/food_carts/${foodCart.id}/like`, requestObject);
     setHeartFilledIn(true);
