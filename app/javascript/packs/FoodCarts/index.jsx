@@ -22,11 +22,12 @@ const FoodCarts = ({ foodCarts, schedules, user, likes }) => {
   const allClosedNotLikedCarts = [];
   const allOpenSchedules = [];
   const allOpenFoodCarts = [];
-  console.log(likes);
-  const isLiked = () => {
+  const isLiked = (fc) => {
+    const likesList = [];
     likes.forEach((like) => {
-      console.log(like);
+      likesList.push(like.id === fc.id && like.liked);
     });
+    return likesList.includes(true);
   };
 
   foodCarts.map((fc) => {
