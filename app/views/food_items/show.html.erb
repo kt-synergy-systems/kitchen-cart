@@ -1,1 +1,6 @@
 <%= render partial: 'shared/react_entry', locals: {data: {food_item: @food_item.to_json( include: [ :menu ] ), user: current_user}.to_json, content_type: "FOOD_ITEM"} %>
+
+<!-- Dynamic titles and descriptions for food items -->
+<% content_for :meta_title, "#{@food_item.food_name} is on #{DEFAULT_META["meta_product_name"]}" %>
+<% content_for :meta_description, @food_item.food_description %>
+<%# content_for :meta_image, cl_image_path(@food_item.photo.path) %>
