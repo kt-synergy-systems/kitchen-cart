@@ -7,9 +7,10 @@ class FoodCartsController < ApplicationController
     else
       @food_carts = policy_scope(FoodCart)
     end
-    @votes = current_user.get_voted @food_carts
+    @likes = []
     @schedules = []
     @food_carts.map do |food_cart|
+      @likes << { id: food_cart.id, liked: current_user.liked?(food_cart) }
       food_cart.schedules.each do |schedule|
         @schedules << schedule
       end
