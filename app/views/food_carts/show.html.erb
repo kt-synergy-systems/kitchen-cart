@@ -16,4 +16,4 @@
 <!-- Dynamic titles and descriptions for food cart -->
 <% content_for :meta_title, "#{@food_cart.name} is on #{DEFAULT_META["meta_product_name"]}" %>
 <% content_for :meta_description, @food_cart.cart_description %>
-<% content_for :meta_image, cl_image_path(@food_cart.photo.path) %>
+<%# content_for :meta_image, cl_image_path(@food_cart.photo.key) %>

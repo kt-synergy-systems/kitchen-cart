@@ -3,4 +3,4 @@
 <!-- Dynamic titles and descriptions for food items -->
 <% content_for :meta_title, "#{@food_item.food_name} is on #{DEFAULT_META["meta_product_name"]}" %>
 <% content_for :meta_description, @food_item.food_description %>
-<% content_for :meta_image, cl_image_path(@food_item.photo.path) %>
+<%# content_for :meta_image, cl_image_path(@food_item.photo.path) %>
