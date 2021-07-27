@@ -7,8 +7,8 @@ class User < ApplicationRecord
 
   acts_as_voter
   has_many :food_carts
-  validates :first_name, presence: true
-  validates :last_name, presence: true
+  # validates :first_name, presence: true
+  # validates :last_name, presence: true
 
   enum role: [:employee, :admin]
 
