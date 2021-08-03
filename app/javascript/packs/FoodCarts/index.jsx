@@ -78,7 +78,8 @@ const FoodCarts = ({ foodCarts, schedules, user, likes }) => {
 
   useEffect(() => {
     if (!worldMap) {
-      mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_API_KEY;
+      mapboxgl.accessToken =
+        process.env.pk.eyJ1IjoiZGFucHJpbmciLCJhIjoiY2tpNXk5cmltMDU5bzJ5bjR4ODdnbWE5eiJ9.z_wJvX3ftNsC8ql0hs5m4Q;
       const map = new mapboxgl.Map({
         container: mapContainer.current,
         style: "mapbox://styles/mapbox/streets-v11",
