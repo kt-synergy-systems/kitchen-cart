@@ -1,6 +1,9 @@
 {
   "name": "kitchen_cart",
   "private": true,
+  "engines": {
+    "node": "14.5.4"
+  },
   "dependencies": {
     "@babel/preset-react": "^7.12.13",
     "@mapbox/mapbox-gl-geocoder": "^4.7.1",
