@@ -19,7 +19,6 @@ require("channels");
 // Note(lewagon): ABOVE IS RAILS DEFAULT CONFIGURATION
 // WRITE YOUR OWN JS STARTING FROM HERE 👇
 // ----------------------------------------------------
-console.log(process.env.REACT_APP_MAPBOX_API_KEY);
 // External imports
 import "bootstrap";
 
