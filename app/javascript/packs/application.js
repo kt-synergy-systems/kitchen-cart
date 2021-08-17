@@ -21,7 +21,7 @@ require("channels");
 // ----------------------------------------------------
 // External imports
 import "bootstrap";
-console.log(process.env.REACT_APP_MAPBOX_API_KEY)
+
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 
