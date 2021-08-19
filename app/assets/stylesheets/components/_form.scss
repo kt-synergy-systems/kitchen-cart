@@ -1,0 +1,45 @@
+.user-form {
+  padding: 16px;
+  padding-bottom: 5px;
+  background-color: $yellow;
+  border-radius: 16px;
+}
+
+.user-form {
+  .form-control.is-valid {
+    border-color: #dbdbdb;
+  }
+  li {
+    list-style-type: none;
+    margin-left: -3.2em;
+  }
+}
+
+.title-user {
+  text-align: center;
+  color: $gray;
+  padding: 8px;
+}
+
+.subtitle-user {
+  text-align: center;
+  color: lightgray;
+  padding: 8px;
+}
+
+.container {
+  margin-top: 16px;
+}
+
+.form-row {
+  padding: 16px;
+  justify-content: space-evenly;
+}
+
+.form-actions {
+  justify-content: space-evenly
+}
+
+.pad-links {
+  padding: 16px;
+}

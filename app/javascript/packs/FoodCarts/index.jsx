@@ -22,6 +22,7 @@ const FoodCarts = ({ foodCarts, schedules, user, likes }) => {
   const allClosedNotLikedCarts = [];
   const allOpenSchedules = [];
   const allOpenFoodCarts = [];
+  
   const isLiked = (fc) => {
     const likesList = [];
     likes.forEach((like) => {
