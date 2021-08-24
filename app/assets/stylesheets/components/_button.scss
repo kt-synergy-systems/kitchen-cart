@@ -49,10 +49,9 @@
 .location-button-container {
   width: 90%;
   height: fit-content;
-  padding: 16px;
+  padding: 32px;
   margin: 32px;
   display: flex;
-  justify-content: center;
   align-items: center;
   justify-content: space-evenly;
 }
@@ -79,4 +78,10 @@
 
 a {
   color: black;
+}
+
+@media (max-width: 450px) {
+  .location-button-container {
+    flex: 1 1 auto;
+  }
 }
