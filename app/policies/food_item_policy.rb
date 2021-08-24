@@ -6,6 +6,11 @@ class FoodItemPolicy < ApplicationPolicy
     end
   end
 
+  def initalize
+    @current_user = current_user
+    @food_cart = food_cart
+  end
+
   def create?
     true
   end
@@ -15,8 +20,7 @@ class FoodItemPolicy < ApplicationPolicy
   end
 
   def update?
-    # user == record.user
-    true
+    user == record.menu.food_cart.user
   end
 
   def destroy?

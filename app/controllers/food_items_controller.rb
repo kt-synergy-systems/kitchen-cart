@@ -39,7 +39,8 @@ class FoodItemsController < ApplicationController
 
   def update
     @food_item = FoodItem.find(params[:id])
-    @food_item.update
+    authorize @food_item
+    @food_item.update!(food_item_params)
     redirect_to food_cart_path(@food_cart)
   end
 
@@ -58,7 +59,7 @@ class FoodItemsController < ApplicationController
   def set_food_item
     @food_cart = FoodCart.find(params[:food_cart_id])
     @menu = @food_cart.menu
-    @food_item = @food_cart.food_items
+    @food_item = FoodItem.find(params[:id])
 
     authorize @food_item
   end
