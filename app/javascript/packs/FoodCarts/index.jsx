@@ -129,7 +129,7 @@ const FoodCarts = ({ foodCarts, schedules, user, likes }) => {
       })}
       <div className='location-button-container'>
         <button className='location-button' onClick={geoLocate}>
-          Find Food Carts Near Me
+          Food Carts Near Me
         </button>{" "}
         <button
           className='owned-button'
