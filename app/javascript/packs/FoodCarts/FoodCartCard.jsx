@@ -61,14 +61,6 @@ const FoodCartCard = ({
       </div>
 
       <div className='food_cart-content'>
-        <div className='d-flex'>
-          <div className='food-cart-name'>
-            <p>{category.toUpperCase()}</p>
-            <h5>
-              <a href={url}>{name}</a>
-            </h5>
-          </div>
-        </div>
         <div className='heart-icon'>
           {heartFilledIn ? (
             <i className='fas fa-heart' onClick={handleUnlike}></i>
@@ -85,6 +77,15 @@ const FoodCartCard = ({
               <i className='fas fa-edit'></i>
             </a>
           )}
+        </div>
+        <br></br>
+        <div className='d-flex'>
+          <div className='food-cart-name'>
+            <p>{category.toUpperCase()}</p>
+            <h5>
+              <a href={url}>{name}</a>
+            </h5>
+          </div>
         </div>
         <p className='card-description'>{description}</p>
       </div>
