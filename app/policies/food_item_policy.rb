@@ -24,7 +24,6 @@ class FoodItemPolicy < ApplicationPolicy
   end
 
   def destroy?
-    # user == record.user
-    true
+    user == record.menu.food_cart.user
   end
 end
