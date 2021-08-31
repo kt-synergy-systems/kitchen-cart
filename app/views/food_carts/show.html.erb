@@ -1,16 +1,12 @@
 <%= render partial: 'shared/react_entry', locals: {data: {food_cart: @food_cart.to_json(include: [:schedules, :menu, :food_items]), user: current_user, is_liked: current_user.liked?(@food_cart), photo_key: @food_cart.photo.key, photos: @photos}.to_json, content_type: "FOOD_CART"} %>
 <div class="schedule-container">
-<%# Schedule policy changes now impacting below line. %>
-  <% if policy(@food_cart.schedules).create? %>
-    <%= link_to 'Create Schedule', new_food_cart_schedule_path(@food_cart) %>
-  <% end %>
-  <% if @food_cart.user == current_user %>
-    <%= link_to 'Add Menu', new_food_cart_menu_path(@food_cart) unless @food_cart.menu != nil %>
-  <% end %>
-  <%= link_to 'Show Menu', food_cart_menu_path(@food_cart) %>
-  <%= link_to 'Show Schedule', food_cart_schedules_path(@food_cart) %>
+  <%= link_to 'Create Schedule', new_food_cart_schedule_path(@food_cart) %>
+  <%= link_to 'Add Menu', new_food_cart_menu_path(@food_cart) unless @food_cart.menu != nil %>
   <%= link_to 'Add Food Item', new_food_cart_menu_food_item_path(@food_cart, @food_cart.menu) %>
 
+  <%= link_to 'Show Menu', food_cart_menu_path(@food_cart) %>
+  <%= link_to 'Show Schedule', food_cart_schedules_path(@food_cart) %>
+  
 </div>
 
 <!-- Dynamic titles and descriptions for food cart -->

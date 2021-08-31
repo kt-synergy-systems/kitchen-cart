@@ -13,7 +13,6 @@ class FoodItemsController < ApplicationController
     @menu = @food_cart.menu
     @food_item = FoodItem.new
     @food_item.menu = @menu
-
     authorize @food_item
   end
 
@@ -23,14 +22,12 @@ class FoodItemsController < ApplicationController
     @menu = @food_cart.menu
     @food_item.menu = @menu
     @user = current_user
-
+    authorize @food_item
     if @food_item.save!
       redirect_to food_cart_path(@food_cart)
     else
       render 'food_items/new'
     end
-
-    authorize @food_item
   end
 
   def edit

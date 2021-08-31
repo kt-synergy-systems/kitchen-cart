@@ -14,7 +14,6 @@ class FoodCartPolicy < ApplicationPolicy
   end
 
   def create?
-    # @user == record.user
     true
   end
 
