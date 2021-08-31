@@ -138,7 +138,13 @@
 .schedule-header {
   display: flex;
   justify-content: space-between;
-  padding: 10px;
+  padding: 1em;
+}
+
+.schedule-header-name {
+  display: flex;
+  justify-content: space-between;
+  padding: 1em;
 }
 
 .add-schedule {
