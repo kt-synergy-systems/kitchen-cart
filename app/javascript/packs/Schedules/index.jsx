@@ -89,7 +89,7 @@ const Schedules = ({ schedules, foodCart, user }) => {
                   setViewingNextWeek(false);
                 }
               }}>
-              ˂
+              <i className="fas fa-chevron-left"></i>
             </button>
             <div className='month-name'>{month}</div>
             <button
@@ -104,7 +104,7 @@ const Schedules = ({ schedules, foodCart, user }) => {
                   }
                 }
               }}>
-              ˃
+              <i className="fas fa-chevron-right"></i>
             </button>
           </div>
         </div>
