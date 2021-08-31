@@ -77,19 +77,22 @@ const NewFoodItem = ({ user, foodItem, edit }) => {
         onClick={function () {
           const confirmDelete = confirm("Are you sure?");
           if (confirmDelete) {
-            fetch(`/food_items/${foodItem.id}`, {
-              method: "delete",
-              headers: {
-                "Content-Type": "application/json",
-                Accept: "application/json",
-                "X-CSRF-Token":
-                  document.getElementsByName("csrf-token")[0].content,
-              },
-            })
+            fetch(
+              `/food_carts/${foodItem.menu.food_cart_id}/menus/${foodItem.menu_id}/food_items/${foodItem.id}`,
+              {
+                method: "delete",
+                headers: {
+                  "Content-Type": "application/json",
+                  Accept: "application/json",
+                  "X-CSRF-Token":
+                    document.getElementsByName("csrf-token")[0].content,
+                },
+              }
+            )
               .then((response) => response.json())
               .then((data) => {
                 if (data.ok) {
-                  window.location = `/food_cart/${foodItem.food_cart.id}`;
+                  window.location = `/food_carts/${foodItem.menu.food_cart_id}`;
                 }
               });
           }

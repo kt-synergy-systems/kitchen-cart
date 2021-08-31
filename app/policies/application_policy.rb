@@ -11,11 +11,11 @@ class ApplicationPolicy
   end
 
   def show?
-    false
+    true
   end
 
   def create?
-    true
+    false
   end
 
   def new?

@@ -13,7 +13,6 @@ const NewFoodCart = ({ user, foodCart, edit }) => {
         method="POST"
       >
         {edit && <input type="hidden" name="_method" value="patch" />}
-        {/* Can we use the above in food items/update? */}
         <input
           type="hidden"
           name="authenticity_token"

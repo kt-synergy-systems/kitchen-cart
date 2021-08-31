@@ -1,22 +1,23 @@
 class SchedulePolicy < ApplicationPolicy
   class Scope < Scope
-
-    def initialize(food_cart, scope)
-      @food_cart = food_cart
-      @scope = scope
-    end
-
     def resolve
       scope.all
       # scope.where(user: user)
     end
+  end
+
+  def initalize
+    @current_user = current_user
+    @food_cart = FoodCart.find_by(user_id: current_user.id)
+    @schedule = schedule
+  end
 
     def new?
-      create?
+      true
     end
 
     def create?
-      user == record.user
+      user == record.food_cart.user
     end
 
     def show?
@@ -24,12 +25,11 @@ class SchedulePolicy < ApplicationPolicy
     end
 
     def update?
-     user == record.user
+      user == @food_cart.user
     end
 
     def destroy
-      user == record.user
+      user == record.food_cart.user
     end
 
-  end
 end

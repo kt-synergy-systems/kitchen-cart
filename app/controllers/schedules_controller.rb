@@ -1,5 +1,5 @@
 class SchedulesController < ApplicationController
-  before_action :set_schedule, only: [:new, :create, :show, :edit, :update, :destroy]
+  before_action :set_schedule, only: [:show, :destroy]
 
   def index
     @food_cart = FoodCart.find(params[:food_cart_id])
@@ -14,7 +14,6 @@ class SchedulesController < ApplicationController
   def new
     @food_cart = FoodCart.find(params[:food_cart_id])
     @schedule = Schedule.new
-
     authorize @schedule
   end
 
@@ -22,12 +21,11 @@ class SchedulesController < ApplicationController
     @food_cart = FoodCart.find(params[:food_cart_id])
     @schedule = Schedule.new(schedule_params)
     @schedule.food_cart = @food_cart
+    @user = current_user
     authorize @schedule
 
-    @user = current_user
-
-    if @schedule.save
-      redirect_to food_cart_path(@food_cart)
+    if @schedule.save!
+      redirect_to food_cart_schedules_path(@food_cart)
     else
       render :new
     end
@@ -67,7 +65,7 @@ class SchedulesController < ApplicationController
 
   def set_schedule
     @food_cart = FoodCart.find(params[:food_cart_id])
-    @schedule = @food_cart.schedules
+    @schedule = Schedule.find(params[:id])
     authorize @schedule
   end
   
