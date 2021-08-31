@@ -1,5 +1,6 @@
 class SchedulesController < ApplicationController
   before_action :set_schedule, only: [:show, :destroy]
+  before_action :skip_authorization, only: %i[index show]
 
   def index
     @food_cart = FoodCart.find(params[:food_cart_id])

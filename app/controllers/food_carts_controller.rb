@@ -1,5 +1,6 @@
 class FoodCartsController < ApplicationController
   before_action :set_food_cart, only: %i[show edit update destroy upvote downvote]
+  before_action :skip_authorization, only: %i[index show]
   after_action :verify_authorized, only: %i[new create show update destroy]
   def index
     if params[:query].present?
@@ -22,6 +23,7 @@ class FoodCartsController < ApplicationController
     @photos = @food_cart.food_items.map do |item|
       { food_item_id: item.id, key: item.photo.key }
     end
+    authorize @food_cart
   end
 
   def new

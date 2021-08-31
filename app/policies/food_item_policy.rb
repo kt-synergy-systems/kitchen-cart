@@ -12,7 +12,7 @@ class FoodItemPolicy < ApplicationPolicy
   end
 
   def create?
-    true
+    user == record.menu.food_cart.user
   end
 
   def show?
