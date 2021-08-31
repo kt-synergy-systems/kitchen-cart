@@ -66,7 +66,9 @@ const Schedules = ({ schedules, foodCart, user }) => {
             </a>
           )}
         </div>
-        <h2>{foodCart.name}</h2>
+        <div className="schedule-header-name">
+          <h2>{foodCart.name}</h2>
+        </div>
         <div
           style={{
             justifyContent: 'center',
