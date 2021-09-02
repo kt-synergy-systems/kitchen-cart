@@ -1,2 +1,3 @@
+<% current_user != nil ? nil : current_user = User.new(first_name: "guest", last_name: "user", email: "guest@guest.com") %>
 
 <%= render partial: 'shared/react_entry', locals: {data: {schedules: @schedules, foodCart: @food_cart, user: current_user}.to_json, content_type: "SCHEDULES"} %>

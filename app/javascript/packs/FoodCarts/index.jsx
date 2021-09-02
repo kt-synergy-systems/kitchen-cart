@@ -22,7 +22,7 @@ const FoodCarts = ({ foodCarts, schedules, user, likes }) => {
   const allClosedNotLikedCarts = [];
   const allOpenSchedules = [];
   const allOpenFoodCarts = [];
-  
+
   const isLiked = (fc) => {
     const likesList = [];
     likes.forEach((like) => {
@@ -103,7 +103,7 @@ const FoodCarts = ({ foodCarts, schedules, user, likes }) => {
   };
 
   return (
-    <div className='FoodCarts'>
+    <div className="FoodCarts">
       <MapFoodCartCard
         opened={mapCardOpened}
         setMapCardOpened={setMapCardOpened}
@@ -111,7 +111,7 @@ const FoodCarts = ({ foodCarts, schedules, user, likes }) => {
         currentMapCardSchedule={currentMapCardSchedule}
       />
       <Search opened={mapCardOpened} />
-      <div className='map-container' ref={mapContainer} id='map'></div>
+      <div className="map-container" ref={mapContainer} id="map"></div>
       {allOpenSchedules.map((sched, index) => {
         if (worldMap) {
           return (
@@ -133,7 +133,7 @@ const FoodCarts = ({ foodCarts, schedules, user, likes }) => {
         </button>
         <div className="divider"/>
         <button
-          className='owned-button'
+          className="owned-button"
           onClick={() => {
             showOnlyMyFoodCarts
               ? setShowOnlyMyFoodCarts(false)
@@ -142,7 +142,7 @@ const FoodCarts = ({ foodCarts, schedules, user, likes }) => {
           {!showOnlyMyFoodCarts ? "My Food Carts" : "Nearby Food Carts"}
         </button>
       </div>
-      <div className='FoodCartCard'>
+      <div className="FoodCartCard">
         {/* list all food carts */}
         {foodCarts.map((cart, index) => {
           if (showOnlyMyFoodCarts && cart.user_id === user.id) {
