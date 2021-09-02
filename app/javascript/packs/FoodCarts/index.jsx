@@ -129,8 +129,9 @@ const FoodCarts = ({ foodCarts, schedules, user, likes }) => {
       })}
       <div className='location-button-container'>
         <button className='location-button' onClick={geoLocate}>
-          Food Carts Near Me
-        </button>{" "}
+          Nearby Food Carts
+        </button>
+        <div className="divider"/>
         <button
           className='owned-button'
           onClick={() => {
@@ -138,7 +139,7 @@ const FoodCarts = ({ foodCarts, schedules, user, likes }) => {
               ? setShowOnlyMyFoodCarts(false)
               : setShowOnlyMyFoodCarts(true);
           }}>
-          {!showOnlyMyFoodCarts ? "Food Carts I Own" : "Show All Food Carts"}
+          {!showOnlyMyFoodCarts ? "My Food Carts" : "Nearby Food Carts"}
         </button>
       </div>
       <div className='FoodCartCard'>
