@@ -1,7 +1,5 @@
 class FoodCartsController < ApplicationController
-  before_action :set_food_cart, only: %i[show edit update destroy upvote downvote]
-  before_action :skip_authorization, only: %i[index show]
-  after_action :verify_authorized, only: %i[new create show update destroy]
+  after_action :verify_authorized, only: %i[new create update destroy]
   def index
     if params[:query].present?
       @food_carts = policy_scope(FoodCart).search_by_name_location_category(params[:query])
@@ -11,7 +9,7 @@ class FoodCartsController < ApplicationController
     @likes = []
     @schedules = []
     @food_carts.map do |food_cart|
-      @likes << { id: food_cart.id, liked: current_user.liked?(food_cart) }
+      @likes << { id: food_cart.id, liked: current_user.liked?(food_cart) } unless current_user == nil
       food_cart.schedules.each do |schedule|
         @schedules << schedule
       end
