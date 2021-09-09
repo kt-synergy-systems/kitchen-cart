@@ -1,3 +1,4 @@
 <%# Map for the food carts %>
-<% current_user = current_user != nil ? current_user : current_user = User.new(first_name: "guest", last_name: "user", email: "guest@guest.com", id: 'i love beer') %>
-<%= render partial: 'shared/react_entry', locals: {data: {food_carts: @food_carts, schedules: @schedules, user: current_user, likes: @likes}.to_json, content_type: "FOOD_CARTS", search: @search} %>
+<% active_user = current_user == nil ? User.new(first_name: "guest", last_name: "user", email: "guest@guest.com", food_cart_id: 5000) : current_user %>
+<%= render partial: 'shared/react_entry', locals: {data: {food_carts: @food_carts, schedules: @schedules, user: active_user, likes: @likes}.to_json, content_type: "FOOD_CARTS", search: @search} %>
+<% raise %>

@@ -1,3 +1,2 @@
-<% current_user != nil ? nil : current_user = User.new(first_name: "guest", last_name: "user", email: "guest@guest.com") %>
-
-<%= render partial: 'shared/react_entry', locals: {data: {schedules: @schedules, foodCart: @food_cart, user: current_user}.to_json, content_type: "SCHEDULES"} %>
+<% active_user = current_user == nil ? User.new(first_name: "guest", last_name: "user", email: "guest@guest.com", food_cart_id: 5000) : current_user %>
+<%= render partial: 'shared/react_entry', locals: {data: {schedules: @schedules, foodCart: @food_cart, user: active_user}.to_json, content_type: "SCHEDULES"} %>

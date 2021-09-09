@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :guest_user, only: [:new, :edit, :show, :index]
   # before_action :configure_permitted_parameters, if: :devise_controller?
   include Pundit
 
@@ -22,6 +23,10 @@ class ApplicationController < ActionController::Base
 
   def default_url_options
     { host: ENV["DOMAIN"] || "localhost:3000" }
+  end
+
+  def guest_user
+    current_user = current_user != nil ? current_user : User.create(id: 0, first_name: "guest", last_name: "user", email: "guest@guest.com")
   end
 
   private
