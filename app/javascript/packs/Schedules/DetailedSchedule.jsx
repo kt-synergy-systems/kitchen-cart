@@ -10,6 +10,7 @@ const DetailedSchedule = ({
   month,
   isToday,
 }) => {
+  console.log(schedules);
   const timeRegex = /(?<=T)\d\d:\d\d(?=.)/;
   const goToMap = (lat, long) => {
     window.open(
@@ -30,7 +31,32 @@ const DetailedSchedule = ({
     });
     return scheduleForDay;
   };
+  const deleteMe = (id) => {
+    const confirmDelete = confirm('Are you sure?');
+    if (confirmDelete) {
+      console.log(schedules.find((i) => i.id === id).food_cart_id);
 
+      fetch(
+        `/food_carts/${
+          schedules.find((i) => i.id === id).food_cart_id
+        }/schedules/${id}`,
+        {
+          method: 'delete',
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+            'X-CSRF-Token': document.getElementsByName('csrf-token')[0].content,
+          },
+        }
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.ok) {
+            window.location = '/food_carts';
+          }
+        });
+    }
+  };
   const getDetailedTimeInfo = (m, d, isToday) => {
     return getScheduleDataForDay(m, d).map((timeSlot, index) => (
       <div key={index} className='detailed-time-info flex-row'>
@@ -49,6 +75,7 @@ const DetailedSchedule = ({
             }}>
             {timeSlot.location}
           </div>
+          <a onClick={() => deleteMe(schedules[index].id)}>X</a>
         </div>
       </div>
     ));

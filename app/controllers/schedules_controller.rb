@@ -1,5 +1,5 @@
 class SchedulesController < ApplicationController
-  before_action :set_schedule, only: [:show, :destroy]
+  before_action :set_schedule, only: %i[show destroy]
   before_action :skip_authorization, only: %i[index show]
 
   def index
@@ -53,9 +53,13 @@ class SchedulesController < ApplicationController
   end
 
   def destroy
-    @schedule = Schedule.find(params[:id])
-    @schedule.destroy
-    redirect_to schedule_path
+    puts "sadflkajsdflkj"
+    authorize @schedule
+    if @schedule.destroy
+      render json: { ok: true }
+    else
+      binding.pry
+    end
   end
 
   private
@@ -69,5 +73,4 @@ class SchedulesController < ApplicationController
     @schedule = Schedule.find(params[:id])
     authorize @schedule
   end
-  
 end
