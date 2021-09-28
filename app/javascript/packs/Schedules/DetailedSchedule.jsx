@@ -51,8 +51,9 @@ const DetailedSchedule = ({
       )
         .then((response) => response.json())
         .then((data) => {
+          console.log(data);
           if (data.ok) {
-            window.location = '/food_carts';
+            window.location.reload();
           }
         });
     }
@@ -75,7 +76,13 @@ const DetailedSchedule = ({
             }}>
             {timeSlot.location}
           </div>
-          <a onClick={() => deleteMe(schedules[index].id)}>X</a>
+          <a
+            onClick={(e) => {
+              e.preventDefault();
+              deleteMe(timeSlot.id);
+            }}>
+            X
+          </a>
         </div>
       </div>
     ));

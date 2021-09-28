@@ -54,11 +54,10 @@ class SchedulesController < ApplicationController
 
   def destroy
     puts "sadflkajsdflkj"
-    authorize @schedule
     if @schedule.destroy
-      render json: { ok: true }
+      render json: { ok: true, deleted: params[:id] }.to_json
     else
-      binding.pry
+      raise 'Some kind of error here'
     end
   end
 
