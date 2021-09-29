@@ -10,7 +10,6 @@ const DetailedSchedule = ({
   month,
   isToday,
 }) => {
-  console.log(schedules);
   const timeRegex = /(?<=T)\d\d:\d\d(?=.)/;
   const goToMap = (lat, long) => {
     window.open(
@@ -34,8 +33,6 @@ const DetailedSchedule = ({
   const deleteMe = (id) => {
     const confirmDelete = confirm('Are you sure?');
     if (confirmDelete) {
-      console.log(schedules.find((i) => i.id === id).food_cart_id);
-
       fetch(
         `/food_carts/${
           schedules.find((i) => i.id === id).food_cart_id
