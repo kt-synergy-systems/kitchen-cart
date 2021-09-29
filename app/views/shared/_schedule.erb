@@ -1,34 +1,29 @@
 <div class="new-schedule">
   <div class="top-container">
     <h1>Schedule</h1>
-    <p>Drop a pin on the map to mark where your food cart will be.</p>
-    <form id="search-form">
-        <input type="text" id="search-input" name="search-input" placeholder="Search by area name">
+    <p>Drop a pin on the map to mark where your food cart will be or search for the location below.</p>
+    <div class='search-bar'>
+      <form class="form">
+        <input type="text" id="search-input" name="search-input" placeholder="Find by name or location" class="form-control">
         <button class="search-button" id="search-btn">Search</button>
-    </form>
+      </form>
+    </div>
   </div>
   <div id="map"></div>
   <div class="bottom-container">
     <div class="simple-form-container">
       <%= simple_form_for [ @food_cart, @schedule ] do |f| %>
-        <label for="schedule_location"> Location:</label>
+        <label for="schedule_location">Location</label>
+        <input type="text" id="schedule_location" name="schedule[location]" placeholder="Nearest station" class="form-control">
         <br>
-        <input type="text" id="schedule_location" name="schedule[location]" placeholder="Shinjuku Station" >
+        <input type="text" id="schedule_date" name="schedule[date]" class="form-control" hidden>
+        <label for="schedule_start_time">Opening Time</label>
+        <input type="datetime-local" id="schedule_start_time" name="schedule[start_time]" class="form-control" required>
         <br>
-        <input type="text" id="schedule_date" name="schedule[date]" hidden>
-        <label for="schedule_start_time"> Start Time</label>
-        <br>
-        <input type="datetime-local" id="schedule_start_time" name="schedule[start_time]" required>
-        
-        <br>
-        <label for="schedule_end_time"> End Time</label>
-        <br>
-          <input type="datetime-local" id="schedule_end_time" name="schedule[end_time]" required>
-        
+        <label for="schedule_end_time">Closing Time</label>
+        <input type="datetime-local" id="schedule_end_time" name="schedule[end_time]" class="form-control" required>
         <%= f.input :latitude, :as => :hidden %>
         <%= f.input :longitude, :as => :hidden %>
-        <br>
-        <br>
         <%= f.button :submit, label:"Create Schedule", class: "all-button", id: "simple-form-btn" %>
       <% end %>
     </div>
