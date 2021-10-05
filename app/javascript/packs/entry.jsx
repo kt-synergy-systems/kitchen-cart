@@ -1,10 +1,11 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import MainTemplate from './MainTemplate';
+import React from "react";
+import ReactDOM from "react-dom";
+import MainTemplate from "./MainTemplate";
+import Translate from "./localization";
 
-const root = document.getElementById('root');
+const root = document.getElementById("root");
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
   // Render an entry point here;
   ReactDOM.render(
     <MainTemplate
