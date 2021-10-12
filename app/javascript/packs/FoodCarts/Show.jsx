@@ -6,6 +6,7 @@ import { useTranslation } from "react-i18next";
 
 const FoodCart = ({ foodCart, photoKey, photos, isLiked }) => {
   console.log(isLiked);
+  const t = useTranslation().t;
   const [userSelection, setUserSelection] = useState(null);
   const [heartFilledIn, setHeartFilledIn] = useState(isLiked ? true : false);
   const schedules = foodCart.schedules;
@@ -24,7 +25,7 @@ const FoodCart = ({ foodCart, photoKey, photos, isLiked }) => {
   };
 
   const currentSchedule = getCurrentSchedule(schedules);
-  
+
   const handleUpVote = async () => {
     await fetch(`/food_carts/${foodCart.id}/like`, requestObject);
     setHeartFilledIn(true);
@@ -58,10 +59,12 @@ const FoodCart = ({ foodCart, photoKey, photos, isLiked }) => {
             <i className="fas fa-heart" onClick={handleUnlike}></i>
           ) : (
             <i className="far fa-heart" onClick={handleUpVote}></i>
-          )} &nbsp;{" "}
+          )}{" "}
+          &nbsp;{" "}
           <a href={`/food_carts/${foodCart.id}/schedules`}>
             <i className="far fa-calendar-alt"></i>
-          </a> &nbsp;{" "}
+          </a>{" "}
+          &nbsp;{" "}
           {currentSchedule && (
             <i
               className="fas fa-map-marker-alt cursor-pointer"

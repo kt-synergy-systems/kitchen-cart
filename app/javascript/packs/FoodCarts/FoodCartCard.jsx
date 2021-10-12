@@ -14,6 +14,7 @@ const FoodCartCard = ({
   isEdit,
 }) => {
   const currentSchedule = getCurrentSchedule(schedules);
+  const t = useTranslation().t;
   const [heartFilledIn, setHeartFilledIn] = useState(
     likedByUser ? true : false
   );
@@ -38,57 +39,59 @@ const FoodCartCard = ({
   };
 
   return (
-    <div className='food_cart-card'>
-      <div className='food_cart-image'>
+    <div className="food_cart-card">
+      <div className="food_cart-image">
         {currentSchedule ? (
           <div
-            className='location-tag cursor-pointer'
-            onClick={() => getDirections(currentSchedule)}>
-            <i className='fas fa-map-marker-alt'></i> {currentSchedule.location}
+            className="location-tag cursor-pointer"
+            onClick={() => getDirections(currentSchedule)}
+          >
+            <i className="fas fa-map-marker-alt"></i> {currentSchedule.location}
           </div>
         ) : (
           <div
-            className='location-tag cursor-pointer'
+            className="location-tag cursor-pointer"
             onClick={() => {
               window.open(`http://localhost:3000/food_carts/${id}/schedules`);
-            }}>
-            Sorry, we're closed.
+            }}
+          >
+            {t("closed")}
           </div>
         )}
         <img
-          src='https://images.unsplash.com/photo-1565123409695-7b5ef63a2efb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1651&q=80'
-          alt='Food Cart'
+          src="https://images.unsplash.com/photo-1565123409695-7b5ef63a2efb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1651&q=80"
+          alt="Food Cart"
         />
       </div>
 
-      <div className='food_cart-content'>
-        <div className='heart-icon'>
+      <div className="food_cart-content">
+        <div className="heart-icon">
           {heartFilledIn ? (
-            <i className='fas fa-heart' onClick={handleUnlike}></i>
+            <i className="fas fa-heart" onClick={handleUnlike}></i>
           ) : (
-            <i className='far fa-heart' onClick={handleUpVote}></i>
+            <i className="far fa-heart" onClick={handleUpVote}></i>
           )}
           &nbsp;&nbsp;{" "}
           <a href={`/food_carts/${id}/schedules`}>
-            <i className='far fa-calendar-alt'></i>
+            <i className="far fa-calendar-alt"></i>
           </a>
           &nbsp;&nbsp;{" "}
           {isEdit && (
             <a href={`/food_carts/${id}/edit`}>
-              <i className='fas fa-edit'></i>
+              <i className="fas fa-edit"></i>
             </a>
           )}
         </div>
         <br></br>
-        <div className='d-flex'>
-          <div className='food-cart-name'>
+        <div className="d-flex">
+          <div className="food-cart-name">
             <p>{category.toUpperCase()}</p>
             <h5>
               <a href={url}>{name}</a>
             </h5>
           </div>
         </div>
-        <p className='card-description'>{description}</p>
+        <p className="card-description">{description}</p>
       </div>
     </div>
   );

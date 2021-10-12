@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 
 const NewFoodItem = ({ user, foodItem, edit }) => {
   console.log(foodItem);
+  const t = useTranslation().t;
   return (
     <div className="container">
       <div className="grid">

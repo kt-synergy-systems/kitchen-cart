@@ -8,6 +8,7 @@ import { getCurrentSchedule } from "./foodCartIsOpen";
 import { useTranslation } from "react-i18next";
 
 const FoodCarts = ({ foodCarts, schedules, user, likes }) => {
+  const t = useTranslation().t;
   const mapContainer = useRef();
   const [worldMap, setWorldMap] = useState(null);
   const [userLatitude, setUserLatitude] = useState(null);
@@ -54,9 +55,7 @@ const FoodCarts = ({ foodCarts, schedules, user, likes }) => {
 
   const geoLocate = () => {
     if (!navigator.geolocation) {
-      alert(
-        "Please enable Gelocation in your browser to use this application."
-      );
+      alert(t("alerts.map_location"));
     } else {
       navigator.geolocation.getCurrentPosition((position, error) => {
         if (error) {
@@ -128,19 +127,22 @@ const FoodCarts = ({ foodCarts, schedules, user, likes }) => {
           );
         }
       })}
-      <div className='location-button-container'>
-        <button className='location-button' onClick={geoLocate}>
-          Nearby Food Carts
+      <div className="location-button-container">
+        <button className="location-button" onClick={geoLocate}>
+          {t("buttons.nearby")}
         </button>
-        <div className="divider"/>
+        <div className="divider" />
         <button
           className="owned-button"
           onClick={() => {
             showOnlyMyFoodCarts
               ? setShowOnlyMyFoodCarts(false)
               : setShowOnlyMyFoodCarts(true);
-          }}>
-          {!showOnlyMyFoodCarts ? "My Food Carts" : "Nearby Food Carts"}
+          }}
+        >
+          {!showOnlyMyFoodCarts
+            ? t("buttons.my_foodcarts")
+            : t("buttons.nearby")}
         </button>
       </div>
       <div className="FoodCartCard">

@@ -1,12 +1,13 @@
-import React from 'react';
-import FoodItemCard from '../FoodItems/foodItemCard';
+import React from "react";
+import FoodItemCard from "../FoodItems/foodItemCard";
 import { useTranslation } from "react-i18next";
 
 function getFoodItemCard(item, index, userSelection, foodCart, photo) {
-  console.log(photo, '🤓')
+  console.log(photo, "🤓");
+  const t = useTranslation().t;
   switch (userSelection) {
-    case 'food':
-      if (item.food_type === 'food') {
+    case "food":
+      if (item.food_type === "food") {
         return (
           <FoodItemCard
             key={index}
@@ -18,14 +19,18 @@ function getFoodItemCard(item, index, userSelection, foodCart, photo) {
             availability={item.food_availability}
             menu_id={item.menu_id}
             food_cart={foodCart}
-            imgSrc={photo.key ? `http://res.cloudinary.com/kitchen-cart/image/upload/c_thumb/${photo.key}` : 'https://picsum.photos/400/300'}
+            imgSrc={
+              photo.key
+                ? `http://res.cloudinary.com/kitchen-cart/image/upload/c_thumb/${photo.key}`
+                : "https://picsum.photos/400/300"
+            }
           />
         );
       } else {
-        return '';
+        return "";
       }
-    case 'drink':
-      if (item.food_type === 'drink') {
+    case "drink":
+      if (item.food_type === "drink") {
         return (
           <FoodItemCard
             key={index}
@@ -37,11 +42,15 @@ function getFoodItemCard(item, index, userSelection, foodCart, photo) {
             availability={item.food_availability}
             menu_id={item.menu_id}
             food_cart={foodCart}
-            imgSrc={photo.key ? `http://res.cloudinary.com/kitchen-cart/image/upload/c_thumb/${photo.key}` : 'https://picsum.photos/400/300'}
+            imgSrc={
+              photo.key
+                ? `http://res.cloudinary.com/kitchen-cart/image/upload/c_thumb/${photo.key}`
+                : "https://picsum.photos/400/300"
+            }
           />
         );
       } else {
-        return '';
+        return "";
       }
     default:
       return (
@@ -55,7 +64,11 @@ function getFoodItemCard(item, index, userSelection, foodCart, photo) {
           availability={item.food_availability}
           menu_id={item.menu_id}
           food_cart={foodCart}
-          imgSrc={photo.key ? `http://res.cloudinary.com/kitchen-cart/image/upload/c_thumb/${photo.key}` : 'https://picsum.photos/400/300'}
+          imgSrc={
+            photo.key
+              ? `http://res.cloudinary.com/kitchen-cart/image/upload/c_thumb/${photo.key}`
+              : "https://picsum.photos/400/300"
+          }
         />
       );
   }

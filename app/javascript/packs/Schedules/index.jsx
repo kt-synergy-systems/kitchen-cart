@@ -1,25 +1,33 @@
-import React, { useState } from 'react';
-import DayCard from './DayCard';
-import DetailedSchedule from './DetailedSchedule';
+import React, { useState } from "react";
+import DayCard from "./DayCard";
+import DetailedSchedule from "./DetailedSchedule";
 import { useTranslation } from "react-i18next";
 
-export const MONTHS = [
-  'JANUARY',
-  'FEBRUARY',
-  'MARCH',
-  'APRIL',
-  'MAY',
-  'JUNE',
-  'JULY',
-  'AUGUST',
-  'SEPTEMBER',
-  'OCTOBER',
-  'NOVEMBER',
-  'DECEMBER',
-];
-export const DAYS_OF_WEEK = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
-
 const Schedules = ({ schedules, foodCart, user }) => {
+  const t = useTranslation().t;
+  const DAYS_OF_WEEK = [
+    t("week.mon"),
+    t("week.tue"),
+    t("week.wed"),
+    t("week.thu"),
+    t("week.fri"),
+    t("week.sat"),
+    t("week.sun"),
+  ];
+  const MONTHS = [
+    t("month.jan"),
+    t("month.feb"),
+    t("month.mar"),
+    t("month.apr"),
+    t("month.may"),
+    t("month.jun"),
+    t("month.jul"),
+    t("month.aug"),
+    t("month.sep"),
+    t("month.oct"),
+    t("month.nov"),
+    t("month.dec"),
+  ];
   const date = new Date();
   const year = date.getFullYear();
   const [month, setMonth] = useState(MONTHS[date.getMonth()]);
@@ -55,33 +63,35 @@ const Schedules = ({ schedules, foodCart, user }) => {
   };
 
   return (
-    <div className='Schedules'>
-      <div className='top-calendar'>
-        <div className='schedule-header'>
+    <div className="Schedules">
+      <div className="top-calendar">
+        <div className="schedule-header">
           <div>WEEKLY SCHEDULE</div>
           {user.id === foodCart.user_id && (
             <a
-              className='add-schedule'
-              href={`/food_carts/${foodCart.id}/schedules/new`}>
-              + ADD SCHEDULE{' '}
+              className="add-schedule"
+              href={`/food_carts/${foodCart.id}/schedules/new`}
+            >
+              {t("buttons.create_schedule")}
             </a>
           )}
         </div>
-        <div className='schedule-header-name'>
+        <div className="schedule-header-name">
           <h2>{foodCart.name}</h2>
         </div>
         <div
           style={{
-            justifyContent: 'center',
-            display: 'flex',
-            alignItems: 'center',
-            flexDirection: 'column',
-          }}>
-          <div className='seperator' />
+            justifyContent: "center",
+            display: "flex",
+            alignItems: "center",
+            flexDirection: "column",
+          }}
+        >
+          <div className="seperator" />
 
-          <div className='month-btn-container'>
+          <div className="month-btn-container">
             <button
-              className='next-week-btn'
+              className="next-week-btn"
               onClick={() => {
                 if (viewingNextWeek) {
                   setDayOfMonth(date.getDate());
@@ -89,12 +99,13 @@ const Schedules = ({ schedules, foodCart, user }) => {
                   setMonth(MONTHS[date.getMonth()]);
                   setViewingNextWeek(false);
                 }
-              }}>
-              <i className='fas fa-chevron-left'></i>
+              }}
+            >
+              <i className="fas fa-chevron-left"></i>
             </button>
-            <div className='month-name'>{month}</div>
+            <div className="month-name">{month}</div>
             <button
-              className='next-week-btn'
+              className="next-week-btn"
               onClick={() => {
                 if (!viewingNextWeek) {
                   setDayOfMonth(dayOfMonth + 7);
@@ -104,16 +115,17 @@ const Schedules = ({ schedules, foodCart, user }) => {
                     setMonth(nextMonth ? nextMonth : MONTHS[0]);
                   }
                 }
-              }}>
-              <i className='fas fa-chevron-right'></i>
+              }}
+            >
+              <i className="fas fa-chevron-right"></i>
             </button>
           </div>
         </div>
-        <div className='calendar-cards-container'>
+        <div className="calendar-cards-container">
           {getCalendarCards().map((card) => card)}
         </div>
       </div>
-      <div className='detailed-schedules'>
+      <div className="detailed-schedules">
         <DetailedSchedule
           schedules={schedules}
           dayOfWeek={dayOfWeek}

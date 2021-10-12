@@ -131,26 +131,26 @@ simpleForm.addEventListener("submit", (e) => {
     longitudeInput.value === ""
   ) {
     e.preventDefault();
-    alert("Please pinpoint your location on the map.");
+    t("schedule_form.instruction");
     simpleFormBtn.disabled = false;
   } else if (dateInput.value === "" || !dateInput.value) {
     e.preventDefault();
-    alert("Please select a start time.");
+    t("alerts.start_time");
     simpleFormBtn.disabled = false;
   } else if (endTimeInput.value === "" || !endTimeInput.value) {
     e.preventDefault();
-    alert("Please select an end time.");
+    t("alerts.end_time");
     simpleFormBtn.disabled = false;
   } else if (
     new Date(endTimeInput.value) - new Date(startTimeInput.value) <=
     0
   ) {
     e.preventDefault();
-    alert("End time must be later than start time.");
+    t("alerts.early_end");
     simpleFormBtn.disabled = false;
   } else if (locationInput.value === "") {
     e.preventDefault();
-    alert("Please add a description of the location.");
+    t("alerts.end_time");
     simpleFormBtn.disabled = false;
   }
 });

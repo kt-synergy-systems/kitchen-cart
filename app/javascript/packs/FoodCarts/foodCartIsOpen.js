@@ -5,7 +5,6 @@ const today = `${date.getFullYear()}-${
 }-${date.getDate() + 1 < 10 ? `0${date.getDate()}` : date.getDate()}`;
 
 const stripTime = (t) => parseInt(t.match(/(?<=T)\d\d(?=:)/)[0]);
-
 const getCurrentOpenHours = (scheduleForToday) => {
   let currentOpenSchedule;
   scheduleForToday.forEach((sched, index) => {

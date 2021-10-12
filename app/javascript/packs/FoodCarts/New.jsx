@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 
 const NewFoodCart = ({ user, foodCart, edit }) => {
   console.log(`Edit: ${edit}`);
+  const t = useTranslation().t;
   return (
     <div className="container">
       <div className="grid">
@@ -21,9 +22,13 @@ const NewFoodCart = ({ user, foodCart, edit }) => {
               name="authenticity_token"
               value={document.getElementsByName(`csrf-token`)[0].content}
             ></input>
-            <h2 className="title-user">{edit ? "Edit Food Cart" : "New Food Cart"}</h2>
+            <h2 className="title-user">
+              {edit ? "Edit Food Cart" : "New Food Cart"}
+            </h2>
             <div className="form-inputs">
-              <label htmlFor="food_cart_name">Food Cart Name</label>
+              <label htmlFor="food_cart_name">
+                {t("forms.food_cart_form.name")}
+              </label>
               <input
                 className="form-control string required"
                 type="text"
@@ -31,7 +36,9 @@ const NewFoodCart = ({ user, foodCart, edit }) => {
                 id="food_cart_name"
                 defaultValue={foodCart.name}
               />
-              <label htmlFor="food_cart_phone_number">Phone Number</label>
+              <label htmlFor="food_cart_phone_number">
+                {t("forms.food_cart_form.number")}
+              </label>
               <input
                 className="form-control string tel required"
                 type="tel"
@@ -39,7 +46,9 @@ const NewFoodCart = ({ user, foodCart, edit }) => {
                 id="food_cart_phone_number"
                 defaultValue={foodCart.phone_number}
               />
-              <label htmlFor="food_cart_category">Food Category</label>
+              <label htmlFor="food_cart_category">
+                {t("forms.food_cart_form.category")}
+              </label>
               <input
                 className="form-control string required"
                 type="text"
@@ -48,8 +57,11 @@ const NewFoodCart = ({ user, foodCart, edit }) => {
                 id="food_cart_category"
               />
               <div className="form-group text required food_cart_cart_description">
-                <label className="text required" htmlFor="food_cart_cart_description">
-                  Food Cart Description
+                <label
+                  className="text required"
+                  htmlFor="food_cart_cart_description"
+                >
+                  {t("forms.food_cart_form.description")}
                 </label>
                 <textarea
                   className="form-control text required"
@@ -66,7 +78,7 @@ const NewFoodCart = ({ user, foodCart, edit }) => {
               id="food_cart_photo"
               defaultValue={foodCart.photo}
             />
-              <button type="submit">Save</button>
+            <button type="submit">{t("buttons.save_food_cart")}</button>
           </form>
           <button
             onClick={function () {
@@ -78,18 +90,18 @@ const NewFoodCart = ({ user, foodCart, edit }) => {
                     "Content-Type": "application/json",
                     Accept: "application/json",
                     "X-CSRF-Token":
-                    document.getElementsByName("csrf-token")[0].content,
+                      document.getElementsByName("csrf-token")[0].content,
                   },
                 })
-                .then((response) => response.json())
-                .then((data) => {
-                  if (data.ok) {
-                    window.location = "/food_carts";
-                  }
-                });
+                  .then((response) => response.json())
+                  .then((data) => {
+                    if (data.ok) {
+                      window.location = "/food_carts";
+                    }
+                  });
               }
             }}
-            >
+          >
             Delete
           </button>
         </div>

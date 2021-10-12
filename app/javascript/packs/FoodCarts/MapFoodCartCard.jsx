@@ -1,5 +1,5 @@
-import React from 'react';
-import { getDirections } from './getDirections';
+import React from "react";
+import { getDirections } from "./getDirections";
 import { useTranslation } from "react-i18next";
 
 const MapFoodCartCard = ({
@@ -8,26 +8,29 @@ const MapFoodCartCard = ({
   currentMapCardCart,
   currentMapCardSchedule,
 }) => {
+  const t = useTranslation().t;
   return (
     <div
-      className='MapFoodCartCard'
+      className="MapFoodCartCard"
       style={
         opened
           ? {
-              opactiy: '1',
-              pointerEvents: 'initial',
+              opactiy: "1",
+              pointerEvents: "initial",
             }
           : {
-              opacity: '0',
-              pointerEvents: 'none',
+              opacity: "0",
+              pointerEvents: "none",
             }
-      }>
-      {' '}
-      <div className='modal-box'>
-        <div className='closer-container'>
+      }
+    >
+      {" "}
+      <div className="modal-box">
+        <div className="closer-container">
           <div
-            className='closer cursor-pointer'
-            onClick={() => setMapCardOpened(false)}>
+            className="closer cursor-pointer"
+            onClick={() => setMapCardOpened(false)}
+          >
             X
           </div>
         </div>
@@ -35,19 +38,19 @@ const MapFoodCartCard = ({
           <>
             <div
               style={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                marginTop: '16px',
-              }}>
+                display: "flex",
+                justifyContent: "space-between",
+                marginTop: "16px",
+              }}
+            >
               <div>{currentMapCardCart.category.toUpperCase()}</div>
               <i
-                className='fas fa-map-marker-alt cursor-pointer'
-                onClick={() => getDirections(currentMapCardSchedule)}></i>
+                className="fas fa-map-marker-alt cursor-pointer"
+                onClick={() => getDirections(currentMapCardSchedule)}
+              ></i>
             </div>
-            <h2 className='food-cart-name'>{currentMapCardCart.name}</h2>
-            <a href={`/food_carts/${currentMapCardCart.id}`}>
-              See cart details.
-            </a>
+            <h2 className="food-cart-name">{currentMapCardCart.name}</h2>
+            <a href={`/food_carts/${currentMapCardCart.id}`}>{t("see_cart")}</a>
           </>
         )}
       </div>
