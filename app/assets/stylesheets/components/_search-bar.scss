@@ -30,6 +30,7 @@ input[type="search"] {
 	line-height: normal;
 	max-height: 3em;
   flex: 2 0 250px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
 }
 
 input[type="search"]:focus {
@@ -48,6 +49,7 @@ input[type="search"]:focus {
   border: none;
   padding: 0.35em 0.75em;
   cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
 }
 
 .visually-hidden {
