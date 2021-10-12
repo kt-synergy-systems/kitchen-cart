@@ -10,11 +10,19 @@ export default function DayCard({
   lightBorder,
   onClick,
 }) {
-  const daysThisMonth = daysInMonth(month + 1, year);
+  const daysThisMonth = daysInMonth(
+    typeof month === 'number' ? month + 1 : MONTHS.indexOf(month) + 1,
+    year
+  );
   const getRealDayOfMonth = () => {
-    if (dayOfMonth > 0) return dayOfMonth;
+    console.log('HEY!: ', month, year, daysThisMonth, dayOfMonth, today);
     if (dayOfMonth > daysThisMonth) return dayOfMonth - daysThisMonth;
-    const daysLastMonth = daysInMonth(month, year);
+    if (dayOfMonth > 0) return dayOfMonth;
+    const daysLastMonth = daysInMonth(
+      typeof month === 'number' ? month : MONTHS.indexOf(month),
+      year
+    );
+    console.log(daysLastMonth);
     return daysLastMonth + dayOfMonth;
   };
   getRealDayOfMonth(0);

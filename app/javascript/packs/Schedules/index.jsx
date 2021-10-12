@@ -66,7 +66,7 @@ const Schedules = ({ schedules, foodCart, user }) => {
             </a>
           )}
         </div>
-        <div className="schedule-header-name">
+        <div className='schedule-header-name'>
           <h2>{foodCart.name}</h2>
         </div>
         <div
@@ -89,7 +89,7 @@ const Schedules = ({ schedules, foodCart, user }) => {
                   setViewingNextWeek(false);
                 }
               }}>
-              <i className="fas fa-chevron-left"></i>
+              <i className='fas fa-chevron-left'></i>
             </button>
             <div className='month-name'>{month}</div>
             <button
@@ -104,7 +104,7 @@ const Schedules = ({ schedules, foodCart, user }) => {
                   }
                 }
               }}>
-              <i className="fas fa-chevron-right"></i>
+              <i className='fas fa-chevron-right'></i>
             </button>
           </div>
         </div>
