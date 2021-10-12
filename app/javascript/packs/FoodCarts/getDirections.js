@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 export const getDirections = (currentSchedule) => {
   if (currentSchedule) {
     // if there is more than one location for the day it needs to account for time.

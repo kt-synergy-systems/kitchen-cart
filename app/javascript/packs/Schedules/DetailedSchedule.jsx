@@ -1,6 +1,7 @@
 import React from 'react';
 import DayCard from './DayCard';
 import { MONTHS } from './index';
+import { useTranslation } from "react-i18next";
 
 const DetailedSchedule = ({
   schedules,

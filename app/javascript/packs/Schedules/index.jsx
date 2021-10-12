@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import DayCard from './DayCard';
 import DetailedSchedule from './DetailedSchedule';
+import { useTranslation } from "react-i18next";
 
 export const MONTHS = [
   'JANUARY',

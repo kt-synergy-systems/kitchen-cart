@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 const Search = ({ name, category, description, open, schedule, id }) => {
   return (

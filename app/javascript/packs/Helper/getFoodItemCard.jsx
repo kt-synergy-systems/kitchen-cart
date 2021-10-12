@@ -1,5 +1,6 @@
 import React from 'react';
 import FoodItemCard from '../FoodItems/foodItemCard';
+import { useTranslation } from "react-i18next";
 
 function getFoodItemCard(item, index, userSelection, foodCart, photo) {
   console.log(photo, '🤓')

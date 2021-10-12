@@ -1,5 +1,6 @@
 import React from 'react';
 import { getDirections } from './getDirections';
+import { useTranslation } from "react-i18next";
 
 const MapFoodCartCard = ({
   opened,
