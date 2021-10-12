@@ -5,6 +5,7 @@ import Marker from "./marker";
 import Search from "./Search";
 import MapFoodCartCard from "./MapFoodCartCard";
 import { getCurrentSchedule } from "./foodCartIsOpen";
+import { useTranslation } from "react-i18next";
 
 const FoodCarts = ({ foodCarts, schedules, user, likes }) => {
   const mapContainer = useRef();

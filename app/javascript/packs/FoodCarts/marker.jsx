@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import mapboxgl from '!mapbox-gl';
 import markerIcon from '../../../assets/images/food-cart.png';
+import { useTranslation } from "react-i18next";
 
 const Marker = ({
   worldMap,

@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 const NewFoodItem = ({ user, foodItem, edit }) => {
   console.log(foodItem);

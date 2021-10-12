@@ -1,5 +1,6 @@
 import React from 'react';
 import { daysInMonth, MONTHS } from './index';
+import { useTranslation } from "react-i18next";
 
 export default function DayCard({
   dayOfWeek,

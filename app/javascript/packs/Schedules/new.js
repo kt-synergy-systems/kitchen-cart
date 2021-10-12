@@ -1,4 +1,5 @@
 import mapboxgl from "!mapbox-gl";
+import { useTranslation } from "react-i18next";
 
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_API_KEY;
 const dataDiv = document.getElementById("data-div");
