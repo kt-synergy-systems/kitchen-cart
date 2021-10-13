@@ -6,6 +6,7 @@ import Menus from './Menus/index';
 import Schedules from './Schedules/index';
 import NewFoodCart from './FoodCarts/New';
 import NewFoodItem from './FoodItems/New';
+import { useTranslation } from "react-i18next";
 
 const MainTemplate = ({ data, contentType }) => {
   const getCurrentPage = () => {

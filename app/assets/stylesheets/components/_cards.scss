@@ -9,6 +9,7 @@
 //food_cart individual card
 .food_cart-card:nth-of-type(1n) {
   background-color: $yellow;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
   color: $black;
   max-width: 800px;
   width: 80vw;
@@ -30,6 +31,7 @@
 
 .food_cart-card:nth-of-type(2n) {
   background-color: $green;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
   color: $white;
   max-width: 800px;
   width: 80vw;
@@ -51,6 +53,7 @@
 
 .food_cart-card:nth-of-type(3n) {
   background-color: $tan;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
   color: $black;
   max-width: 800px;
   width: 80vw;
@@ -87,6 +90,7 @@
   top: 10px;
   left: 8px;
   z-index: 1;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
 }
 
 .food_cart-image {
@@ -152,6 +156,7 @@
   padding: 16px;
   margin: 32px 0px 32px 0px;
   background-color: $tan;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
 }
 
 .food-item-image {

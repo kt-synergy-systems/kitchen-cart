@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { getCurrentSchedule } from "./foodCartIsOpen";
 import { getDirections } from "./getDirections";
 import getFoodItemCard from "../Helper/getFoodItemCard";
+import { useTranslation } from "react-i18next";
 
 const FoodCart = ({ foodCart, photoKey, photos, isLiked }) => {
   console.log(isLiked);

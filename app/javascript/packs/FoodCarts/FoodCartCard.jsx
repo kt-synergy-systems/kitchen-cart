@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { getCurrentSchedule } from "./foodCartIsOpen";
 import { getDirections } from "./getDirections";
+import { useTranslation } from "react-i18next";
 
 const FoodCartCard = ({
   name,
