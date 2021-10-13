@@ -6,7 +6,8 @@ import Menus from './Menus/index';
 import Schedules from './Schedules/index';
 import NewFoodCart from './FoodCarts/New';
 import NewFoodItem from './FoodItems/New';
-import { useTranslation } from "react-i18next";
+import Navbar from './Navbar';
+import { useTranslation } from 'react-i18next';
 
 const MainTemplate = ({ data, contentType }) => {
   const getCurrentPage = () => {
@@ -64,7 +65,12 @@ const MainTemplate = ({ data, contentType }) => {
         return '';
     }
   };
-  return <div>{getCurrentPage()}</div>;
+  return (
+    <div>
+      <Navbar user={data.user} />
+      {getCurrentPage()}
+    </div>
+  );
 };
 
 export default MainTemplate;
