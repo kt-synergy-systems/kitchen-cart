@@ -37,6 +37,21 @@ const Navbar = ({ user }) => {
       }
     });
   }, [linksOut]);
+
+  const logout = async (e) => {
+    e.preventDefault();
+    const res = await fetch('/users/sign_out', {
+      method: 'delete',
+      headers: {
+        'X-CSRF-Token': document.getElementsByName('csrf-token')[0].content,
+      },
+      redirect: 'follow',
+    });
+    console.log(res);
+    if (res.status === 204) {
+      window.location.href = '/';
+    }
+  };
   return (
     <div className='our-nav'>
       <div
@@ -51,7 +66,9 @@ const Navbar = ({ user }) => {
         <a href='/food_carts'>{t('buttons.food_cart')}</a>
         <a href='/food_carts/new'>{t('buttons.create')} </a>
         {user ? (
-          <a href='/users/sign_out'>{t('buttons.sign_out')}</a>
+          <a href='' onClick={logout}>
+            {t('buttons.sign_out')}
+          </a>
         ) : (
           <>
             <a href='/users/sign_up'>{t('buttons.sign_up')}</a>
