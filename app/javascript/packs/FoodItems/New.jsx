@@ -1,94 +1,105 @@
-import React from "react";
-import { useTranslation } from "react-i18next";
+import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 const NewFoodItem = ({ user, foodItem, edit }) => {
-  console.log(foodItem);
+  const t = useTranslation().t;
   return (
-    <div className="container">
-      <div className="grid">
-        <div className="user-form">
+    <div className='container'>
+      <div className='grid'>
+        <div className='user-form'>
           <form
-            className="simple_form new_food_item"
-            id="new_food_item"
-            noValidate="novalidate"
-            encType="multipart/form-data"
+            className='simple_form new_food_item'
+            id='new_food_item'
+            noValidate='novalidate'
+            encType='multipart/form-data'
             action={
               edit
                 ? `/food_carts/${foodItem.menu.food_cart_id}/menus/${foodItem.menu_id}/food_items/${foodItem.id}`
                 : `/food_carts/${foodItem.menu.food_cart_id}/menus/${foodItem.menu_id}/food_items`
             }
-            acceptCharset="UTF-8"
-            method="POST"
-          >
-            {edit && <input type="hidden" name="_method" value="patch" />}
+            acceptCharset='UTF-8'
+            method='POST'>
+            {edit && <input type='hidden' name='_method' value='patch' />}
             <input
-              type="hidden"
-              name="authenticity_token"
-              value={document.getElementsByName(`csrf-token`)[0].content}
-            ></input>
-            <h1>{edit ? "Edit Food Item" : "New Food Item"}</h1>
-            <label htmlFor="food_item_name">Food Item Name</label>
+              type='hidden'
+              name='authenticity_token'
+              value={
+                document.getElementsByName(`csrf-token`)[0].content
+              }></input>
+            <h1>
+              {edit
+                ? t('forms.food_item_form.edit')
+                : t('forms.food_item_form.new')}
+            </h1>
+            <label htmlFor='food_item_name'>
+              {t('forms.food_item_form.name')}
+            </label>
             <input
-              className="form-control string required"
-              type="text"
-              name="food_item[food_name]"
-              id="food_item_name"
+              className='form-control string required'
+              type='text'
+              name='food_item[food_name]'
+              id='food_item_name'
               defaultValue={foodItem.food_name}
             />
-            <label htmlFor="food_item_decription">Description</label>
+            <label htmlFor='food_item_decription'>
+              {t('forms.food_item_form.description')}
+            </label>
             <textarea
-              className="form-control text required"
-              name="food_item[food_description]"
-              id="food_item_description"
+              className='form-control text required'
+              name='food_item[food_description]'
+              id='food_item_description'
               defaultValue={foodItem.food_description}
             />
-            <label htmlFor="food_item_price">Food Price</label>
+            <label htmlFor='food_item_price'>
+              {t('forms.food_item_form.price')}
+            </label>
             <input
-              className="form-control string required"
-              type="text"
-              name="food_item[food_price]"
+              className='form-control string required'
+              type='text'
+              name='food_item[food_price]'
               defaultValue={foodItem.food_price}
-              id="food_item_price"
+              id='food_item_price'
             />
-            <label htmlFor="food_item_type">Food Type</label>
+            <label htmlFor='food_item_type'>
+              {t('forms.food_item_form.price')}
+            </label>
             <select
-              className="form-control string required"
-              name="food_item[food_type]"
+              className='form-control string required'
+              name='food_item[food_type]'
               defaultValue={foodItem.food_type}
-              id="food_item_type"
-            >
-              <option value="food">Food</option>
-              <option value="drink">Drink</option>
+              id='food_item_type'>
+              <option value='food'>{t('buttons.food')}</option>
+              <option value='drink'>{t('buttons.drinks')}</option>
             </select>
             <input
-              className="form-control-file file optional"
-              type="file"
-              name="food_item[photo]"
-              id="food_item_photo"
+              className='form-control-file file optional'
+              type='file'
+              name='food_item[photo]'
+              id='food_item_photo'
               defaultValue={foodItem.photo}
             />
             <input
-              type="submit"
-              name="commit"
-              value="Save Food Item"
-              label="Save Food Item"
-              className="btn btn btn-primary"
-              data-disable-with="Save Food Item"
+              type='submit'
+              name='commit'
+              value={t('buttons.save_food_item')}
+              label={t('buttons.save_food_item')}
+              className='btn btn btn-primary'
+              data-disable-with='Save Food Item'
             />
           </form>
           <button
             onClick={function () {
-              const confirmDelete = confirm("Are you sure?");
+              const confirmDelete = confirm('Are you sure?');
               if (confirmDelete) {
                 fetch(
                   `/food_carts/${foodItem.menu.food_cart_id}/menus/${foodItem.menu_id}/food_items/${foodItem.id}`,
                   {
-                    method: "delete",
+                    method: 'delete',
                     headers: {
-                      "Content-Type": "application/json",
-                      Accept: "application/json",
-                      "X-CSRF-Token":
-                        document.getElementsByName("csrf-token")[0].content,
+                      'Content-Type': 'application/json',
+                      Accept: 'application/json',
+                      'X-CSRF-Token':
+                        document.getElementsByName('csrf-token')[0].content,
                     },
                   }
                 )
@@ -99,9 +110,8 @@ const NewFoodItem = ({ user, foodItem, edit }) => {
                     }
                   });
               }
-            }}
-          >
-            Delete
+            }}>
+            {t('buttons.delete')}
           </button>
         </div>
       </div>

@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import { getCurrentSchedule } from "./foodCartIsOpen";
-import { getDirections } from "./getDirections";
-import { useTranslation } from "react-i18next";
+import React, { useState } from 'react';
+import { getCurrentSchedule } from './foodCartIsOpen';
+import { getDirections } from './getDirections';
+import { useTranslation } from 'react-i18next';
 
 const FoodCartCard = ({
   name,
@@ -13,18 +13,19 @@ const FoodCartCard = ({
   likedByUser,
   isEdit,
 }) => {
+  const t = useTranslation().t;
   const currentSchedule = getCurrentSchedule(schedules);
   const [heartFilledIn, setHeartFilledIn] = useState(
     likedByUser ? true : false
   );
   const requestObject = {
-    method: "PUT",
+    method: 'PUT',
     headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-      "X-CSRF-Token": document.getElementsByName("csrf-token")[0].content,
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+      'X-CSRF-Token': document.getElementsByName('csrf-token')[0].content,
     },
-    credentials: "same-origin",
+    credentials: 'same-origin',
   };
   const handleUpVote = async () => {
     await fetch(`/food_carts/${id}/like`, requestObject);
@@ -52,7 +53,7 @@ const FoodCartCard = ({
             onClick={() => {
               window.open(`http://localhost:3000/food_carts/${id}/schedules`);
             }}>
-            Sorry, we're closed.
+            {t('closed')}
           </div>
         )}
         <img
@@ -68,11 +69,11 @@ const FoodCartCard = ({
           ) : (
             <i className='far fa-heart' onClick={handleUpVote}></i>
           )}
-          &nbsp;&nbsp;{" "}
+          &nbsp;&nbsp;{' '}
           <a href={`/food_carts/${id}/schedules`}>
             <i className='far fa-calendar-alt'></i>
           </a>
-          &nbsp;&nbsp;{" "}
+          &nbsp;&nbsp;{' '}
           {isEdit && (
             <a href={`/food_carts/${id}/edit`}>
               <i className='fas fa-edit'></i>

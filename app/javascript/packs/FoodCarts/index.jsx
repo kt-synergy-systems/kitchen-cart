@@ -1,11 +1,11 @@
-import React, { useEffect, useState, useRef } from "react";
-import FoodCartCard from "./FoodCartCard";
-import mapboxgl from "!mapbox-gl";
-import Marker from "./marker";
-import Search from "./Search";
-import MapFoodCartCard from "./MapFoodCartCard";
-import { getCurrentSchedule } from "./foodCartIsOpen";
-import { useTranslation } from "react-i18next";
+import React, { useEffect, useState, useRef } from 'react';
+import FoodCartCard from './FoodCartCard';
+import mapboxgl from '!mapbox-gl';
+import Marker from './marker';
+import Search from './Search';
+import MapFoodCartCard from './MapFoodCartCard';
+import { getCurrentSchedule } from './foodCartIsOpen';
+import { useTranslation } from 'react-i18next';
 
 const FoodCarts = ({ foodCarts, schedules, user, likes }) => {
   const mapContainer = useRef();
@@ -23,6 +23,8 @@ const FoodCarts = ({ foodCarts, schedules, user, likes }) => {
   const allClosedNotLikedCarts = [];
   const allOpenSchedules = [];
   const allOpenFoodCarts = [];
+
+  const t = useTranslation().t;
 
   const isLiked = (fc) => {
     const likesList = [];
@@ -55,7 +57,7 @@ const FoodCarts = ({ foodCarts, schedules, user, likes }) => {
   const geoLocate = () => {
     if (!navigator.geolocation) {
       alert(
-        "Please enable Gelocation in your browser to use this application."
+        'Please enable Gelocation in your browser to use this application.'
       );
     } else {
       navigator.geolocation.getCurrentPosition((position, error) => {
@@ -83,7 +85,7 @@ const FoodCarts = ({ foodCarts, schedules, user, likes }) => {
       mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_API_KEY;
       const map = new mapboxgl.Map({
         container: mapContainer.current,
-        style: "mapbox://styles/mapbox/streets-v11",
+        style: 'mapbox://styles/mapbox/streets-v11',
         center: [139.7528, 35.6852],
         zoom: 10,
       });
@@ -104,7 +106,7 @@ const FoodCarts = ({ foodCarts, schedules, user, likes }) => {
   };
 
   return (
-    <div className="FoodCarts">
+    <div className='FoodCarts'>
       <MapFoodCartCard
         opened={mapCardOpened}
         setMapCardOpened={setMapCardOpened}
@@ -112,7 +114,7 @@ const FoodCarts = ({ foodCarts, schedules, user, likes }) => {
         currentMapCardSchedule={currentMapCardSchedule}
       />
       <Search opened={mapCardOpened} />
-      <div className="map-container" ref={mapContainer} id="map"></div>
+      <div className='map-container' ref={mapContainer} id='map'></div>
       {allOpenSchedules.map((sched, index) => {
         if (worldMap) {
           return (
@@ -130,20 +132,20 @@ const FoodCarts = ({ foodCarts, schedules, user, likes }) => {
       })}
       <div className='location-button-container'>
         <button className='location-button' onClick={geoLocate}>
-          Nearby Food Carts
+          {t('buttons.nearby')}
         </button>
-        <div className="divider"/>
+        <div className='divider' />
         <button
-          className="owned-button"
+          className='owned-button'
           onClick={() => {
             showOnlyMyFoodCarts
               ? setShowOnlyMyFoodCarts(false)
               : setShowOnlyMyFoodCarts(true);
           }}>
-          {!showOnlyMyFoodCarts ? "My Food Carts" : "Nearby Food Carts"}
+          {t('buttons.my_foodcarts')}
         </button>
       </div>
-      <div className="FoodCartCard">
+      <div className='FoodCartCard'>
         {/* list all food carts */}
         {foodCarts.map((cart, index) => {
           if (showOnlyMyFoodCarts && cart.user_id === user.id) {
