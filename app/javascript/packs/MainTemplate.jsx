@@ -28,7 +28,7 @@ const MainTemplate = ({ data, contentType }) => {
           <NewFoodCart foodCart={data.food_cart} user={data.user} edit={true} />
         );
       case 'HOME':
-        return <Home />;
+        return <Home user={data.user} />;
       case 'MENUS':
         return <Menus menus={data} user={data.user} />;
       case 'FOOD_CART':
