@@ -1,7 +1,8 @@
-import React from "react";
-import { useTranslation } from "react-i18next";
+import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 const Search = ({ name, category, description, open, schedule, id }) => {
+  const t = useTranslation().t;
   return (
     <div className='search-bar'>
       <form action='/food_carts' method='get' className='form'>
@@ -11,12 +12,12 @@ const Search = ({ name, category, description, open, schedule, id }) => {
         <input
           type='search'
           className='form-control'
-          placeholder='Find by name or location'
+          placeholder={t('search_bar')}
           name='query'
           id='query'
         />
         <button type='submit' className='search-button'>
-          Search
+          {t('buttons.search')}
         </button>
       </form>
     </div>

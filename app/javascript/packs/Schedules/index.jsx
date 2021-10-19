@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import DayCard from './DayCard';
 import DetailedSchedule from './DetailedSchedule';
-import { useTranslation } from "react-i18next";
+import { useTranslation } from 'react-i18next';
 
 export const MONTHS = [
   'JANUARY',
@@ -27,6 +27,7 @@ const Schedules = ({ schedules, foodCart, user }) => {
   const [dayOfMonth, setDayOfMonth] = useState(date.getDate());
   const [viewingNextWeek, setViewingNextWeek] = useState(false);
   const daysThisMonth = daysInMonth(date.getMonth() + 1, year);
+  const t = useTranslation().t;
   console.log(schedules);
   const getCalendarCards = () => {
     const cards = [];
@@ -58,12 +59,12 @@ const Schedules = ({ schedules, foodCart, user }) => {
     <div className='Schedules'>
       <div className='top-calendar'>
         <div className='schedule-header'>
-          <div>WEEKLY SCHEDULE</div>
+          <div>{t('forms.schedule_view.weekly')}</div>
           {user.id === foodCart.user_id && (
             <a
               className='add-schedule'
               href={`/food_carts/${foodCart.id}/schedules/new`}>
-              + ADD SCHEDULE{' '}
+              {t('forms.schedule_view.add')}{' '}
             </a>
           )}
         </div>

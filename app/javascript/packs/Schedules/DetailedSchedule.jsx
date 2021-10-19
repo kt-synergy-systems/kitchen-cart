@@ -1,7 +1,7 @@
 import React from 'react';
 import DayCard from './DayCard';
 import { MONTHS } from './index';
-import { useTranslation } from "react-i18next";
+import { useTranslation } from 'react-i18next';
 
 const DetailedSchedule = ({
   schedules,
@@ -11,6 +11,7 @@ const DetailedSchedule = ({
   month,
   isToday,
 }) => {
+  const t = useTranslation().t;
   const timeRegex = /(?<=T)\d\d:\d\d(?=.)/;
   const goToMap = (lat, long) => {
     window.open(
@@ -110,7 +111,7 @@ const DetailedSchedule = ({
               dayOfMonth,
               isToday ? true : false
             )
-          : 'No schedule for this date'}
+          : t('alerts.food_cart_open')}
       </div>
     </div>
   );
