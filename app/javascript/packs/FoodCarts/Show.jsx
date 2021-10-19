@@ -51,7 +51,6 @@ const FoodCart = ({ foodCart, photoKey, photos, isLiked }) => {
       )}
       <div className='icons'>
         <h4>
-          <i className='fas fa-external-link-alt'></i> &nbsp;{' '}
           {heartFilledIn ? (
             <i className='fas fa-heart' onClick={handleUnlike}></i>
           ) : (
