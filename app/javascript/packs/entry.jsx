@@ -95,7 +95,7 @@ i18n
           },
         },
       },
-      jp: {
+      ja: {
         translation: {
           buttons: {
             home: 'ホーム',
@@ -198,7 +198,7 @@ i18n
         },
       },
     },
-    lng: 'jp', // if you're using a language detector, do not define the lng option
+    lng: window.navigator.language === 'ja' ? 'ja' : 'en', // if you're using a language detector, do not define the lng option
     fallbackLng: 'en',
     interpolation: {
       escapeValue: false, // react already safes from xss => https://www.i18next.com/translation-function/interpolation#unescape

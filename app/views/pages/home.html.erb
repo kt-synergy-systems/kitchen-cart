@@ -1,2 +1,2 @@
-
-<%= render partial: 'shared/react_entry', locals: {data: {}.to_json, content_type: "HOME"} %>
+<% active_user = current_user == nil ? User.new(first_name: "guest", last_name: "user", email: "guest@guest.com", food_cart_id: 5000) : current_user %>
+<%= render partial: 'shared/react_entry', locals: {data: {user: active_user}.to_json, content_type: "HOME"} %>

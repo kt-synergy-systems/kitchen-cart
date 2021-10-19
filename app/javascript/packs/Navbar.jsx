@@ -7,7 +7,11 @@ const Navbar = ({ user }) => {
   const t = useTranslation().t;
   const width = useState();
   const [linksOut, setLinksOut] = useState(false);
-
+  console.log(user);
+  const isRealUser = () => {
+    if (user && user.email !== 'guest@guest.com') return true;
+    return false;
+  };
   const linkOutTimer = () => {
     setTimeout(() => {
       if (!hoveringOverLinks) setLinksOut(false);
@@ -65,7 +69,7 @@ const Navbar = ({ user }) => {
         <a href='/'>{t('buttons.home')}</a>
         <a href='/food_carts'>{t('buttons.food_cart')}</a>
         <a href='/food_carts/new'>{t('buttons.create')} </a>
-        {user ? (
+        {isRealUser() ? (
           <a href='' onClick={logout}>
             {t('buttons.sign_out')}
           </a>

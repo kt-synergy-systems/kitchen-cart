@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import KitchenCartLogo from '../../../assets/images/kitchen-cart-logo.png';
 import { useTranslation } from 'react-i18next';
 const Title = () => {
