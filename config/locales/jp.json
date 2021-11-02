@@ -28,7 +28,7 @@
     "see_cart": "カートの詳細を見る",
     "closed": "申し訳ありませんが、お休みです。",
     "menu_title": "メニュー",
-    "yen": "円(税込)",
+    "yen": "円",
     "forms": {
       "food_cart_form": {
         "new": "新しいフードカート",
