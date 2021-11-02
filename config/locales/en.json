@@ -29,7 +29,7 @@
   "see_cart": "See cart details",
   "closed": "Sorry, we're closed",
   "menu_title": "Menu",
-  "yen": "yen (excluding tax)",
+  "yen": "yen",
   "forms": {
     "food_cart_form": {
       "new": "New Food Cart",

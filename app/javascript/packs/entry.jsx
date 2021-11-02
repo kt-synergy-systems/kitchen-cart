@@ -45,7 +45,7 @@ export const translationData = {
         see_cart: "See cart details",
         closed: "Sorry, we're closed",
         menu_title: "Menu",
-        yen: "yen (excluding tax)",
+        yen: "yen",
         forms: {
           food_cart_form: {
             new: "New Food Cart",
@@ -145,7 +145,7 @@ export const translationData = {
         see_cart: "フードカートを見る",
         closed: "本日休業",
         menu_title: "メニュー",
-        yen: "円(税込)",
+        yen: "円",
         forms: {
           food_cart_form: {
             new: "フードカートを作成",
