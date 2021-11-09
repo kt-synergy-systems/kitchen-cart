@@ -36,6 +36,8 @@ export const translationData = {
           drinks: "Drinks",
           create_schedule: "Create Schedule",
           create_food_item: "Add Food Item",
+          show_menu: "Show Menu",
+          show_schedule: "Show Schedule"
         },
         title: "Kitchen Cart",
         mission:

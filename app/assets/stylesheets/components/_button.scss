@@ -74,6 +74,23 @@
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
 }
 
+.admin-buttons {
+  display: flex;
+  align-items: left;
+  justify-content: flex;
+  flex-direction: row;
+  align-content: space-between;
+}
+
+.admin-selection {
+  display: flex;
+  align-items: left;
+  justify-content: flex;
+  flex-direction: column;
+  padding: 1em;
+  text-transform: uppercase;
+}
+
 .fa-heart {
   cursor: pointer;
 }
