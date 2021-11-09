@@ -2,7 +2,7 @@ const date = new Date();
 
 const today = `${date.getFullYear()}-${
   date.getMonth() + 1 < 10 ? `0${date.getMonth() + 1}` : date.getMonth() + 1
-}-${date.getDate() + 1 < 10 ? `0${date.getDate()}` : date.getDate()}`;
+}-${date.getDate() < 10 ? `0${date.getDate()}` : date.getDate()}`;
 
 const stripTime = (t) => parseInt(t.match(/(?<=T)\d\d(?=:)/)[0]);
 
@@ -18,7 +18,11 @@ const getCurrentOpenHours = (scheduleForToday) => {
   return currentOpenSchedule;
 };
 
-const getSchedForToday = (scheds) => scheds.filter((s) => s.date === today);
+const getSchedForToday = (scheds) =>
+  scheds.filter((s) => {
+    console.log(s.date, today);
+    return s.date === today;
+  });
 
 export const getCurrentSchedule = (schedules) => {
   const scheduleForToday = getSchedForToday(schedules);
