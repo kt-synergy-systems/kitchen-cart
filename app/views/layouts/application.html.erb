@@ -41,4 +41,10 @@
     <%= render 'shared/flashes' %>
     <%= yield %>
   </body>
+  <script>
+    var lang = window.localStorage.getItem('myLang')
+      if (!lang){
+        localStorage.setItem('myLang', window.navigator.language)
+      }
+  </script>
 </html>
