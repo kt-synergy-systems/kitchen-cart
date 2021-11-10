@@ -100,12 +100,6 @@ const FoodCart = ({ foodCart, photoKey, photos, isLiked }) => {
             onClick={() => setUserSelection('drink')}>
             {t('buttons.create_food_item')}
           </button>
-          &nbsp;&nbsp;&nbsp;
-          <button 
-            className='owned-button' 
-            onClick={() => setUserSelection(null)}>
-            {t('buttons.show_menu')}
-          </button>
         </div>
       </div>
       <div className='hr'>
