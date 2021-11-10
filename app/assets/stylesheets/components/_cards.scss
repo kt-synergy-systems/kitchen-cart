@@ -107,8 +107,6 @@
 
 .food_cart-content {
   position: relative;
-  overflow: hidden;
-  overflow-y: scroll;
 }
 .food-cart-name {
   p {
@@ -128,7 +126,6 @@
 .card-description {
   font-size: 14px;
   position: relative;
-  overflow: auto;
   width: 90%;
   height: 6em;
 }

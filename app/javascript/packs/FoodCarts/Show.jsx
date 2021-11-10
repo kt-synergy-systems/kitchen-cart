@@ -84,21 +84,31 @@ const FoodCart = ({ foodCart, photoKey, photos, isLiked }) => {
         <h5>Admin</h5>
         <div className='admin-buttons'>
           <button 
-            className='owned-button' 
+            className='owned-button'
+            type='button' 
             onClick={() => setUserSelection(null)}>
             {t('buttons.create_schedule')}
           </button>
           &nbsp;&nbsp;&nbsp;
           <button
             className='owned-button'
+            type='button'
             onClick={() => setUserSelection('food')}>
             {t('buttons.show_schedule')}
           </button>
           &nbsp;&nbsp;&nbsp;
           <button
             className='owned-button'
+            type='button'
             onClick={() => setUserSelection('drink')}>
             {t('buttons.create_food_item')}
+          </button>
+          &nbsp;&nbsp;&nbsp;
+          <button 
+            className='owned-button'
+            type='button' 
+            onClick={() => setUserSelection(null)}>
+            {t('buttons.show_menu')}
           </button>
         </div>
       </div>
