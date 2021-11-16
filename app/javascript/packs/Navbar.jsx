@@ -89,6 +89,8 @@ const Navbar = ({ user }) => {
         )}
         <a
           href='#'
+          style={{ fontSize: '32px', display: 'inline' }}
+          class='emoji-link'
           onClick={(e) => {
             e.preventDefault();
             const lang = window.localStorage.getItem('myLang');
@@ -101,7 +103,7 @@ const Navbar = ({ user }) => {
             i18n.changeLanguage(newLang);
             setLanguage(newLang);
           }}>
-          {language === 'en' ? '日本語' : 'EN'}
+          {language === 'en' ? '🇯🇵' : '🇬🇧'}
         </a>
       </div>
       <div className='hamburger' onClick={hamburgerClick}>
