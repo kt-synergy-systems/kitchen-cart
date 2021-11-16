@@ -18,7 +18,6 @@ export const translationData = {
       translation: {
         hello: 'Hello world',
         buttons: {
-
           home: 'Home',
           food_cart: 'Food Carts',
           create: 'Create New Food Cart',
@@ -32,14 +31,13 @@ export const translationData = {
           save_food_cart: 'Save',
           save_food_item: 'Save Food Item',
           delete: 'Delete',
-          all: 'All',
+          all: 'All Food Carts',
           food: 'Food',
           drinks: 'Drinks',
           create_schedule: 'Create Schedule',
           create_food_item: 'Add Food Item',
           show_menu: 'Show Menu',
           show_schedule: 'Show Schedule',
-
         },
         title: 'Kitchen Cart',
         mission: 'Making it easier to find food on the go, while helping local businesses to thrive.',
@@ -130,7 +128,7 @@ export const translationData = {
           save_food_cart: '保存',
           save_food_item: '保存',
           delete: '削除',
-          all: '全て',
+          all: '全てのフードカート',
           food: '食品',
           drinks: '飲み物',
           create_schedule: 'スケジュールを作成',
