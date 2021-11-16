@@ -38,7 +38,11 @@
   background-color: snow;
   display: none;
 }
-
+.nav-bar-links {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
 @media only screen and (max-width: 800px) {
   .our-nav {
     justify-content: flex-end;
