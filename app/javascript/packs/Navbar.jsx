@@ -89,8 +89,8 @@ const Navbar = ({ user }) => {
         )}
         <a
           href='#'
-          style={{ fontSize: '32px', display: 'inline' }}
-          class='emoji-link'
+          style={{ fontSize: '32px' }}
+          className='emoji-link'
           onClick={(e) => {
             e.preventDefault();
             const lang = window.localStorage.getItem('myLang');
