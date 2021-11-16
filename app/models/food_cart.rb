@@ -9,10 +9,9 @@ class FoodCart < ApplicationRecord
 
   has_one_attached :photo
 
-  validates :name, presence: true, length: { minimum: 2 }
+  validates :name, presence: true, length: { minimum: 2, maximum: 60 }
   validates :category, presence: true
-  # validates :open, default: false
-  validates :cart_description, presence: true
+  validates :cart_description, presence: true, length: { maximum: 140 }
   validates :phone_number, presence: true
 
   include PgSearch::Model
