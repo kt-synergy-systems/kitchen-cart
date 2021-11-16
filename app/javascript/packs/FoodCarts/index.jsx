@@ -56,9 +56,7 @@ const FoodCarts = ({ foodCarts, schedules, user, likes }) => {
 
   const geoLocate = () => {
     if (!navigator.geolocation) {
-      alert(
-        'Please enable Gelocation in your browser to use this application.'
-      );
+      alert('Please enable Gelocation in your browser to use this application.');
     } else {
       navigator.geolocation.getCurrentPosition((position, error) => {
         if (error) {
@@ -138,11 +136,9 @@ const FoodCarts = ({ foodCarts, schedules, user, likes }) => {
         <button
           className='owned-button'
           onClick={() => {
-            showOnlyMyFoodCarts
-              ? setShowOnlyMyFoodCarts(false)
-              : setShowOnlyMyFoodCarts(true);
+            showOnlyMyFoodCarts ? setShowOnlyMyFoodCarts(false) : setShowOnlyMyFoodCarts(true);
           }}>
-          {t('buttons.my_foodcarts')}
+          {showOnlyMyFoodCarts ? t('buttons.all') : t('buttons.my_foodcarts')}
         </button>
       </div>
       <div className='FoodCartCard'>
