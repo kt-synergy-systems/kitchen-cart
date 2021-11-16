@@ -77,9 +77,12 @@
 .admin-buttons {
   display: flex;
   align-items: left;
-  justify-content: flex;
-  flex-direction: row;
-  align-content: space-between;
+  justify-content: space-between;
+  flex-direction: column;
+  flex-wrap: wrap;
+  max-width: 320px;
+  text-align: center;
+  padding: 16px;
 }
 
 .admin-selection {
@@ -109,7 +112,7 @@ a {
     flex: 1 1 auto;
     margin: 0 auto;
   }
-  .divider{
+  .divider {
     width: 32px;
     height: auto;
     display: inline-block;

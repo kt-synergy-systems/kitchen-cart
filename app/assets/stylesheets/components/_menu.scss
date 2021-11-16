@@ -29,6 +29,10 @@
   justify-content: flex;
   flex-direction: row;
   align-content: space-between;
+  flex-wrap: wrap;
+  max-width: 320px;
+  text-align: center;
+  padding: 16px;
 }
 
 .food-item-card-container {

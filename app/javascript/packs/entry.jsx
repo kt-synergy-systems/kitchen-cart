@@ -18,6 +18,7 @@ export const translationData = {
       translation: {
         hello: 'Hello world',
         buttons: {
+
           home: 'Home',
           food_cart: 'Food Carts',
           create: 'Create New Food Cart',
@@ -38,6 +39,7 @@ export const translationData = {
           create_food_item: 'Add Food Item',
           show_menu: 'Show Menu',
           show_schedule: 'Show Schedule',
+
         },
         title: 'Kitchen Cart',
         mission: 'Making it easier to find food on the go, while helping local businesses to thrive.',
