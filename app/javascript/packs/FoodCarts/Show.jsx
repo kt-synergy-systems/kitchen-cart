@@ -83,33 +83,26 @@ const FoodCart = ({ foodCart, photoKey, photos, isLiked }) => {
       <div className='admin-selection'>
         <h5>Admin</h5>
         <div className='admin-buttons'>
-          <button 
-            className='owned-button'
-            type='button' 
+          <a href={`/food_carts/${foodCart.id}/schedules/new`}
+            className='owned-button' 
+
             onClick={() => setUserSelection(null)}>
             {t('buttons.create_schedule')}
-          </button>
+          </a>
           &nbsp;&nbsp;&nbsp;
-          <button
+          <a href={`/food_carts/${foodCart.id}/schedules`}
             className='owned-button'
             type='button'
             onClick={() => setUserSelection('food')}>
             {t('buttons.show_schedule')}
-          </button>
+          </a>
           &nbsp;&nbsp;&nbsp;
-          <button
+          <a href={`/food_carts/${foodCart.id}/menus/${menu.id}/food_items/new`}
             className='owned-button'
             type='button'
             onClick={() => setUserSelection('drink')}>
             {t('buttons.create_food_item')}
-          </button>
-          &nbsp;&nbsp;&nbsp;
-          <button 
-            className='owned-button'
-            type='button' 
-            onClick={() => setUserSelection(null)}>
-            {t('buttons.show_menu')}
-          </button>
+          </a>
         </div>
       </div>
       <div className='hr'>
