@@ -5,6 +5,18 @@ const NewFoodCart = ({ user, foodCart, edit }) => {
   console.log(`Edit: ${edit}`);
   const t = useTranslation().t;
   const ref = useRef();
+  const nameRef = useRef();
+  const categoryRef = useRef();
+  const handleCatChange = (e) => {
+    if (e.target.value.length > 60) {
+      categoryRef.current.value = e.target.value.substring(0, 60);
+    }
+  };
+  const handleNameChange = (e) => {
+    if (e.target.value.length > 60) {
+      nameRef.current.value = e.target.value.substring(0, 60);
+    }
+  };
   const handleDescriptionChange = (e) => {
     if (e.target.value.length > 140) {
       ref.current.value = e.target.value.substring(0, 140);
@@ -30,6 +42,8 @@ const NewFoodCart = ({ user, foodCart, edit }) => {
             <div className='form-inputs'>
               <label htmlFor='food_cart_name'>{t('forms.food_cart_form.name')}</label>
               <input
+                onChange={handleNameChange}
+                ref={nameRef}
                 className='form-control string required'
                 type='text'
                 name='food_cart[name]'
@@ -46,6 +60,8 @@ const NewFoodCart = ({ user, foodCart, edit }) => {
               />
               <label htmlFor='food_cart_category'>{t('forms.food_cart_form.category')}</label>
               <input
+                ref={categoryRef}
+                onChange={handleCatChange}
                 className='form-control string required'
                 type='text'
                 name='food_cart[category]'
