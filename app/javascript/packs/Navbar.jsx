@@ -89,7 +89,7 @@ const Navbar = ({ user }) => {
         )}
         <a
           href='#'
-          style={{ fontSize: '32px', display: 'inline' }}
+          style={{ fontSize: '32px' }}
           className='emoji-link'
           onClick={(e) => {
             e.preventDefault();

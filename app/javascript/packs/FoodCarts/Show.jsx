@@ -4,13 +4,13 @@ import { getDirections } from './getDirections';
 import getFoodItemCard from '../Helper/getFoodItemCard';
 import { useTranslation } from 'react-i18next';
 
-const FoodCart = ({ foodCart, photoKey, photos, isLiked }) => {
+const FoodCart = ({ foodCart, user, photoKey, photos, isLiked }) => {
   const [userSelection, setUserSelection] = useState(null);
   const [heartFilledIn, setHeartFilledIn] = useState(isLiked ? true : false);
   const schedules = foodCart.schedules;
   const menu = foodCart.menu;
   const foodItems = foodCart.food_items;
-  console.log('🎅', photos);
+  console.log('🎅', foodCart, user);
   const t = useTranslation().t;
   const requestObject = {
     method: 'PUT',
@@ -77,37 +77,44 @@ const FoodCart = ({ foodCart, photoKey, photos, isLiked }) => {
         <h2>{foodCart.name}</h2>
         <p>{foodCart.description}</p>
       </div>
-      <div className='hr'>
-        <hr />
-      </div>
-      <div className='admin-selection'>
-        <h5>Admin</h5>
-        <div className='admin-buttons'>
-          <a href={`/food_carts/${foodCart.id}/schedules/new`}
-            className='owned-button' 
+      {foodCart?.user_id === user?.id && (
+        <>
+          <div className='hr'>
+            <hr />
+          </div>
 
-            onClick={() => setUserSelection(null)}>
-            {t('buttons.create_schedule')}
-          </a>
-          &nbsp;&nbsp;&nbsp;
-          <a href={`/food_carts/${foodCart.id}/schedules`}
-            className='owned-button'
-            type='button'
-            onClick={() => setUserSelection('food')}>
-            {t('buttons.show_schedule')}
-          </a>
-          &nbsp;&nbsp;&nbsp;
-          <a href={`/food_carts/${foodCart.id}/menus/${menu.id}/food_items/new`}
-            className='owned-button'
-            type='button'
-            onClick={() => setUserSelection('drink')}>
-            {t('buttons.create_food_item')}
-          </a>
-        </div>
-      </div>
-      <div className='hr'>
-        <hr />
-      </div>
+          <div className='admin-selection'>
+            <h5>Admin</h5>
+            <div className='admin-buttons'>
+              <a
+                href={`/food_carts/${foodCart.id}/schedules/new`}
+                className='owned-button'
+                onClick={() => setUserSelection(null)}>
+                {t('buttons.create_schedule')}
+              </a>
+              &nbsp;&nbsp;&nbsp;
+              <a
+                href={`/food_carts/${foodCart.id}/schedules`}
+                className='owned-button'
+                type='button'
+                onClick={() => setUserSelection('food')}>
+                {t('buttons.show_schedule')}
+              </a>
+              &nbsp;&nbsp;&nbsp;
+              <a
+                href={`/food_carts/${foodCart.id}/menus/${menu?.id}/food_items/new`}
+                className='owned-button'
+                type='button'
+                onClick={() => setUserSelection('drink')}>
+                {t('buttons.create_food_item')}
+              </a>
+            </div>
+          </div>
+          <div className='hr'>
+            <hr />
+          </div>
+        </>
+      )}
       <div className='menu-selection'>
         <h5>Menu</h5>
         <div className='menu-buttons'>
@@ -115,15 +122,11 @@ const FoodCart = ({ foodCart, photoKey, photos, isLiked }) => {
             {t('buttons.all')}
           </button>
           &nbsp;&nbsp;&nbsp;
-          <button
-            className='food-button'
-            onClick={() => setUserSelection('food')}>
+          <button className='food-button' onClick={() => setUserSelection('food')}>
             {t('buttons.food')}
           </button>
           &nbsp;&nbsp;&nbsp;
-          <button
-            className='drinks-button'
-            onClick={() => setUserSelection('drink')}>
+          <button className='drinks-button' onClick={() => setUserSelection('drink')}>
             {t('buttons.drinks')}
           </button>
         </div>
