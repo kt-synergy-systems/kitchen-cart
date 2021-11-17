@@ -18,7 +18,7 @@ const FoodItemCard = ({
       <div className='food-item-text'>
         <h5>{name}</h5>
         <p>{description}</p>
-        <h6>{price} yen</h6>
+        <h6>{price}</h6>
       </div>
       <a
         href={`/food_carts/${food_cart.id}/menus/${menu_id}/food_items/${id}/edit`}>
