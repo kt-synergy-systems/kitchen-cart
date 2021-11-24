@@ -129,7 +129,8 @@ export const translationData = {
           save_food_cart: '保存',
           save_food_item: '保存',
           delete: '削除',
-          all: '全てのフードカート',
+          all: '全て',
+          all_carts: '全てのフードカート'
           food: '食品',
           drinks: '飲み物',
           create_schedule: 'スケジュールを作成',
