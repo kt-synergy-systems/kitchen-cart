@@ -3,21 +3,10 @@ import { getCurrentSchedule } from './foodCartIsOpen';
 import { getDirections } from './getDirections';
 import { useTranslation } from 'react-i18next';
 
-const FoodCartCard = ({
-  name,
-  url,
-  category,
-  description,
-  schedules,
-  id,
-  likedByUser,
-  isEdit,
-}) => {
+const FoodCartCard = ({ name, url, category, description, schedules, id, likedByUser, isEdit }) => {
   const t = useTranslation().t;
   const currentSchedule = getCurrentSchedule(schedules);
-  const [heartFilledIn, setHeartFilledIn] = useState(
-    likedByUser ? true : false
-  );
+  const [heartFilledIn, setHeartFilledIn] = useState(likedByUser ? true : false);
   const requestObject = {
     method: 'PUT',
     headers: {
@@ -33,7 +22,6 @@ const FoodCartCard = ({
   };
 
   const handleUnlike = async () => {
-    console.log(id);
     await fetch(`/food_carts/${id}/unlike`, requestObject);
     setHeartFilledIn(false);
   };
@@ -42,9 +30,7 @@ const FoodCartCard = ({
     <div className='food_cart-card'>
       <div className='food_cart-image'>
         {currentSchedule ? (
-          <div
-            className='location-tag cursor-pointer'
-            onClick={() => getDirections(currentSchedule)}>
+          <div className='location-tag cursor-pointer' onClick={() => getDirections(currentSchedule)}>
             <i className='fas fa-map-marker-alt'></i> {currentSchedule.location}
           </div>
         ) : (

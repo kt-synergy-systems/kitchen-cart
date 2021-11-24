@@ -219,7 +219,6 @@ i18n
   .init(translationData);
 
 const root = document.getElementById('root');
-console.log(root);
 
 if (root) {
   document.addEventListener('DOMContentLoaded', () => {
