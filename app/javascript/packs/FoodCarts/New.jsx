@@ -37,10 +37,13 @@ const NewFoodCart = ({ user, foodCart, edit }) => {
             <input
               type='hidden'
               name='authenticity_token'
-              value={document.getElementsByName(`csrf-token`)[0].content}></input>
+              value={document.getElementsByName(`csrf-token`)[0].content}>
+            </input>
             <h2 className='title-user'>{edit ? t('forms.food_cart_form.edit') : t('forms.food_cart_form.new')}</h2>
             <div className='form-inputs'>
-              <label htmlFor='food_cart_name'>{t('forms.food_cart_form.name')}</label>
+              <label 
+                htmlFor='food_cart_name'>{t('forms.food_cart_form.name')}
+              </label>
               <input
                 className='form-control string required'
                 type='text'
@@ -48,7 +51,9 @@ const NewFoodCart = ({ user, foodCart, edit }) => {
                 id='food_cart_name'
                 defaultValue={foodCart.name}
               />
-              <label htmlFor='food_cart_phone_number'>{t('forms.food_cart_form.number')}</label>
+              <label 
+                htmlFor='food_cart_phone_number'>{t('forms.food_cart_form.number')}
+              </label>
               <input
                 className='form-control string tel required'
                 onChange={(e) => setPhone(e.target.value)}
@@ -57,7 +62,9 @@ const NewFoodCart = ({ user, foodCart, edit }) => {
                 id='food_cart_phone_number'
                 defaultValue={foodCart.phone_number}
               />
-              <label htmlFor='food_cart_category'>{t('forms.food_cart_form.category')}</label>
+              <label 
+                htmlFor='food_cart_category'>{t('forms.food_cart_form.category')}
+              </label>
               <input
                 className='form-control string required'
                 type='text'
@@ -65,15 +72,18 @@ const NewFoodCart = ({ user, foodCart, edit }) => {
                 defaultValue={foodCart.category}
                 id='food_cart_category'
               />
-              <div className='form-group text required food_cart_cart_description'>
-                <label className='text required' htmlFor='food_cart_cart_description'>
+              <div 
+                className='form-group text required food_cart_cart_description'>
+                <label 
+                  className='text required' htmlFor='food_cart_cart_description'>
                   {t('forms.food_cart_form.description')}
                 </label>
                 <textarea
                   className='form-control text required'
                   name='food_cart[cart_description]'
                   defaultValue={foodCart.cart_description}
-                  id='food_cart_cart_description'></textarea>
+                  id='food_cart_cart_description'>
+                </textarea>
               </div>
             </div>
             <input
@@ -83,7 +93,9 @@ const NewFoodCart = ({ user, foodCart, edit }) => {
               id='food_cart_photo'
               defaultValue={foodCart.photo}
             />
-            <button type='submit'>{t('buttons.save_food_cart')}</button>
+            <button 
+              type='submit'>{t('buttons.save_food_cart')}
+            </button>
           </form>
           <button
             onClick={function () {
