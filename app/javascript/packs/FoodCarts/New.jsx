@@ -2,11 +2,9 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 const NewFoodCart = ({ user, foodCart, edit }) => {
-  console.log(`Edit: ${edit}`);
   const t = useTranslation().t;
   const [phone, setPhone] = useState(null);
   const phoneNumberIsValid = () => {
-    console.log(phone.match(/^\d{2}(?:-\d{4}-\d{4}|\d{8}|\d-\d{3,4}-\d{4})$/));
     if (
       phone.match(
         /^(0([1-9]{1}-?[1-9]\d{3}|[1-9]{2}-?\d{3}|[1-9]{2}\d{1}-?\d{2}|[1-9]{2}\d{2}-?\d{1})-?\d{4}|0[789]0-?\d{4}-?\d{4}|050-?\d{4}-?\d{4})$/

@@ -3,11 +3,11 @@ import DayCard from './DayCard';
 import { MONTHS } from './index';
 import { useTranslation } from 'react-i18next';
 
+const stripTime = (t) => `${t[11]}${t[12]}:${t[14]}${t[15]}`;
+
 const DetailedSchedule = ({ schedules, dayOfWeek, dayOfMonth, year, month, isToday }) => {
   month = month.toUpperCase();
-  console.log(month, 'HOOOO');
   const t = useTranslation().t;
-  const timeRegex = /(?<=T)\d\d:\d\d(?=.)/;
   const goToMap = (lat, long) => {
     window.open(`https://www.google.com/maps/search/?api=1&query=${lat}%2C${long}`, '_blank');
   };
@@ -37,7 +37,6 @@ const DetailedSchedule = ({ schedules, dayOfWeek, dayOfMonth, year, month, isTod
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log(data);
           if (data.ok) {
             window.location.reload();
           }
@@ -45,12 +44,11 @@ const DetailedSchedule = ({ schedules, dayOfWeek, dayOfMonth, year, month, isTod
     }
   };
   const getDetailedTimeInfo = (m, d, isToday) => {
-    console.log(getScheduleDataForDay(m, d), ':-)', m, d);
     return getScheduleDataForDay(m, d).map((timeSlot, index) => (
       <div key={index} className='detailed-time-info flex-row'>
         <div className='flex-column'>
-          <p>{timeSlot.start_time.match(timeRegex)}</p>
-          <p>{timeSlot.end_time.match(timeRegex)}</p>
+          <p>{stripTime(timeSlot.start_time)}</p>
+          <p>{stripTime(timeSlot.end_time)}</p>
         </div>
         <div className={`place-info flex-row ${isToday ? 'green-border' : 'tan-border'}`}>
           <div

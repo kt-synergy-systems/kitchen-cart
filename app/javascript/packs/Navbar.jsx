@@ -24,15 +24,6 @@ const Navbar = ({ user }) => {
     linkOutTimer();
   };
 
-  // function langSwitch(checked) {
-  //   console.log(`switch to ${checked}`);
-  //   if (checked) {
-  //     i18n.changeLanguage('en');
-  //   } else {
-  //     i18n.changeLanguage('ja');
-  //   }
-  // }
-
   const linksOpenStyle = {
     position: 'fixed',
     top: '60px',
@@ -59,7 +50,6 @@ const Navbar = ({ user }) => {
       },
       redirect: 'follow',
     });
-    console.log(res);
     if (res.status === 204) {
       window.location.href = '/';
     }
