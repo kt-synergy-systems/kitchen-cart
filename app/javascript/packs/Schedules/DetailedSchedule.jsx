@@ -3,10 +3,27 @@ import DayCard from './DayCard';
 import { MONTHS } from './index';
 import { useTranslation } from 'react-i18next';
 
+const translateMonth = (month) => {
+  if (month === '1月') return 'JANUARY';
+  if (month === '2月') return 'FEBRUARY';
+  if (month === '3月') return 'MARCH';
+  if (month === '4月') return 'APRIL';
+  if (month === '5月') return 'MAY';
+  if (month === '6月') return 'JUNE';
+  if (month === '7月') return 'JULY';
+  if (month === '8月') return 'AUGUST';
+  if (month === '9月') return 'SEPTEMBER';
+  if (month === '10月') return 'OCTOBER';
+  if (month === '11月') return 'NOVEMBER';
+  if (month === '12月') return 'DECEMBER';
+  return month;
+};
+
 const stripTime = (t) => `${t[11]}${t[12]}:${t[14]}${t[15]}`;
 
 const DetailedSchedule = ({ schedules, dayOfWeek, dayOfMonth, year, month, isToday }) => {
   month = month.toUpperCase();
+
   const t = useTranslation().t;
   const goToMap = (lat, long) => {
     window.open(`https://www.google.com/maps/search/?api=1&query=${lat}%2C${long}`, '_blank');
