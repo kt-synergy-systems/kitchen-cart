@@ -31,7 +31,8 @@ export const translationData = {
           save_food_cart: 'Save',
           save_food_item: 'Save Food Item',
           delete: 'Delete',
-          all: 'All Food Carts',
+          all: 'All',
+          all_carts: 'All Food Carts',
           food: 'Food',
           drinks: 'Drinks',
           create_schedule: 'Create Schedule',
@@ -128,12 +129,14 @@ export const translationData = {
           save_food_cart: '保存',
           save_food_item: '保存',
           delete: '削除',
-          all: '全てのフードカート',
+          all: '全て',
+          all_carts: '全てのフードカート',
           food: '食品',
           drinks: '飲み物',
           create_schedule: 'スケジュールを作成',
           create_food_item: '食べ物を作成',
           create_menu: 'メニューを作成',
+          show_schedule: 'スケジュールを見る',
         },
         title: 'キッチンカート',
         mission: '外出先でも食べ物を簡単に見つけられるようにするとともに、地元企業の繁栄を支援します。',
@@ -219,7 +222,6 @@ i18n
   .init(translationData);
 
 const root = document.getElementById('root');
-console.log(root);
 
 if (root) {
   document.addEventListener('DOMContentLoaded', () => {

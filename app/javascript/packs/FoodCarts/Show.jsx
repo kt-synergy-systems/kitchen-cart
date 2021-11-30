@@ -10,7 +10,6 @@ const FoodCart = ({ foodCart, user, photoKey, photos, isLiked }) => {
   const schedules = foodCart.schedules;
   const menu = foodCart.menu;
   const foodItems = foodCart.food_items;
-  console.log('🎅', foodCart, user);
   const t = useTranslation().t;
   const requestObject = {
     method: 'PUT',
@@ -30,7 +29,6 @@ const FoodCart = ({ foodCart, user, photoKey, photos, isLiked }) => {
   };
 
   const handleUnlike = async () => {
-    console.log(foodCart.id);
     await fetch(`/food_carts/${foodCart.id}/unlike`, requestObject);
     setHeartFilledIn(false);
   };

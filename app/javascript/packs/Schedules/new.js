@@ -1,8 +1,6 @@
 import mapboxgl from '!mapbox-gl';
 import i18next from 'i18next';
 import { translationData } from '../entry';
-console.log(translationData);
-console.log(i18next);
 i18next.init(translationData);
 const t = i18next.t.bind(i18next);
 window.i18n = i18next;
@@ -11,7 +9,6 @@ window.t = t;
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_API_KEY;
 const dataDiv = document.getElementById('data-div');
 const data = dataDiv ? JSON.parse(dataDiv.dataset.data) : null;
-console.log(data);
 const searchForm = document.getElementById('search-form');
 const searchInput = document.getElementById('search-input');
 const locationInput = document.getElementById('schedule_location');
@@ -39,11 +36,9 @@ startTimeText.innerText = t('forms.schedule_form.open');
 endTimeText.innerText = t('forms.schedule_form.close');
 scheduleLocation.placeholder = t('forms.schedule_form.nearest_station');
 scheduleTitle.innerText = t('forms.schedule_form.title');
-console.log(butt.innerText);
 butt.value = t('buttons.create_schedule');
 let marker;
 let lang;
-console.log(searchForm);
 
 const getFormattedTime = (date) => {
   return date.toISOString().match(/\d{4}-\d\d-\d\dT\d\d:/)[0] + '00';
@@ -77,7 +72,6 @@ if (navigator.language === 'ja' || navigator.language.includes('en')) {
 } else {
   lang = 'en';
 }
-console.log(lang);
 
 const map = new mapboxgl.Map({
   container: 'map', // container id
@@ -115,7 +109,6 @@ map.on('click', async (e) => {
   lng = e.lngLat.lng;
   lat = e.lngLat.lat;
   setCoords(lng, lat);
-  console.log(longitudeInput, latitudeInput);
   const res = await fetch(
     `https://api.mapbox.com/geocoding/v5/mapbox.places/${lng},${lat}.json?&language=${lang}&worldview=jp&access_token=${mapboxgl.accessToken}`
   );
@@ -124,7 +117,6 @@ map.on('click', async (e) => {
   createMarker(lng, lat);
   map.flyTo({ center: [lng, lat], zoom: 14 });
   simpleFormBtn.disabled = false;
-  console.log(data);
 });
 
 searchForm.addEventListener('submit', async (e) => {

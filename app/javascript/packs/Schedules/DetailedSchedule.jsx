@@ -2,6 +2,7 @@ import React from 'react';
 import DayCard from './DayCard';
 import { MONTHS } from './index';
 import { useTranslation } from 'react-i18next';
+
 const translateMonth = (month) => {
   if (month === '1月') return 'JANUARY';
   if (month === '2月') return 'FEBRUARY';
@@ -17,10 +18,13 @@ const translateMonth = (month) => {
   if (month === '12月') return 'DECEMBER';
   return month;
 };
+
+const stripTime = (t) => `${t[11]}${t[12]}:${t[14]}${t[15]}`;
+
 const DetailedSchedule = ({ schedules, dayOfWeek, dayOfMonth, year, month, isToday }) => {
-  month = translateMonth(month.toUpperCase());
+  month = month.toUpperCase();
+
   const t = useTranslation().t;
-  const timeRegex = /(?<=T)\d\d:\d\d(?=.)/;
   const goToMap = (lat, long) => {
     window.open(`https://www.google.com/maps/search/?api=1&query=${lat}%2C${long}`, '_blank');
   };
@@ -50,7 +54,6 @@ const DetailedSchedule = ({ schedules, dayOfWeek, dayOfMonth, year, month, isTod
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log(data);
           if (data.ok) {
             window.location.reload();
           }
@@ -61,8 +64,8 @@ const DetailedSchedule = ({ schedules, dayOfWeek, dayOfMonth, year, month, isTod
     return getScheduleDataForDay(m, d).map((timeSlot, index) => (
       <div key={index} className='detailed-time-info flex-row'>
         <div className='flex-column'>
-          <p>{timeSlot.start_time.match(timeRegex)}</p>
-          <p>{timeSlot.end_time.match(timeRegex)}</p>
+          <p>{stripTime(timeSlot.start_time)}</p>
+          <p>{stripTime(timeSlot.end_time)}</p>
         </div>
         <div className={`place-info flex-row ${isToday ? 'green-border' : 'tan-border'}`}>
           <div

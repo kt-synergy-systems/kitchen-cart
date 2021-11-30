@@ -138,7 +138,7 @@ const FoodCarts = ({ foodCarts, schedules, user, likes }) => {
           onClick={() => {
             showOnlyMyFoodCarts ? setShowOnlyMyFoodCarts(false) : setShowOnlyMyFoodCarts(true);
           }}>
-          {showOnlyMyFoodCarts ? t('buttons.all') : t('buttons.my_foodcarts')}
+          {showOnlyMyFoodCarts ? t('buttons.all_carts') : t('buttons.my_foodcarts')}
         </button>
       </div>
       <div className='FoodCartCard'>

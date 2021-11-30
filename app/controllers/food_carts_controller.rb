@@ -33,8 +33,9 @@ class FoodCartsController < ApplicationController
     @food_cart = FoodCart.new(food_cart_params)
     @food_cart.user = current_user
     authorize @food_cart
+    create_menu
     if @food_cart.save!
-      redirect_to new_food_cart_menu_path(@food_cart), notice: "Food Cart Created"
+      redirect_to food_cart_path(@food_cart), notice: "Food Cart Created"
     else
       render :new
     end
@@ -77,6 +78,14 @@ class FoodCartsController < ApplicationController
 
   def food_cart_params
     params.require(:food_cart).permit(:name, :menu, :category, :cart_description, :schedule, :phone_number, :photo)
+  end
+
+  def create_menu
+    @menu = Menu.new
+    @menu.food_cart = @food_cart
+    @user = current_user
+    @menu.save
+    authorize @menu
   end
 
   def set_food_cart
