@@ -3,6 +3,7 @@ import { getCurrentSchedule } from './foodCartIsOpen';
 import { getDirections } from './getDirections';
 import getFoodItemCard from '../Helper/getFoodItemCard';
 import { useTranslation } from 'react-i18next';
+import default_image from '../../../assets/images/default-image.png';
 
 const FoodCart = ({ foodCart, user, photoKey, photos, isLiked }) => {
   const [userSelection, setUserSelection] = useState(null);
@@ -45,7 +46,7 @@ const FoodCart = ({ foodCart, user, photoKey, photos, isLiked }) => {
         <img
           alt='We love you'
           width='100%'
-          src={`https://images.unsplash.com/photo-1565123409695-7b5ef63a2efb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1651&q=80`}></img>
+          src={ default_image }></img>
       )}
       <div className='icons'>
         <h4>

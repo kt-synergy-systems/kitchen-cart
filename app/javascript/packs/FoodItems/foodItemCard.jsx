@@ -1,5 +1,4 @@
 import React from "react";
-import { useTranslation } from "react-i18next";
 
 const FoodItemCard = ({
   name,
@@ -14,7 +13,7 @@ const FoodItemCard = ({
 }) => {
   return (
     <div className='food-item-card'>
-      <img className='food-item-image' src={imgSrc} alt='Lorem Picsum' />
+      <img className='food-item-image' src={imgSrc} alt='Food Item' />
       <div className='food-item-text'>
         <h5>{name}</h5>
         <p>{description}</p>
