@@ -75,13 +75,13 @@ const DetailedSchedule = ({ schedules, dayOfWeek, dayOfMonth, year, month, isTod
             }}>
             {timeSlot.location}
           </div>
-          <a
+          <i
+            class='gomi fa fa-trash'
+            aria-hidden='true'
             onClick={(e) => {
               e.preventDefault();
               deleteMe(timeSlot.id);
-            }}>
-            X
-          </a>
+            }}></i>
         </div>
       </div>
     ));
