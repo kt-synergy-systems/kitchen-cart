@@ -2,9 +2,7 @@ import React from 'react';
 import FoodItemCard from '../FoodItems/foodItemCard';
 import default_image from '../../../assets/images/default-image.png';
 
-
 function getFoodItemCard(item, index, userSelection, foodCart, photo) {
-  console.log(default_image)
   switch (userSelection) {
     case 'food':
       if (item.food_type === 'food') {
@@ -20,9 +18,7 @@ function getFoodItemCard(item, index, userSelection, foodCart, photo) {
             menu_id={item.menu_id}
             food_cart={foodCart}
             imgSrc={
-              photo.key
-                ? `http://res.cloudinary.com/kitchen-cart/image/upload/c_thumb/${photo.key}`
-                : default_image
+              photo.key ? `http://res.cloudinary.com/kitchen-cart/image/upload/c_thumb/${photo.key}` : default_image
             }
           />
         );
@@ -43,9 +39,7 @@ function getFoodItemCard(item, index, userSelection, foodCart, photo) {
             menu_id={item.menu_id}
             food_cart={foodCart}
             imgSrc={
-              photo.key
-                ? `http://res.cloudinary.com/kitchen-cart/image/upload/c_thumb/${photo.key}`
-                : default_image
+              photo.key ? `http://res.cloudinary.com/kitchen-cart/image/upload/c_thumb/${photo.key}` : default_image
             }
           />
         );
@@ -65,9 +59,7 @@ function getFoodItemCard(item, index, userSelection, foodCart, photo) {
           menu_id={item.menu_id}
           food_cart={foodCart}
           imgSrc={
-            photo.key
-              ? `http://res.cloudinary.com/kitchen-cart/image/upload/c_thumb/${photo.key}`
-              : default_image
+            photo.key ? `http://res.cloudinary.com/kitchen-cart/image/upload/c_thumb/${photo.key}` : default_image
           }
         />
       );
