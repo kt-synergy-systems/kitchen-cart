@@ -1,13 +1,8 @@
 import React from 'react';
 import { getDirections } from './getDirections';
-import { useTranslation } from "react-i18next";
+import { useTranslation } from 'react-i18next';
 
-const MapFoodCartCard = ({
-  opened,
-  setMapCardOpened,
-  currentMapCardCart,
-  currentMapCardSchedule,
-}) => {
+const MapFoodCartCard = ({ opened, setMapCardOpened, currentMapCardCart, currentMapCardSchedule }) => {
   return (
     <div
       className='MapFoodCartCard'
@@ -25,9 +20,7 @@ const MapFoodCartCard = ({
       {' '}
       <div className='modal-box'>
         <div className='closer-container'>
-          <div
-            className='closer cursor-pointer'
-            onClick={() => setMapCardOpened(false)}>
+          <div className='closer cursor-pointer' onClick={() => setMapCardOpened(false)}>
             X
           </div>
         </div>
@@ -45,9 +38,8 @@ const MapFoodCartCard = ({
                 onClick={() => getDirections(currentMapCardSchedule)}></i>
             </div>
             <h2 className='food-cart-name'>{currentMapCardCart.name}</h2>
-            <a href={`/food_carts/${currentMapCardCart.id}`}>
-              See cart details.
-            </a>
+            <div>Closes: {currentMapCardSchedule?.end_time?.substring(11)?.substring(0, 5)}</div>
+            <a href={`/food_carts/${currentMapCardCart.id}`}>See cart details.</a>
           </>
         )}
       </div>
