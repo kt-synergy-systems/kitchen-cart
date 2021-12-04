@@ -140,6 +140,8 @@ const Schedules = ({ schedules, foodCart, user }) => {
           dayOfMonth={dayOfMonth}
           year={year}
           month={month}
+          user={user}
+          cart={foodCart}
           isToday={true}
         />
         <DetailedSchedule
@@ -148,6 +150,8 @@ const Schedules = ({ schedules, foodCart, user }) => {
           dayOfMonth={dayOfMonth + 1}
           year={year}
           month={month}
+          user={user}
+          cart={foodCart}
           isToday={false}
         />
         <DetailedSchedule
@@ -156,6 +160,8 @@ const Schedules = ({ schedules, foodCart, user }) => {
           dayOfMonth={dayOfMonth + 2}
           year={year}
           month={month}
+          user={user}
+          cart={foodCart}
           isToday={false}
         />
       </div>

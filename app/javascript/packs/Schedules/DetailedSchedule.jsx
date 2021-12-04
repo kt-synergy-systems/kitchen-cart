@@ -21,9 +21,10 @@ const translateMonth = (month) => {
 
 const stripTime = (t) => `${t[11]}${t[12]}:${t[14]}${t[15]}`;
 
-const DetailedSchedule = ({ schedules, dayOfWeek, dayOfMonth, year, month, isToday }) => {
+const DetailedSchedule = ({ schedules, dayOfWeek, dayOfMonth, year, month, isToday, user, cart }) => {
   month = month.toUpperCase();
 
+  console.log(user, cart);
   const t = useTranslation().t;
   const goToMap = (lat, long) => {
     window.open(`https://www.google.com/maps/search/?api=1&query=${lat}%2C${long}`, '_blank');
@@ -54,6 +55,7 @@ const DetailedSchedule = ({ schedules, dayOfWeek, dayOfMonth, year, month, isTod
       })
         .then((response) => response.json())
         .then((data) => {
+          console.log(data);
           if (data.ok) {
             window.location.reload();
           }
@@ -75,14 +77,16 @@ const DetailedSchedule = ({ schedules, dayOfWeek, dayOfMonth, year, month, isTod
             }}>
             {timeSlot.location}
           </div>
+        </div>
+        {user?.id === cart.user_id && (
           <i
-            class='gomi fa fa-trash'
+            className='gomi fa fa-trash'
             aria-hidden='true'
             onClick={(e) => {
               e.preventDefault();
               deleteMe(timeSlot.id);
             }}></i>
-        </div>
+        )}
       </div>
     ));
   };
