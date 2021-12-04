@@ -30,7 +30,7 @@
     margin-left: 4px;
     margin-right: 4px;
     background-color: $white;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
     .day-of-month {
       font-size: x-large;
       font-weight: bold;
@@ -76,6 +76,11 @@
       margin-left: 16px;
       margin-bottom: 16px;
       padding: 8px;
+    }
+    .gomi {
+      position: absolute;
+      right: 30px;
+      cursor: pointer;
     }
   }
   .light-border {

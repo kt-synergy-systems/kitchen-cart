@@ -66,7 +66,7 @@ puts "generating foodcarts, menus and schedules"
                                  name: Faker::Restaurant.name,
                                  category: Faker::Restaurant.type,
                                  open: true,
-                                 cart_description: Faker::Restaurant.description,
+                                 cart_description: Faker::Restaurant.description[0..139],
                                  phone_number: '34982394',
                                  user: User.all.sample
   })
@@ -99,7 +99,7 @@ Menu.all.each do |menu|
     FoodItem.create!(
       food_name: Faker::Food.dish,
       food_price: rand(1..10),
-      food_description: Faker::Food.description,
+      food_description: Faker::Food.description[0..139],
       food_type: %w[food drink].sample,
       food_availability: [true, false].sample,
       menu: menu
