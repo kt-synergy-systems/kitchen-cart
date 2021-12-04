@@ -50,8 +50,6 @@
     flex-grow: 1;
     width: 100%;
     padding: 16px;
-    height: 200px;
-    overflow-y: scroll;
     .divider {
       height: 100%;
       width: 5px;
@@ -78,8 +76,9 @@
       padding: 8px;
     }
     .gomi {
-      position: absolute;
-      right: 30px;
+      position: relative;
+      right: 24px;
+      top: 6px;
       cursor: pointer;
     }
   }
