@@ -140,7 +140,7 @@ export const translationData = {
         },
         title: 'キッチンカート',
         mission: '外出先でも食べ物を簡単に見つけられるようにするとともに、地元企業の繁栄を支援します。',
-        copyright: '© 2021 ブランドン、ダン、ホンジュ、ジョシュ、マリサ',
+        copyright: '© 2022 ブランドン、ダン、ホンジュ、ジョシュ、マリサ',
         search_bar: 'フードカート、場所',
         see_cart: 'フードカートを見る',
         closed: '本日休業',

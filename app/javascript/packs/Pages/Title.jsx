@@ -15,7 +15,7 @@ const Title = () => {
       </div>
       <div className='search-container'></div>
       <div className='main-intro-card'>{t('mission')}</div>
-      <footer>© 2021 Kitchen Cart</footer>
+      <footer>© 2022 Kitchen Cart</footer>
     </div>
   );
 };
