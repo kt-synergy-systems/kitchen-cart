@@ -20,7 +20,7 @@ export const translationData = {
         buttons: {
           home: 'Home',
           food_cart: 'Food Carts',
-          create: 'Create New Food Cart',
+          create: 'Add Food Cart',
           sign_up: 'Sign Up',
           sign_in: 'Sign In',
           sign_out: 'Sign Out',
