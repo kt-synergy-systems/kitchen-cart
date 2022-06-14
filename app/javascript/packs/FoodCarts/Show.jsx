@@ -33,19 +33,25 @@ const FoodCart = ({ foodCart, user, photoKey, photos, isLiked }) => {
     await fetch(`/food_carts/${foodCart.id}/unlike`, requestObject);
     setHeartFilledIn(false);
   };
+  const bannerStyle = {
+    maxHeight: '500px',
+    marginLeft: 'calc(50% - 250px)',
+    marginTop: '24px',
+    borderRadius: '8px'
+  }
 
   return (
     <div className='FoodCart'>
       {photoKey ? (
         <img
-          alt='go to heaven'
+          alt='We love you'
           src={`http://res.cloudinary.com/kitchen-cart/image/upload/c_thumb/${photoKey}`}
-          width='100%'
+          style={bannerStyle}
         />
       ) : (
         <img
           alt='We love you'
-          width='100%'
+          style={bannerStyle}
           src={ default_image }></img>
       )}
       <div className='icons'>
