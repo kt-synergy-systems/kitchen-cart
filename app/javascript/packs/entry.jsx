@@ -29,7 +29,7 @@ export const translationData = {
           my_foodcarts: 'My Food Carts',
           file: 'Upload Photo',
           save_food_cart: 'Save',
-          save_food_item: 'Save Food Item',
+          save_food_item: 'Save',
           delete: 'Delete',
           all: 'All',
           all_carts: 'All Food Carts',
