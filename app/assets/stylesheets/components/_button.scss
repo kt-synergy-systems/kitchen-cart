@@ -8,7 +8,7 @@
   text-transform: uppercase;
   display: inline-block;
   padding: 16px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
 .food-button {
@@ -21,7 +21,7 @@
   text-transform: uppercase;
   display: inline-block;
   padding: 16px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
 .drinks-button {
@@ -34,7 +34,7 @@
   text-transform: uppercase;
   display: inline-block;
   padding: 16px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
 .location-button {
@@ -47,7 +47,7 @@
   text-transform: uppercase;
   display: inline-block;
   padding: 16px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
 .location-button-container {
@@ -71,7 +71,7 @@
   text-transform: uppercase;
   display: inline-block;
   padding: 16px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
 .admin-buttons {
@@ -106,6 +106,28 @@ a {
   color: black;
 }
 
+.form-button-upload {
+  position: relative !important;
+  top: 4px !important;
+  left: 137px !important;
+}
+
+.form-control-file,
+.form-control-range {
+  color: transparent;
+}
+
+.form-button-save {
+  position: relative;
+  top: -1.625rem;
+  left: 0;
+}
+
+.form-button-delete {
+  position: relative;
+  top: -3.5rem;
+  left: 3.813rem;
+}
 
 @media (max-width: 450px) {
   .location-button-container {

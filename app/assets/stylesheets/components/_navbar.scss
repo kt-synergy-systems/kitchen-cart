@@ -54,7 +54,7 @@
     transition: 0.3s;
     display: flex;
     flex-direction: column;
-    position: fixed;
+    position: relative !important;
     align-items: center;
     background-color: $red;
     top: -100vh;
