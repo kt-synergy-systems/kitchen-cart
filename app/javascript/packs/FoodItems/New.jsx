@@ -72,7 +72,7 @@ const NewFoodItem = ({ user, foodItem, edit }) => {
               <option value='drink'>{t('buttons.drinks')}</option>
             </select>
             <input
-              className='form-control-file file optional'
+              className='form-control-file file optional form-button-upload'
               type='file'
               name='food_item[photo]'
               id='food_item_photo'
@@ -83,11 +83,12 @@ const NewFoodItem = ({ user, foodItem, edit }) => {
               name='commit'
               value={t('buttons.save_food_item')}
               label={t('buttons.save_food_item')}
-              className='btn btn btn-primary'
+              className='form-button-save'
               data-disable-with='Save Food Item'
             />
           </form>
           <button
+            className='form-button-delete'
             onClick={function () {
               const confirmDelete = confirm('Are you sure?');
               if (confirmDelete) {
